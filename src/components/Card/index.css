@@ -1,0 +1,35 @@
+.item {
+    color: #f00;
+}
+
+.next {
+    height: 200px;
+    background: url('../../assets/imgs/logo.jpg');
+    background-repeat: no-repeat;
+}
+
+.small-icon {
+    color: #000;
+    font-size: 24PX;
+    /*设置大写PX 忽略转为 rem */
+}
+
+.icon2 .iconfont {
+    font-size: 28px;
+}
+
+.iconfont {
+    color: blue;
+}
+
+.js-hover {
+    padding: 20px;
+}
+
+.f-layout {
+    display: flex;
+}
+
+.f-layout span {
+    flex: 1
+}
