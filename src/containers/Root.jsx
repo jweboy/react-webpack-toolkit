@@ -1,13 +1,13 @@
 import React from 'react';
 
-import App from 'views/App';
+// import App from 'views/App';
 
-function Root() {
+const Root = () => {
   return (
-      <div>
-        <App />
-        App启动测试根节点内容01
+    <div>
+      App启动测试根节点内容sasaaccc
       </div>
-    );
+  );
 }
+
 export default Root;

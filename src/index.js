@@ -1,19 +1,17 @@
 import React from 'react';
 import {
-    render
+  render
 } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+// import { AppContainer } from 'react-hot-loader';
 
 import Root from './containers/Root';
 
 render(
-  <AppContainer>
-    <Root />
-  </AppContainer>,
+  <Root />,
   document.getElementById('root')
 );
 
-if (module.hot) {
+/*if (module.hot) {
     module.hot.accept('./containers/Root', () => {
         const NextRoot = require('./containers/Root').default;
         render(
@@ -23,4 +21,4 @@ if (module.hot) {
           document.getElementById('root')
         );
     });
-}
+}*/

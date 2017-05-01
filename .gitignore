@@ -1,9 +1,6 @@
-## release
-release/
+dist/
 
-## node_modules
 node_modules/
 
-## yarn
 yarn-error.log
 yarn.lock
