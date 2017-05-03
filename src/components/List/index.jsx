@@ -4,7 +4,7 @@ import React, {
 // import api from 'api';
 import axios from 'axios';
 
-import data from 'api/mock/data';
+import data from 'api/data';
 
 import ajax from 'util';
 console.log(data);
@@ -38,7 +38,12 @@ class List extends Component {
     });
   }
   handleClick() {
-    axios.get('/users')
+    // axios.get('/users')
+    //   .then(function(response) {
+    //       console.log(response.data);
+    //       console.log(response.status);
+    //   });
+     axios.get('/api/data')
       .then(function(response) {
           console.log(response.data);
           console.log(response.status);

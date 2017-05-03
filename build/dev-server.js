@@ -2,21 +2,18 @@
 const webpack = require('webpack');
 const express = require('express');
 // const openBrowserPlugin = require('open-browser-webpack-plugin');
-// const proxyMiddleware = require('http-proxy-middleware');
+const proxyMiddleware = require('http-proxy-middleware');
 const webpackConfig = require('./webpack.dev.config');
 const config = require('../config');
+const data = require('../src/api/data.json');
 
 const compiler = webpack(webpackConfig);
 const port = config.dev.port;
 const app = express();
 const uri = 'http://localhost:' + port;
-// const proxy = proxyMiddleware('/users', {
-//     target: 'https://api.github.com',
-//     changeOrigin: true
-// });
 
 // https://github.com/webpack/webpack-dev-middleware
-const devServer = require('webpack-dev-middleware')(compiler, {
+const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
     stats: {
         colors: true // bundle 信息展示
@@ -27,14 +24,36 @@ const devServer = require('webpack-dev-middleware')(compiler, {
     progress: true // 运行进度输出到控制台
 });
 
-const HotServer = require('webpack-hot-middleware')(compiler, {
+const hotMiddleware = require('webpack-hot-middleware')(compiler, {
     log: () => { }
 });
 
-app.use(devServer);
-app.use(HotServer);
+// 改变模板页面内容强制刷新浏览器
+// compiler.plugin('compilation', function(compilation) {
+//     compilation.plugin('html-webpack-plugin-after-emit', function(data, cb) {
+//         hotMiddleware.publish({
+//             action: 'reload'
+//         });
+//         cb();
+//     })
+// })
 
-devServer.waitUntilValid(() => {
+// 模块打包，编译输出
+app.use(devMiddleware);
+// 开启热加载和状态保存,显示编译错误信息
+app.use(hotMiddleware);
+
+// 设置代理,跨域访问api资源
+// app.use('/*', proxyMiddleware({
+//     target: 'https://api.github.com',
+//     changeOrigin: true,
+//     logLevel: 'debug'
+// }));
+
+// 前端静态数据模拟
+app.get('/api/data', (req, res, next) => (res.send(data)));
+
+devMiddleware.waitUntilValid(() => {
     console.log('> Listening at ' + uri + '\n');
 })
 

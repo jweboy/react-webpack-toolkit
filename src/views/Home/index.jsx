@@ -2,6 +2,7 @@ import React from 'react';
 
 import Card from 'components/Card';
 import List from 'components/List';
+import TabBar from 'components/TabBar';
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
         {/*<Card />*/}
         <p>-----------</p>
         {/*<List />*/}
+        <TabBar />
     </div>
   );
 }

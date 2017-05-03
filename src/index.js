@@ -4,7 +4,7 @@ import {
 } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import Root from './containers/Root';
+import Route from './route';
 
 const rootRender = (Component) => {
   render(
@@ -15,11 +15,11 @@ const rootRender = (Component) => {
   );
 };
 
-rootRender(Root);
+rootRender(Route);
 
 // 模块热更新
 if (module.hot) {
     module.hot.accept('./containers/Root', () => {
-       rootRender(Root);
+       rootRender(Route);
     });
 }
