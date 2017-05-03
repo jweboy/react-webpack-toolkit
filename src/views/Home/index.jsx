@@ -6,9 +6,9 @@ import List from 'components/List';
 function Home() {
   return (
     <div>
-        <Card />
+        {/*<Card />*/}
         <p>-----------</p>
-        <List />
+        {/*<List />*/}
     </div>
   );
 }

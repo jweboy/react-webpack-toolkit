@@ -35,13 +35,13 @@ module.exports = {
          * 别名只能在 .js .jsx文件使用
          */
         alias: {
-            components: path.resolve(__dirname, 'src/components'),
-            api: path.resolve(__dirname, 'src/api'),
-            views: path.resolve(__dirname, 'src/views'),
-            mock: path.resolve(__dirname, 'src/mock'),
-            assets: path.resolve(__dirname, 'src/assets'),
-            containers: path.resolve(__dirname, 'src/containers'),
-            util: path.resolve(__dirname, 'src/util')
+            'components': resolve('src/components'),
+            'api': resolve('src/api'),
+            'views': resolve('src/views'),
+            'mock': resolve('src/mock'),
+            'assets': resolve('src/assets'),
+            'containers': resolve('src/containers'),
+            'util': resolve('src/util')
         }
     },
     module: {

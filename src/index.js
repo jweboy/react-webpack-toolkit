@@ -2,23 +2,24 @@ import React from 'react';
 import {
   render
 } from 'react-dom';
-// import { AppContainer } from 'react-hot-loader';
+import { AppContainer } from 'react-hot-loader';
 
 import Root from './containers/Root';
 
-render(
-  <Root />,
-  document.getElementById('root')
-);
+const rootRender = (Component) => {
+  render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('root')
+  );
+};
 
-/*if (module.hot) {
+rootRender(Root);
+
+// 模块热更新
+if (module.hot) {
     module.hot.accept('./containers/Root', () => {
-        const NextRoot = require('./containers/Root').default;
-        render(
-          <AppContainer>
-            <NextRoot />
-          </AppContainer>,
-          document.getElementById('root')
-        );
+       rootRender(Root);
     });
-}*/
+}
