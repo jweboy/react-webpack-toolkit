@@ -5,7 +5,7 @@ const express = require('express');
 const proxyMiddleware = require('http-proxy-middleware');
 const webpackConfig = require('./webpack.dev.config');
 const config = require('../config');
-const data = require('../src/api/data.json');
+const data = require('../mock/data.json');
 
 const compiler = webpack(webpackConfig);
 const port = config.dev.port;

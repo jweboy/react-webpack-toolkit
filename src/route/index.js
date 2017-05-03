@@ -1,23 +1,24 @@
-import React, { 
-    Component
-} from 'react';
-import { 
-    render
-} from 'react-dom';
+import React from 'react';
 import {
-    BrowserRouter,
-    Route
+  HashRouter as Router
 } from 'react-router-dom';
 
-import Card from 'components/Card';
-import List from 'components/List';
-import 'containers/Root';
+import routes from './data';
+import SubRoute from './route';
 
-const route = (
-    <BrowserRouter path="/">
-        <Route path="card" component={Card}></Route>
-        <Route path="list" component={List}></Route>
-    </BrowserRouter>
+const route = () => (
+  <Router basename="/">
+    <div>
+      {/*<Route path="/" render={Home}></Route>
+            <Route path="list" render={List}></Route>
+            <Route path="card" render={Card}></Route>*/}
+      {
+        routes.map((route, i) => (
+          <SubRoute key={i} route={route} />
+        ))
+      }
+    </div>
+  </Router>
 );
 
 export default route;

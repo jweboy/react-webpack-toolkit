@@ -38,7 +38,7 @@ module.exports = {
             'components': resolve('src/components'),
             'api': resolve('src/api'),
             'views': resolve('src/views'),
-            'mock': resolve('src/mock'),
+            'mock': resolve('./mock'),
             'assets': resolve('src/assets'),
             'containers': resolve('src/containers'),
             'util': resolve('src/util')

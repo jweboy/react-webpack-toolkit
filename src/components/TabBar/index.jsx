@@ -1,7 +1,10 @@
 import React, {
     Component
 } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import {
+    Link
+} from 'react-router-dom';
 
 import './index.css';
 
@@ -9,7 +12,7 @@ class TabBar extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {  
+        this.state = {
 
         }
     }
@@ -17,10 +20,14 @@ class TabBar extends Component {
         return (
             <ul className="tabbar">
                 <li className="tabbar_item">
-                    home
+                    <Link to="/card">
+                        card1
+                    </Link>
                 </li>
                 <li className="tabbar_item">
-                    my
+                    <Link to="/list">
+                        list
+                    </Link>
                 </li>
             </ul>
         );

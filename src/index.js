@@ -3,8 +3,8 @@ import {
   render
 } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-
 import Route from './route';
+// import Route from './containers/Root';
 
 const rootRender = (Component) => {
   render(
@@ -19,7 +19,8 @@ rootRender(Route);
 
 // 模块热更新
 if (module.hot) {
-    module.hot.accept('./containers/Root', () => {
-       rootRender(Route);
-    });
+  module.hot.accept('./containers/Root', () => {
+    const NextRoot = require('./containers/Root').default;
+    rootRender(NextRoot);
+  });
 }

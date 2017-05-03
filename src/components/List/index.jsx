@@ -1,10 +1,10 @@
 import React, {
-    Component
+  Component
 } from 'react';
 // import api from 'api';
 import axios from 'axios';
 
-import data from 'api/data';
+import data from 'mock/data';
 
 import ajax from 'util';
 console.log(data);
@@ -20,9 +20,9 @@ class List extends Component {
     super(props);
 
     this.state = {
-      user:{},
-      msg:{
-        a:1
+      user: {},
+      msg: {
+        a: 1
       }
     };
 
@@ -34,7 +34,7 @@ class List extends Component {
   }
   getUserIfo() {
     this.setState({
-      user:data.user
+      user: data.user
     });
   }
   handleClick() {
@@ -43,20 +43,20 @@ class List extends Component {
     //       console.log(response.data);
     //       console.log(response.status);
     //   });
-     axios.get('/api/data')
-      .then(function(response) {
-          console.log(response.data);
-          console.log(response.status);
+    axios.get('/api/data')
+      .then(function (response) {
+        console.log(response.data);
+        console.log(response.status);
       });
   }
   render() {
     const { user, msg } = this.state;
 
     let status = user.isShow === 1 ? 'Processs' : 'Er00ro00r';
-    let  btnClass = cx({
-      error:!user.isShow,
-      success:user.isShow,
-      primary:true
+    let btnClass = cx({
+      error: !user.isShow,
+      success: user.isShow,
+      primary: true
     });
     return (
       <div>
