@@ -1,23 +1,14 @@
 import React from 'react';
 import {
-  HashRouter as Router,
-  Redirect
+  HashRouter as Router
 } from 'react-router-dom';
 
-import routes from './data';
-import SubRoute from './route';
+import App from 'containers/App';
 
-const route = () => (
-  <Router basename="/">
-    <div>
-      <Redirect push to="/card"/>
-      {
-        routes.map((route, i) => (
-          <SubRoute key={i} route={route} />
-        ))
-      }
-    </div>
-  </Router>
+const Route = () => (
+    <Router basename="/">
+        <App />
+    </Router>
 );
 
-export default route;
+export default Route;
