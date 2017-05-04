@@ -7,7 +7,7 @@ export default [
     path: '/',
     component: Home
   }, {
-    path: 'card',
+    path: '/card',
     component: Card
   }, {
     path: '/list',
