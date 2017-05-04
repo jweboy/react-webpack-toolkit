@@ -10,6 +10,7 @@ import {
 import Card from 'components/Card';
 import List from 'components/List';
 import Home from 'containers/Home';
+import Detail from 'containers/Detail';
 import NotFound from 'containers/NotFoundPage';
 
 const routes = [
@@ -22,6 +23,9 @@ const routes = [
     }, {
         path: '/list',
         component: List
+    }, {
+        path: '/detail',
+        component: Detail
     }, {
         path: '/404',
         component: NotFound
@@ -50,7 +54,7 @@ class SubRoute extends Component {
 const route = () => (
     <div>
         <Switch>
-            <Redirect to="/" />
+            <Redirect to="/card" />
         </Switch>
         <Route exact path="/" component={Card} />
         <Route path="/card" component={Card} />

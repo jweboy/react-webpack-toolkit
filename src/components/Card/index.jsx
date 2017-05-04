@@ -5,6 +5,9 @@ import MdAccessibility from 'react-icons/lib/md/accessibility';
 import TiAdjustBrightness from 'react-icons/lib/ti/adjust-brightness';
 import GoAlignmentAlignedTo from 'react-icons/lib/go/alignment-aligned-to';
 import Md3dRotation from 'react-icons/lib/md/3d-rotation';
+import {
+  Link
+} from 'react-router-dom';
 
 import './index.css';
 import 'assets/styles/iconfont.css';
@@ -15,6 +18,18 @@ function Card() {
     <div className="item">
         <img src={logo} alt=""/>
         <span>sad</span>
+        <hr />
+        <div>
+          <Link to={{
+            pathname: "/detail",
+            state: {
+              modal: true
+            }
+          }}>
+            跳转到详情页面
+          </Link>
+        </div>
+        <hr />
         <div className="next">&nbsp;</div>
         <span className="small-icon">
           <FaBeer />

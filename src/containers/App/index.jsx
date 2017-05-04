@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import {
     render
 } from 'react-dom';
+import {
+    Route
+} from 'react-router-dom';
 
 import Home from 'containers/Home';
-import Route from 'components/Route';
+import List from 'components/List';
 
 const App = () =>(
     <div>
-        <Route />
-        <Home />
+        loading
     </div>
 );
 

@@ -7,7 +7,6 @@ import axios from 'axios';
 import data from 'mock/data';
 
 import ajax from 'util';
-console.log(data);
 
 import styles from './index.css';
 import classNames from 'classnames/bind';
@@ -38,15 +37,11 @@ class List extends Component {
     });
   }
   handleClick() {
-    // axios.get('/users')
-    //   .then(function(response) {
-    //       console.log(response.data);
-    //       console.log(response.status);
-    //   });
     axios.get('/api/data')
       .then(function (response) {
-        console.log(response.data);
-        console.log(response.status);
+        if(response.status === 200) {
+          console.dir(response);
+        }
       });
   }
   render() {
