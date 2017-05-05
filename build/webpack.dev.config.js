@@ -5,18 +5,21 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 // const config = require('../config');
 const baseWebpackConfig = require('./webpack.base.config');
-const webpackHotClient = 'webpack-hot-middleware/client?noInfo=true&reload=true';
+const babelPolyfill = 'babel-polyfill';
 const reactHotClient = 'react-hot-loader/patch';
+const webpackHotClient = 'webpack-hot-middleware/client?noInfo=true&reload=true';
 
 
 baseWebpackConfig.entry.unshift(
+    babelPolyfill,
     reactHotClient, // 开启模块热替换(HMR)
     webpackHotClient
 );
 // console.log(baseWebpackConfig);
 
 module.exports = merge(baseWebpackConfig, {
-    devtool: 'cheap-eval-source-map',
+    // devtool: 'cheap-eval-source-map',
+    devtool: 'eval',
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {

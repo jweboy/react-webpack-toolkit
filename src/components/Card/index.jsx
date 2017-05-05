@@ -16,21 +16,16 @@ import logo from 'assets/imgs/test.jpg';
 function Card() {
   return (
     <div className="item">
-        <img src={logo} alt=""/>
-        <span>sad</span>
+        {/*<img src={logo} alt=""/>
+        <span>sad</span>*/}
         <hr />
         <div>
-          <Link to={{
-            pathname: "/detail",
-            state: {
-              modal: true
-            }
-          }}>
+          <Link to="/detail">
             跳转到详情页面
           </Link>
         </div>
         <hr />
-        <div className="next">&nbsp;</div>
+        {/*<div className="next">&nbsp;</div>
         <span className="small-icon">
           <FaBeer />
           <MdAccessibility />
@@ -47,7 +42,7 @@ function Card() {
           <span>flexflexoneoneone</span>
           <span>flexsss2a</span>
           <span>flex3.</span>
-        </div>
+        </div>*/}
     </div>
   );
 }

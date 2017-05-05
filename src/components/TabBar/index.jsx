@@ -21,12 +21,12 @@ class TabBar extends Component {
             <ul className="tabbar">
                 <li className="tabbar_item">
                     <Link to="/card">
-                        card
+                       card {/*{props}*/}
                     </Link>
                 </li>
                 <li className="tabbar_item">
                     <Link to="/list">
-                        list
+                        listsss  
                     </Link>
                 </li>
             </ul>

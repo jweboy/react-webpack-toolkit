@@ -4,17 +4,20 @@ import {
   Route
 } from 'react-router-dom';
 // import createHistory from 'history/createBrowserHistory';
+// const history = createHistory();
 
 import App from 'containers/App';
 import Detail from 'containers/Detail';
-import List from 'components/List';
-// const history = createHistory();
+import Home from 'containers/Home';
+
+
+
 
 const RouteContainer = () => (
-    <Router basename="/" >
+    <Router basename="/">
         <div>
-            <App />
-            <Route path="/detail" component={List} />
+            <Route path="/" component={Home} />
+            <Route path="/detail" component={Detail} />
         </div>
     </Router>
 );

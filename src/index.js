@@ -1,14 +1,11 @@
 import React from 'react';
 import {
-  render,
-  unmountComponentAtNode 
+  render
 } from 'react-dom';
 import { 
   AppContainer
 } from 'react-hot-loader';
-import {
-  Redbox
-} from 'redbox-react';
+import Redbox from 'redbox-react';
 import PropsTypes from 'prop-types';
 
 import App from './route';
@@ -17,43 +14,36 @@ import App from './route';
 const mountNode = document.getElementById('root');
 
 // 定义根组件渲染的函数
-const rootRender = (Component, RedBox) => {
+const rootRender = (Component) => {
   render(
-    <AppContainer errorReporter={RedBox ? RedBox : ''}>
+    <AppContainer errorReporter={Redbox}>
       <Component />
     </AppContainer>,
     mountNode
   );
 };
 
-// 定义redbox
-const ErrorReporter = ({error}) => {
-  console.warn(error);
-  return <Redbox error={error} />;
-}
-ErrorReporter.propTypes = {
-  error: React.PropTypes.instanceOf(Error).isRequired
-}
+const _isDev = process.env.NODE_ENV === 'development' ? 1 : 0;
 
 rootRender(App);
 
 // 模块热更新 Hot Module Replacement API
 if (module.hot) {
-  // const reRenderApp = (App) => {
-  //   try {
-  //     rootRender(App);
-  //   } catch(error) {
-  //     rootRender(App, ErrorReporter);
-  //   }
-  // }
+  if(_isDev) {
+    const RedBox = require('redbox-react').default;
+    try {
+      rootRender(App);
+    } catch(error) {
+      render(
+        <RedBox error={error} />,
+        mountNode
+      );
+    } 
+  } else {
+    rootRender(App);
+  }
   module.hot.accept('./route', () => {
-    const NextApp = require('./route').default;
-    rootRender(NextApp, ErrorReporter);
-    // setImmediate(() => {
-    //   // Preventing the hot reloading error from react-router
-    //   unmountComponentAtNode(mountNode),
-    //   reRenderApp(App);
-    // });
+    rootRender(App);
   });
 }
 // TODO redbox待完善
