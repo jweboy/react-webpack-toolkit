@@ -7,12 +7,11 @@ import {
 } from 'react-router-dom';
 
 import Home from 'containers/Home';
-import List from 'components/List';
+import RouteMap from 'routes/map';
+import TabBar from 'components/TabBar';
 
 const App = () =>(
-    <div>
-        loading
-    </div>
+    <RouteMap />
 );
 
 export default App;

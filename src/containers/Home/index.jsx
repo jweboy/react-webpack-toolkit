@@ -1,18 +1,18 @@
 import React from 'react';
 
-import Card from 'components/Card';
-import List from 'components/List';
-import TabBar from 'components/TabBar';
 import {
-  Route
+  Route,
+  Switch,
+  Redirect
 } from 'react-router-dom';
 
+import Card from 'components/Card';
+import TabBar from 'components/TabBar';
 import 'assets/styles/reset.css';
 
 const Home = () => (
   <div>
-    <Route path="/card" component={Card} />
-    <Route path="/list" component={List} />
+    <Card />
     <TabBar />
   </div>
 );

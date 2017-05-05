@@ -10,6 +10,7 @@ import ajax from 'util';
 
 import styles from './index.css';
 import classNames from 'classnames/bind';
+import TabBar from 'components/TabBar';
 
 let cx = classNames.bind(styles);
 
@@ -61,6 +62,7 @@ class List extends Component {
         <p>{user.hobby}</p>
         <button className={btnClass} onClick={this.handleClick}>{status}</button>
         <p>{msg.user}{msg.age}</p>
+        <TabBar />
       </div>
     );
   }

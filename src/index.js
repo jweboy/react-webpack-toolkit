@@ -6,9 +6,10 @@ import {
   AppContainer
 } from 'react-hot-loader';
 import Redbox from 'redbox-react';
-import PropsTypes from 'prop-types';
 
-import App from './route';
+import App from './routes';
+import _DEV_ from 'util/env';
+// console.log(_DEV_);
 
 // 获取装载组件的根节点
 const mountNode = document.getElementById('root');
@@ -23,13 +24,11 @@ const rootRender = (Component) => {
   );
 };
 
-const _isDev = process.env.NODE_ENV === 'development' ? 1 : 0;
-
 rootRender(App);
 
 // 模块热更新 Hot Module Replacement API
 if (module.hot) {
-  if(_isDev) {
+  if(_DEV_) {
     const RedBox = require('redbox-react').default;
     try {
       rootRender(App);
@@ -42,7 +41,7 @@ if (module.hot) {
   } else {
     rootRender(App);
   }
-  module.hot.accept('./route', () => {
+  module.hot.accept('./routes', () => {
     rootRender(App);
   });
 }

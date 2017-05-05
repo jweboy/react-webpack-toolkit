@@ -6,7 +6,7 @@ import {
     Link
 } from 'react-router-dom';
 
-import './index.css';
+import styles from './index.css';
 
 class TabBar extends Component {
     constructor(props) {
@@ -18,15 +18,15 @@ class TabBar extends Component {
     }
     render() {
         return (
-            <ul className="tabbar">
-                <li className="tabbar_item">
+            <ul className={styles.tabbar}>
+                <li className={styles.tabbar_item}>
                     <Link to="/card">
-                       card {/*{props}*/}
+                       主页 {/*{props}*/}
                     </Link>
                 </li>
-                <li className="tabbar_item">
+                <li className={styles.tabbar_item}>
                     <Link to="/list">
-                        listsss  
+                        个人中心 
                     </Link>
                 </li>
             </ul>

@@ -1,5 +1,6 @@
-const webpack = require('webpack');
 const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const px2rem = require('postcss-pxtorem');
 
@@ -41,7 +42,8 @@ module.exports = {
             'mock': resolve('./mock'),
             'assets': resolve('src/assets'),
             'containers': resolve('src/containers'),
-            'util': resolve('src/util')
+            'util': resolve('src/util'),
+            'routes': resolve('src/routes')
         }
     },
     module: {
@@ -54,11 +56,17 @@ module.exports = {
             },
             {
                 test: /\.css?$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader'
-                ],
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use:[
+                        'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'
+                    ]
+                }),
+                // use: [
+                //     'style-loader',
+                //     'css-loader',
+                //     'postcss-loader'
+                // ],
                 exclude: nodeModulesPath,
                 include: srcPath
             },
@@ -86,6 +94,10 @@ module.exports = {
                 ],
                 context: srcPath
             }
+        }),
+        new ExtractTextPlugin({
+            filename: 'app.css',
+            allChunks: true
         })
     ]
 };

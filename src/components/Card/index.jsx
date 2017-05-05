@@ -13,6 +13,8 @@ import './index.css';
 import 'assets/styles/iconfont.css';
 import logo from 'assets/imgs/test.jpg';
 
+import TabBar from 'components/TabBar';
+
 function Card() {
   return (
     <div className="item">
@@ -43,6 +45,7 @@ function Card() {
           <span>flexsss2a</span>
           <span>flex3.</span>
         </div>*/}
+        <TabBar />
     </div>
   );
 }

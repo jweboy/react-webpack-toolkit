@@ -2,7 +2,7 @@ import React from 'react';
 
 const Detail = () => (
   <div>
-    Detail
+    内容页部分
   </div>
 );
 
