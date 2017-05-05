@@ -6,7 +6,7 @@ import {
     Link
 } from 'react-router-dom';
 
-import styles from './index.css';
+import styles from './index.scss';
 
 class TabBar extends Component {
     constructor(props) {

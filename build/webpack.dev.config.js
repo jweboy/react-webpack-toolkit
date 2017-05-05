@@ -37,7 +37,7 @@ module.exports = merge(baseWebpackConfig, {
             title: '开发模式',
             favicon: './favicon.ico',
             filename: 'index.html',
-            hash: false,
+            hash: true,
             inject: 'body' // 脚本注入位置 设置true 或者 body 将打包的脚本放在页面底部
         })
     ]

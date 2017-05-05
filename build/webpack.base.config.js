@@ -22,7 +22,7 @@ module.exports = {
     output: { // 编译输出
         publicPath: '/', // TODO 搞明白publicPath 区分环境
         path: config.build.assetsRoot, //输出目录
-        filename: 'bundle.[hash].js' //编译后的文件名
+        filename: 'bundle.js' //编译后的文件名
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json'], //后缀扩展名补全
@@ -38,7 +38,7 @@ module.exports = {
         alias: {
             'components': resolve('src/components'),
             'api': resolve('src/api'),
-            'views': resolve('src/views'),
+            'styles': resolve('src/styles'),
             'mock': resolve('./mock'),
             'assets': resolve('src/assets'),
             'containers': resolve('src/containers'),
@@ -55,28 +55,48 @@ module.exports = {
                 include: srcPath
             },
             {
-                test: /\.css?$/,
+                test: /\.s[ac]ss?$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use:[
-                        'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'
+                        {
+                            loader:'css-loader',
+                            options:{
+                                modules: true,
+                                localIdentName: "[path][name]__[local]--[hash:base64:6]"
+                            }
+                        }, {
+                            loader:'postcss-loader',
+                            options: {
+                                parser: 'postcss-scss'
+                            }
+                        }
                     ]
-                }),
-                // use: [
-                //     'style-loader',
-                //     'css-loader',
-                //     'postcss-loader'
-                // ],
-                exclude: nodeModulesPath,
-                include: srcPath
+                })
             },
             {
                 test: /\.(jpe?g|png|gif|svg|ico)$/,
                 include: imgPath,
-                use: 'url-loader?limit=10240&name=assets/imgs/[name]-[hash:8].[ext]' // 图片小于10K 转换为base64编码
+                exclude: nodeModulesPath,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            limit: 10240,
+                            name: 'assets/imgs/[name]__[sha512:hash:base64:7].[ext]'
+                        }
+                    }
+                ]
             }, {
                 test: /\.(eot|svg|ttf|woff|woff2).*$/,
-                use: 'url-loader?name=[name]-[hash:8].[ext]'
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name]__[hash:8].[ext]'
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -96,7 +116,7 @@ module.exports = {
             }
         }),
         new ExtractTextPlugin({
-            filename: 'app.css',
+            filename: 'bundle.css',
             allChunks: true
         })
     ]

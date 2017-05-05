@@ -8,7 +8,7 @@ import data from 'mock/data';
 
 import ajax from 'util';
 
-import styles from './index.css';
+import styles from './index.scss';
 import classNames from 'classnames/bind';
 import TabBar from 'components/TabBar';
 

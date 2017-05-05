@@ -9,8 +9,8 @@ import {
   Link
 } from 'react-router-dom';
 
-import './index.css';
-import 'assets/styles/iconfont.css';
+import styles from './index.scss';
+import 'assets/styles/iconfont.scss';
 import logo from 'assets/imgs/test.jpg';
 
 import TabBar from 'components/TabBar';
@@ -27,7 +27,12 @@ function Card() {
           </Link>
         </div>
         <hr />
-        {/*<div className="next">&nbsp;</div>
+        <p>css modules 测试部分</p>
+        <div>
+          <h4 className={styles.title}>test1</h4>
+          <p className={styles.description}>这是一段描述内容</p>
+        </div>
+        <div className="next">&nbsp;</div>
         <span className="small-icon">
           <FaBeer />
           <MdAccessibility />
@@ -35,16 +40,16 @@ function Card() {
           <GoAlignmentAlignedTo />
           <Md3dRotation />
         </span>
-        <div className="icon2">
+        {/*<div className="icon2">
             <i className="iconfont icon-gouwuchetianjia">&nbsp;</i>
             <i className="iconfont icon-gouwuche">&nbsp;</i>
             <i className="iconfont icon-erweima">&nbsp;</i>
-        </div>
+        </div>*/}
         <div className="f-layout">
           <span>flexflexoneoneone</span>
           <span>flexsss2a</span>
           <span>flex3.</span>
-        </div>*/}
+        </div>
         <TabBar />
     </div>
   );

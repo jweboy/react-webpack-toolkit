@@ -8,7 +8,7 @@ import {
 
 import Card from 'components/Card';
 import TabBar from 'components/TabBar';
-import 'assets/styles/reset.css';
+import 'assets/styles/reset.scss';
 
 const Home = () => (
   <div>
