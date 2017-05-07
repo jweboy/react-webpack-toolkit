@@ -1,3 +1,4 @@
+@import 'styles/mixin/border-1px.scss';
 .item {
     color: #f00;
 }
@@ -47,4 +48,11 @@
 }
 .break{
     height: 50px
+}
+.line{ position: relative; box-sizing: border-box;}
+.line:before{ content: ""; display:block; border-radius:4px; left:0; top:13px; width:200%; height:200%; position: absolute; z-index: 1; border:1px solid #000; transform: scale(0.5); background: #fff; transform-origin: left top; box-sizing: border-box;}
+
+.normal-line{
+    border-top: 1px solid #000;
+    height: 20px;
 }

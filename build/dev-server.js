@@ -18,10 +18,10 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
     stats: {
         colors: true // bundle 信息展示
     },
-    quiet: false, // 初始启动信息之外的任何内容都不会被打印到控制台, 来自 webpack 的错误或警告在控制台不可见
+    quiet: true, // 初始启动信息之外的任何内容都不会被打印到控制台, 来自 webpack 的错误或警告在控制台不可见
     noInfo: true, // 启动时和每次保存之后，webpack 包(bundle)信息的消息将被隐藏,错误和警告仍然会显示
     overlay: true, // 浏览器全屏显示错误或警告信息
-    progress: true // 运行进度输出到控制台
+    // progress: true // 运行进度输出到控制台
 });
 
 const hotMiddleware = require('webpack-hot-middleware')(compiler, {

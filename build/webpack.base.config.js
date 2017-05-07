@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const px2rem = require('postcss-pxtorem');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const config = require('../config');
 
@@ -120,5 +121,9 @@ module.exports = {
             filename: 'bundle.css',
             allChunks: true
         })
+        // new HtmlWebpackHarddiskPlugin({
+        //     alwaysWriteToDisk: true,
+        //     filename: 'index.html'
+        // })
     ]
 };

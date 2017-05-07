@@ -53,8 +53,9 @@ class Card extends Component {
           <li styleName="subitem">flex1</li>
           <li styleName="subitem">flex2</li>
         </ul>
+        <div styleName="normal-line"></div>
+        <div styleName="line"></div>
         <div styleName="break"></div>
-        <TabBar />
       </div>
     );
   }
