@@ -1,18 +1,7 @@
-import React, { Component } from 'react';
-import {
-    render
-} from 'react-dom';
-import {
-    Route
-} from 'react-router-dom';
-
-import Home from 'containers/Home';
+import React from 'react';
 import RouteMap from 'routes/map';
-import TabBar from 'components/TabBar';
 
-// import 'styles/test.scss';
-
-const App = () =>(
+const App = () => (
     <RouteMap />
 );
 

@@ -1,10 +1,13 @@
 .item {
     color: #f00;
 }
+.logo{
+    width: 100vw;
+}
 
 .next {
-    height: 200px;
-    background: url('../../assets/imgs/logo.jpg');
+    height: 50px;
+    background-image: url(assets/logo.jpg);
     background-repeat: no-repeat;
 }
 
@@ -26,17 +29,22 @@
     padding: 20px;
 }
 
-.f-layout {
+.flexible {
     display: flex;
+    flex-direction: row;
+    text-align: center;
 }
-
-.f-layout span {
+.subitem {
     flex: 1
 }
 
 .title{
-    color: #f00;
+    color: red;
+    composes: base from './base.scss'
 }
 .description{
     color: green;
+}
+.break{
+    height: 50px
 }

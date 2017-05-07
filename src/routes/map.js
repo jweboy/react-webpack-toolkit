@@ -1,8 +1,7 @@
 import React from 'react';
 import {
-    Redirect,
-    Switch,
-    Route
+  Switch,
+  Route
 } from 'react-router-dom';
 
 import Card from 'components/Card';

@@ -6,8 +6,6 @@ import axios from 'axios';
 
 import data from 'mock/data';
 
-import ajax from 'util';
-
 import styles from './index.scss';
 import classNames from 'classnames/bind';
 import TabBar from 'components/TabBar';
@@ -40,7 +38,7 @@ class List extends Component {
   handleClick() {
     axios.get('/api/data')
       .then(function (response) {
-        if(response.status === 200) {
+        if (response.status === 200) {
           console.dir(response);
         }
       });

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  Component
+} from 'react';
 //http://gorangajic.github.io/react-icons/index.html
 import FaBeer from 'react-icons/lib/fa/beer';
 import MdAccessibility from 'react-icons/lib/md/accessibility';
@@ -8,18 +10,20 @@ import Md3dRotation from 'react-icons/lib/md/3d-rotation';
 import {
   Link
 } from 'react-router-dom';
+import CSSModules from 'react-css-modules';
 
 import styles from './index.scss';
-import 'assets/styles/iconfont.scss';
-import logo from 'assets/imgs/test.jpg';
+import logo from 'assets/test.jpg';
 
 import TabBar from 'components/TabBar';
 
-function Card() {
-  return (
-    <div className="item">
-        {/*<img src={logo} alt=""/>
-        <span>sad</span>*/}
+@CSSModules(styles)
+class Card extends Component {
+  render() {
+    return (
+      <div styleName="item">
+        <img src={logo} alt="" styleName="logo" />
+        <div styleName="next"></div>
         <hr />
         <div>
           <Link to="/detail">
@@ -29,29 +33,31 @@ function Card() {
         <hr />
         <p>css modules 测试部分</p>
         <div>
-          <h4 className={styles.title}>test1</h4>
-          <p className={styles.description}>这是一段描述内容</p>
+          <h4 styleName="title">test1</h4>
+          <p styleName="description">这是一段描述内容</p>
         </div>
-        <div className="next">&nbsp;</div>
-        <span className="small-icon">
+        <hr />
+        <p>react css modules 测试部分</p>
+        <h4 styleName="title">test1</h4>
+        <p styleName="description">这是一段描述内容</p>
+        <hr />
+        <div styleName="next">&nbsp;</div>
+        <span styleName="small-icon">
           <FaBeer />
           <MdAccessibility />
           <TiAdjustBrightness />
           <GoAlignmentAlignedTo />
           <Md3dRotation />
         </span>
-        {/*<div className="icon2">
-            <i className="iconfont icon-gouwuchetianjia">&nbsp;</i>
-            <i className="iconfont icon-gouwuche">&nbsp;</i>
-            <i className="iconfont icon-erweima">&nbsp;</i>
-        </div>*/}
-        <div className="f-layout">
-          <span>flexflexoneoneone</span>
-          <span>flexsss2a</span>
-          <span>flex3.</span>
-        </div>
+        <ul styleName="flexible">
+          <li styleName="subitem">flex1</li>
+          <li styleName="subitem">flex2</li>
+        </ul>
+        <div styleName="break"></div>
         <TabBar />
-    </div>
-  );
+      </div>
+    );
+  }
 }
+
 export default Card;

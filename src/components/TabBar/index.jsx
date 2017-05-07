@@ -1,41 +1,43 @@
-import React, {
-    Component
-} from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
 import {
     Link
 } from 'react-router-dom';
+import CSSModules from 'react-css-modules';
 
 import styles from './index.scss';
 
-class TabBar extends Component {
-    constructor(props) {
-        super(props);
+const TabBarData = [
+    {
+        id: 0,
+        path: '/card',
+        text: '主页'
+    }, {
+        id: 1,
+        path: '/list',
+        text: '个人中心'
+    }
+];
 
-        this.state = {
-
+const TabBar = () => (
+    <ul styleName="tabbar">
+        {
+            TabBarData.map((item) => {
+                return (
+                    <li styleName="item" key={item.id}>
+                        <Link to={item.path}>
+                            {item.text}
+                        </Link>
+                    </li>
+                )
+            })
         }
-    }
-    render() {
-        return (
-            <ul className={styles.tabbar}>
-                <li className={styles.tabbar_item}>
-                    <Link to="/card">
-                       主页 {/*{props}*/}
-                    </Link>
-                </li>
-                <li className={styles.tabbar_item}>
-                    <Link to="/list">
-                        个人中心 
-                    </Link>
-                </li>
-            </ul>
-        );
-    }
-}
+    </ul>
+)
+
 
 // TabBar.propTypes = {
 //     text: PropTypes.string.required
 // }
 
-export default TabBar;
+export default CSSModules(TabBar, styles);

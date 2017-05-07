@@ -13,7 +13,8 @@ const resolve = (dir) => (path.join(__dirname, '..', dir));
 
 const srcPath = resolve('src');
 const nodeModulesPath = resolve('node_modules');
-const imgPath = resolve('./src/assets/imgs');
+const imgPath = resolve('./src/assets');
+const assetsPath = 'assets/';
 
 module.exports = {
     entry: [
@@ -50,23 +51,23 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                use: ['babel-loader'],
-                exclude: /node_modules/,
+                loader: 'babel-loader',
+                exclude: nodeModulesPath,
                 include: srcPath
             },
             {
-                test: /\.s[ac]ss?$/,
+                test: /\.scss?$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use:[
+                    use: [
                         {
-                            loader:'css-loader',
-                            options:{
+                            loader: 'css-loader',
+                            options: {
                                 modules: true,
                                 localIdentName: "[path][name]__[local]--[hash:base64:6]"
                             }
                         }, {
-                            loader:'postcss-loader',
+                            loader: 'postcss-loader',
                             options: {
                                 parser: 'postcss-scss'
                             }
@@ -83,7 +84,7 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             limit: 10240,
-                            name: 'assets/imgs/[name]__[sha512:hash:base64:7].[ext]'
+                            name: `${assetsPath}` + '[name]__[sha512:hash:base64:7].[ext]'
                         }
                     }
                 ]
