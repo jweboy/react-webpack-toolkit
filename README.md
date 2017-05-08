@@ -7,10 +7,11 @@
 > Hash history cannot PUSH the same path; a new entry will not be added to the history stack
 - 添加css预处理器,stylus或者postcss,模块化加载css(II) - ok
 - react-hot-loader 在css改变时不生效问题 - ok
-- px to rem 问题
+- px to rem 问题 - ok
 
 
 ## 问题
 - redux-devtools-log-monitor -- redux log工具
 - react-css-modules 不支持css嵌套？
 - extract-text-webpack-plugin 应用于生产环境 开发环境 react-hot-loader不会刷新css
+- 1rem = 15px

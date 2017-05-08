@@ -1,18 +1,24 @@
 @import '../../styles/mixin/px2rem.scss';
 
-.tabbar{
+.tab-bar-bar{
     position: fixed;
     left: 0;
     bottom: 0;
+    z-index: 100;
     display: flex;
     flex-direction: row;
-    padding-top: pxToRem(5px);
     width: 100vw;
-    height: px2em(38);
-    text-align: center;
-    border-top: 1px solid #000;
     background: #fff;
+    border-top: 1px solid #000;
+    font-size: 0.2rem
 }
-.item{
-    // flex: 1
+.tab-bar-tab{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.tab-bar-tab-icon{
+    font-size: .5rem;
+    text-align: center
 }

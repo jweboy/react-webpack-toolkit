@@ -4,6 +4,7 @@ import {
     Link
 } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
+import FaBeer from 'react-icons/lib/fa/beer';
 
 import styles from './index.scss';
 
@@ -28,18 +29,21 @@ const TabBarData = [
 ];
 
 const TabBar = () => (
-    <div styleName="tabbar">
-        <footer>
-            {
-                TabBarData.map((item) => {
-                    return (
-                        <Link to={item.path} styleName="item" key={item.id}>
+    <div styleName="tab-bar-bar">
+        {
+            TabBarData.map((item) => {
+                return (
+                    <div styleName="tab-bar-tab" key={item.id}>
+                        <Link to={item.path}>
+                            <p styleName="tab-bar-tab-icon">
+                                <FaBeer />
+                            </p>
                             {item.text}
                         </Link>
-                    )
-                })
-            }
-        </footer>
+                    </div>
+                )
+            })
+        }
     </div>
 )
 

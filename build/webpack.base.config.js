@@ -93,7 +93,7 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            localIdentName: "[path][name]__[local]--[hash:base64:6]"
+                            localIdentName: "[name]__[local]--[hash:base64:6]"
                         }
                     }, {
                         loader: 'postcss-loader',
