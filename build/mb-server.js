@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const proxyMiddleware = require('http-proxy-middleware');
 const browserSync = require('browser-sync');
+const express = require('express');
 
 const webpackConfig = require('./webpack.dev.config');
 const config = require('../config');
@@ -9,7 +9,10 @@ const data = require('../mock/data.json');
 
 const compiler = webpack(webpackConfig);
 const port = config.dev.port;
+const uiPort = config.dev.uiPort;
 const uri = 'http://localhost:' + port;
+const router = express.Router();
+const app = express();
 
 // https://github.com/webpack/webpack-dev-middleware
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
@@ -39,11 +42,24 @@ const hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: () => { }
 });
 
+// 设置代理,跨域访问api资源
+// const proxyMiddleware = require('http-proxy-middleware')({
+//     target: 'https://api.github.com',
+//     changeOrigin: true,
+//     logLevel: 'debug'
+// });
 
-const BS = browserSync({
-  port: 8888,
+// 前端静态路由模拟数据请求
+router.get('/api/data', (req, res, next) => (res.send(data)));
+
+// 在express中注册路由
+app.use(router);
+
+// 开启服务，加载app中间件
+browserSync({
+  port: port,
   ui: {
-    port: 8889
+    port: uiPort
   },
   logPrefix: process.env.NODE_ENV,
   reloadOnRestart: true,
@@ -52,22 +68,15 @@ const BS = browserSync({
     baseDir: 'src',
     middleware: [
       devMiddleware,
-      hotMiddleware
+      hotMiddleware,
+      //proxyMiddleware
+      app
     ]
   },
   file: [
     '/index.html'
   ]
 });
-
-// compiler.run((err, stats) => {
-//   if (err) {
-//     console.error('webpack build error');
-//   } else {
-//     console.log('webpack build', stats.endTime);
-//     // BS.reload('styles/*.scss');
-//   }
-// });
 
 devMiddleware.waitUntilValid(() => {
   console.log('> Listening at ' + uri + '\n');

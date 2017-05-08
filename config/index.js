@@ -9,7 +9,8 @@ module.exports = {
     // env: require('./dev.env'),/
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    port: 8888
+    port: 8888,
+    uiPort: 8889
   },
   build: {
     // env: buildEnv,

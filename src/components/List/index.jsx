@@ -42,6 +42,12 @@ class List extends Component {
           console.dir(response);
         }
       });
+    // axios.get('/users')
+    //   .then(function (response) {
+    //     if (response.status === 200) {
+    //       console.dir(response);
+    //     }
+    //   });
   }
   render() {
     const { user, msg } = this.state;
