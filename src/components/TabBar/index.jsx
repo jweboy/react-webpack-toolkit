@@ -11,28 +11,36 @@ const TabBarData = [
     {
         id: 0,
         path: '/card',
-        text: '主页'
+        text: '首页'
     }, {
         id: 1,
         path: '/list',
+        text: '分类'
+    }, {
+        id: 2,
+        path: '/shopcard',
+        text: '购物车'
+    }, {
+        id: 3,
+        path: '/center',
         text: '个人中心'
     }
 ];
 
 const TabBar = () => (
-    <ul styleName="tabbar">
-        {
-            TabBarData.map((item) => {
-                return (
-                    <li styleName="item" key={item.id}>
-                        <Link to={item.path}>
+    <div styleName="tabbar">
+        <footer>
+            {
+                TabBarData.map((item) => {
+                    return (
+                        <Link to={item.path} styleName="item" key={item.id}>
                             {item.text}
                         </Link>
-                    </li>
-                )
-            })
-        }
-    </ul>
+                    )
+                })
+            }
+        </footer>
+    </div>
 )
 
 

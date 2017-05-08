@@ -7,6 +7,7 @@
 > Hash history cannot PUSH the same path; a new entry will not be added to the history stack
 - 添加css预处理器,stylus或者postcss,模块化加载css(II) - ok
 - react-hot-loader 在css改变时不生效问题 - ok
+- px to rem 问题
 
 
 ## 问题

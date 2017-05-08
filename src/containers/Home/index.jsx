@@ -7,7 +7,6 @@ import 'styles/reset.scss';
 const Home = () => (
   <div>
     <Card />
-    <TabBar />
   </div>
 );
 

@@ -1,15 +1,18 @@
+@import '../../styles/mixin/px2rem.scss';
+
 .tabbar{
     position: fixed;
     left: 0;
     bottom: 0;
     display: flex;
     flex-direction: row;
-    padding: 15px 0;
+    padding-top: pxToRem(5px);
     width: 100vw;
+    height: px2em(38);
     text-align: center;
     border-top: 1px solid #000;
     background: #fff;
 }
 .item{
-    flex: 1
+    // flex: 1
 }

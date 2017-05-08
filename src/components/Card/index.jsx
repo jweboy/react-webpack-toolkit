@@ -56,6 +56,7 @@ class Card extends Component {
         <div styleName="normal-line"></div>
         <div styleName="line"></div>
         <div styleName="break"></div>
+        <TabBar />
       </div>
     );
   }

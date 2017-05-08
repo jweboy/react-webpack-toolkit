@@ -21,10 +21,17 @@ module.exports = {
     entry: [
         './src/index' // 入口文件
     ],
+    // entry: {
+    //     vendor: [
+    //         'react',
+    //         'react-dom'
+    //     ],
+    //     app: './src/index'
+    // },
     output: { // 编译输出
         publicPath: '/', // TODO 搞明白publicPath 区分环境
         path: config.build.assetsRoot, //输出目录
-        filename: 'bundle.js' //编译后的文件名
+        filename: '[name].js' //编译后的文件名
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json'], //后缀扩展名补全
@@ -91,7 +98,16 @@ module.exports = {
                     }, {
                         loader: 'postcss-loader',
                         options: {
-                            parser: 'postcss-scss'
+                            parser: 'postcss-scss',
+                            plugins: [
+                                autoprefixer({
+                                    browsers: [
+                                        'last 3 version',
+                                        'ie >= 10'
+                                    ]
+                                }),
+                                px2rem(px2remOpts)
+                            ]
                         }
                     }
                 ]
@@ -123,20 +139,20 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                postcss: [
-                    autoprefixer({
-                        browsers: [
-                            'last 3 version',
-                            'ie >= 10'
-                        ]
-                    }),
-                    px2rem(px2remOpts)
-                ],
-                context: srcPath
-            }
-        }),
+        // new webpack.LoaderOptionsPlugin({
+        //     options: {
+        //         postcss: [
+        //             autoprefixer({
+        //                 browsers: [
+        //                     'last 3 version',
+        //                     'ie >= 10'
+        //                 ]
+        //             }),
+        //             px2rem(px2remOpts)
+        //         ],
+        //         context: srcPath
+        //     }
+        // }),
         // new ExtractTextPlugin({
         //     filename: 'bundle.css',
         //     allChunks: true
@@ -145,5 +161,8 @@ module.exports = {
         //     alwaysWriteToDisk: true,
         //     filename: 'index.html'
         // })
-    ]
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'vendor'
+        // })
+    ],
 };
