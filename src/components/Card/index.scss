@@ -1,6 +1,6 @@
 @import 'styles/mixin/border-1px.scss';
 .item {
-    color: #f00;
+    color: yellow;
 }
 .logo{
     width: 100vw;
@@ -55,4 +55,7 @@
 .normal-line{
     border-top: 1px solid #000;
     height: 20px;
+}
+.link{
+    color: red;
 }

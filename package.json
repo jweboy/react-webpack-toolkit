@@ -14,7 +14,7 @@
     "axios"
   ],
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "dev": "node build/mb-server.js",
     "build": "rimraf ./release && webpack --config webpack.pro.config.js --progress --colors",
     "clean:modules": "rimraf node_modules",
     "clean:dist": "rimraf dist",
@@ -67,7 +67,8 @@
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1",
     "webpack-merge": "^4.1.0",
-    "webpack-module-hot-accept": "^1.0.5"
+    "webpack-module-hot-accept": "^1.0.5",
+    "write-file-webpack-plugin": "^4.0.2"
   },
   "dependencies": {
     "axios": "^0.16.1",

@@ -56,25 +56,45 @@ module.exports = {
                 exclude: nodeModulesPath,
                 include: srcPath
             },
+            // {
+            //     test: /\.scss?$/,
+            //     use: ExtractTextPlugin.extract({
+            //         fallback: 'style-loader',
+            //         use: [
+            //             {
+            //                 loader: 'css-loader',
+            //                 options: {
+            //                     modules: true,
+            //                     localIdentName: "[path][name]__[local]--[hash:base64:6]"
+            //                 }
+            //             }, {
+            //                 loader: 'postcss-loader',
+            //                 options: {
+            //                     parser: 'postcss-scss'
+            //                 }
+            //             }
+            //         ]
+            //     })
+            // },
             {
                 test: /\.scss?$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                modules: true,
-                                localIdentName: "[path][name]__[local]--[hash:base64:6]"
-                            }
-                        }, {
-                            loader: 'postcss-loader',
-                            options: {
-                                parser: 'postcss-scss'
-                            }
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            localIdentName: "[path][name]__[local]--[hash:base64:6]"
                         }
-                    ]
-                })
+                    }, {
+                        loader: 'postcss-loader',
+                        options: {
+                            parser: 'postcss-scss'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(jpe?g|png|gif|svg|ico)$/,
@@ -117,10 +137,10 @@ module.exports = {
                 context: srcPath
             }
         }),
-        new ExtractTextPlugin({
-            filename: 'bundle.css',
-            allChunks: true
-        })
+        // new ExtractTextPlugin({
+        //     filename: 'bundle.css',
+        //     allChunks: true
+        // })
         // new HtmlWebpackHarddiskPlugin({
         //     alwaysWriteToDisk: true,
         //     filename: 'index.html'

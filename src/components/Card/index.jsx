@@ -26,8 +26,8 @@ class Card extends Component {
         <div styleName="next"></div>
         <hr />
         <div>
-          <Link to="/detail">
-            跳转到详情页面
+          <Link to="/detail" styleName="link">
+            跳转到详情页面s
           </Link>
         </div>
         <hr />
