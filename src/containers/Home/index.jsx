@@ -4,11 +4,11 @@ import Card from 'components/Card';
 import TabBar from 'components/TabBar';
 import 'styles/reset.scss';
 
-const Home = () => (
+const HomePage = () => (
   <div>
     <Card />
     <TabBar />
   </div>
 );
 
-export default Home;
+export default HomePage;

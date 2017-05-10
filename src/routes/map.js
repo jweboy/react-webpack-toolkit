@@ -6,7 +6,10 @@ import {
 
 import Card from 'components/Card';
 import List from 'components/List';
-import Home from 'containers/Home';
+import HomePage from 'containers/Home';
+import SortPage from 'containers/Sort';
+import ShopCardPage from 'containers/ShopCard';
+import PersonCenterPage from 'containers/PersonCenter';
 import Detail from 'containers/Detail';
 import NotMatch from 'containers/NotMatch';
 
@@ -14,10 +17,11 @@ import NotMatch from 'containers/NotMatch';
 
 const RouteMap = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
-    <Route path="/card" component={Card} />
-    <Route path="/list" component={List} />
-    <Route path="/detail" component={Detail} />
+    <Route exact path="/" component={HomePage} />
+    <Route path="/home" component={HomePage} />
+    <Route path="/sort" component={SortPage} />
+    <Route path="/shopcard" component={ShopCardPage} />
+    <Route path="/personcenter" component={PersonCenterPage} />
     <Route path="*" component={NotMatch} />
   </Switch>
 );
