@@ -25,5 +25,8 @@ ul, li{
 }
 a{
     text-decoration: none;
-    color: #666
+    color: #666;
+}
+a.active{
+    color: rgb(16, 142, 233);
 }

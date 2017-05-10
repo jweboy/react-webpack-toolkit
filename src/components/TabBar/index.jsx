@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {
+    Component
+} from 'react';
 // import PropTypes from 'prop-types';
 import {
+    NavLink,
     Link
 } from 'react-router-dom';
-import CSSModules from 'react-css-modules';
-import FaBeer from 'react-icons/lib/fa/beer';
-// import {MdCancel, MdChat, MdCheck} from 'react-icons/md';
+// import CSSModules from 'react-css-modules';
 import {
     FaHandOUp,
     FaHandORight,
@@ -14,55 +15,88 @@ import {
 } from 'react-icons/lib/fa';
 
 import styles from './index.scss';
+console.log(styles);
 
 const TabBarData = [
     {
-        id: 0,
         path: '/home',
         text: '首页',
+        selectedTab: 'homeTab',
         component: <FaHandOUp />
     }, {
-        id: 1,
         path: '/sort',
         text: '分类',
+        selectedTab: 'sortTab',
         component: <FaHandORight />
     }, {
-        id: 2,
         path: '/shopcard',
         text: '购物车',
+        selectedTab: 'shopTab',
         component: <FaHandODown />
     }, {
-        id: 3,
         path: '/personcenter',
         text: '个人中心',
+        selectedTab: 'centerTab',
         component: <FaHandOLeft />
     }
 ];
 
-const TabBar = () => (
-    <div styleName="tab-bar-bar">
-        {
-            TabBarData.map((item) => {
-                return (
-                    <div styleName="tab-bar-tab" key={item.id}>
-                        <Link to={item.path}>
-                            <p styleName="tab-bar-tab-icon">
-                                {item.component}
-                            </p>
-                            {item.text}
-                        </Link>
-                    </div>
-                )
-            })
+const oddEvent = (match, location) => {
+    if(!match) {
+        return false;
+    }
+    console.log(location);
+};
+
+class TabBar extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedTab: 'homeTab'
         }
-    </div>
-)
+    }
+    handleCurrTab(currTab) {
+        this.setState({
+            selectedTab: currTab
+        })
+    }
+    render() {
+        const {
+            selectedTab
+        } = this.state;
 
 
+        return (
+            <div className={styles.tabBar}>
+                {
+                    TabBarData.map((item, index) => {
+                        return (
+                            <div className={styles.tabBarTab} key={index} onClick={this.handleCurrTab.bind(this, item.selectedTab)}>
+                                <NavLink
+                                    to={item.path}
+                                    activeClassName={styles.tabBarTabActive}
+                                    isActive={oddEvent}
+                                >
+                                    <p className={styles.tabBarTabIcon}>
+                                        {item.component}
+                                    </p>
+                                    {item.text}
+                                </NavLink>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        );
+    }
+}
 
 
 // TabBar.propTypes = {
 //     text: PropTypes.string.required
 // }
 
-export default CSSModules(TabBar, styles);
+export default TabBar;
+
+// export default CSSModules(TabBar, styles);

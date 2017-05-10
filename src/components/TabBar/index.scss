@@ -1,6 +1,6 @@
 @import '../../styles/mixin/px2rem.scss';
 
-.tab-bar-bar{
+.tabBar{
     position: fixed;
     left: 0;
     bottom: 0;
@@ -10,15 +10,21 @@
     width: 100vw;
     background: #fff;
     border-top: 1px solid #000;
-    font-size: 0.2rem
+    font-size: 0.2rem;
 }
-.tab-bar-tab{
+// .tabBarTab:first-child a{
+//     color: rgb(16, 142, 233);
+// }
+.tabBarTab{
     flex: 1;
     display: flex;
     justify-content: center;
     text-align: center;
 }
-.tab-bar-tab-icon{
+.tabBarTabIcon{
     font-size: .5rem;
     text-align: center
+}
+.tabBarTabActive{
+    color: rgb(16, 142, 233);
 }

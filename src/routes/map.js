@@ -12,12 +12,13 @@ import ShopCardPage from 'containers/ShopCard';
 import PersonCenterPage from 'containers/PersonCenter';
 import Detail from 'containers/Detail';
 import NotMatch from 'containers/NotMatch';
+import Login from 'containers/Login';
 
 // TODO 理解Switch, exact的作用
 
 const RouteMap = () => (
   <Switch>
-    <Route exact path="/" component={HomePage} />
+    <Route exact path="/" component={Login} />
     <Route path="/home" component={HomePage} />
     <Route path="/sort" component={SortPage} />
     <Route path="/shopcard" component={ShopCardPage} />
