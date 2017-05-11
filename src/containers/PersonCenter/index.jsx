@@ -6,7 +6,7 @@ import TabBar from 'components/TabBar';
 const PersonCenter = (props) => (
   <div>
     PersonCenter
-    <TabBar currTab={props.currTab} />
+    <TabBar {...props} />
   </div>
 );
 

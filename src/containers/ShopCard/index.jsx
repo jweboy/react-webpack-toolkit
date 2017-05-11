@@ -5,13 +5,10 @@ import TabBar from 'components/TabBar';
 
 class ShopCardPage extends Component {
   render() {
-    const {
-      currTab
-    } = this.props;
     return (
       <div>
         ShopCardPage
-        <TabBar currTab={currTab}/>
+        <TabBar {...this.props} />
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 
 import Card from 'components/Card';
@@ -18,7 +19,7 @@ import Login from 'containers/Login';
 
 const RouteMap = () => (
   <Switch>
-    <Route exact path="/" component={HomePage} />
+    <Route exact path="/" render={() => (<Redirect to="/home" />)} />
     <Route path="/home" component={HomePage} />
     <Route path="/sort" component={SortPage} />
     <Route path="/shopcard" component={ShopCardPage} />

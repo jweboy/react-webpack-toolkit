@@ -4,25 +4,21 @@ import PropTypes from 'prop-types';
 import TabBar from 'components/TabBar';
 
 class SortPage extends Component {
+  static defaultProps = {
+    currTab: 'sortTab'
+  }
+
+  static propTypes = {
+    currTab: PropTypes.string.isRequired
+  }
   render() {
-    const {
-      currTab
-    } = this.props;
     return (
       <div>
         SortPage
-        <TabBar currTab={currTab}/>
+        <TabBar {...this.props} />
       </div>
     );
   }
 }
-
-SortPage.defaultProps = {
-  currTab: 'sortTab'
-}
-SortPage.propTypes = {
-  currTab: PropTypes.string.isRequired
-}
-
 
 export default SortPage;

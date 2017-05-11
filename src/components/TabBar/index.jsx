@@ -1,12 +1,10 @@
 import React, {
     Component
 } from 'react';
-// import PropTypes from 'prop-types';
 import {
-    NavLink,
-    Link
+    NavLink
 } from 'react-router-dom';
-// import CSSModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import {
     FaHandOUp,
     FaHandORight,
@@ -41,38 +39,31 @@ const TabBarData = [
 ];
 
 const oddEvent = (match, location) => {
-    if(!match) {
+    if (!match) {
         return false;
     }
     // console.log(location);
 };
-
+@CSSModules(styles)
 class TabBar extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            selectedTab: 'homeTab'
+            //selectedTab: 'homeTab'
         }
     }
-    handleCurrTab(currTab) {
-
-        // this.setState({
-        //     selectedTab: currTab
-        // });
-    }
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     console.log(nextProps);
+    // }
     // shouldComponentUpdate(nextProps, nextState) {
     //     console.log(nextProps);
     //     return true;
     // }
-    
-    
     render() {
         const {
-            currTab
+            currTab,
+            styles
         } = this.props;
 
         return (
@@ -80,11 +71,10 @@ class TabBar extends Component {
                 {
                     TabBarData.map((item, index) => {
                         return (
-                            <div className={styles.tabBarTab} key={index} onClick={this.handleCurrTab.bind(this, item.selectedTab)}>
+                            <div className={styles.tabBarTab} key={index} >
                                 <NavLink
                                     to={item.path}
                                     activeClassName={item.selectedTab === currTab ? styles.tabBarTabActive : ""}
-                                    // isActive={oddEvent}
                                 >
                                     <p className={styles.tabBarTabIcon}>
                                         {item.component}
@@ -100,11 +90,4 @@ class TabBar extends Component {
     }
 }
 
-
-// TabBar.propTypes = {
-//     text: PropTypes.string.required
-// }
-
 export default TabBar;
-
-// export default CSSModules(TabBar, styles);
