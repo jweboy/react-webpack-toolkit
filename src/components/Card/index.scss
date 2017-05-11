@@ -1,0 +1,61 @@
+@import 'styles/mixin/border-1px.scss';
+.item {
+    color: yellow;
+}
+.logo{
+    width: 100vw;
+}
+
+.next {
+    height: 50px;
+    background-image: url(assets/logo.jpg);
+    background-repeat: no-repeat;
+}
+
+.small-icon {
+    color: #000;
+    font-size: 24PX;
+    /*设置大写PX 忽略转为 rem */
+}
+
+.icon2 .iconfont {
+    font-size: 28px;
+}
+
+.iconfont {
+    color: blue;
+}
+
+.js-hover {
+    padding: 20px;
+}
+
+.flexible {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+.subitem {
+    flex: 1
+}
+
+.title{
+    color: red;
+    composes: base from './base.scss'
+}
+.description{
+    color: green;
+}
+.break{
+    height: 50px
+}
+.line{ position: relative; box-sizing: border-box;}
+.line:before{ content: ""; display:block; border-radius:4px; left:0; top:13px; width:200%; height:200%; position: absolute; z-index: 1; border:1px solid #000; transform: scale(0.5); background: #fff; transform-origin: left top; box-sizing: border-box;}
+
+.normal-line{
+    border-top: 1px solid #000;
+    height: 20px;
+}
+.link{
+    color: red;
+}

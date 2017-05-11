@@ -1,0 +1,17 @@
+{
+    "user": {
+        "name": "JL",
+        "age": 11,
+        "hobby": "reading",
+        "isShow": 1
+    },
+    "tabbar":[
+        {
+            "id": 1,
+            "text": "home"
+        },{
+            "id": 2,
+            "text": "my"
+        }
+    ]
+}

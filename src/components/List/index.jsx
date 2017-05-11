@@ -1,16 +1,14 @@
 import React, {
-    Component
+  Component
 } from 'react';
 // import api from 'api';
 import axios from 'axios';
 
-import data from 'api/mock/data';
+import data from 'mock/data';
 
-import ajax from 'util';
-console.log(data);
-
-import styles from './index.css';
+import styles from './index.scss';
 import classNames from 'classnames/bind';
+import TabBar from 'components/TabBar';
 
 let cx = classNames.bind(styles);
 
@@ -20,9 +18,9 @@ class List extends Component {
     super(props);
 
     this.state = {
-      user:{},
-      msg:{
-        a:1
+      user: {},
+      msg: {
+        a: 1
       }
     };
 
@@ -34,24 +32,31 @@ class List extends Component {
   }
   getUserIfo() {
     this.setState({
-      user:data.user
+      user: data.user
     });
   }
   handleClick() {
-    axios.get('/users')
-      .then(function(response) {
-          console.log(response.data);
-          console.log(response.status);
+    axios.get('/api/data')
+      .then(function (response) {
+        if (response.status === 200) {
+          console.dir(response);
+        }
       });
+    // axios.get('/users')
+    //   .then(function (response) {
+    //     if (response.status === 200) {
+    //       console.dir(response);
+    //     }
+    //   });
   }
   render() {
     const { user, msg } = this.state;
 
     let status = user.isShow === 1 ? 'Processs' : 'Er00ro00r';
-    let  btnClass = cx({
-      error:!user.isShow,
-      success:user.isShow,
-      primary:true
+    let btnClass = cx({
+      error: !user.isShow,
+      success: user.isShow,
+      primary: true
     });
     return (
       <div>
@@ -61,6 +66,7 @@ class List extends Component {
         <p>{user.hobby}</p>
         <button className={btnClass} onClick={this.handleClick}>{status}</button>
         <p>{msg.user}{msg.age}</p>
+        <TabBar />
       </div>
     );
   }
