@@ -8,6 +8,8 @@
 - 添加css预处理器,stylus或者postcss,模块化加载css(II) - ok
 - react-hot-loader 在css改变时不生效问题 - ok
 - px to rem 问题 - ok
+- TabBar 组件默认状态未添加
+- TabBar 组件将接收到props转变为可变的state,并判断是否更新dom
 
 
 ## 问题

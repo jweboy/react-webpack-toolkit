@@ -15,7 +15,6 @@ import {
 } from 'react-icons/lib/fa';
 
 import styles from './index.scss';
-console.log(styles);
 
 const TabBarData = [
     {
@@ -45,7 +44,7 @@ const oddEvent = (match, location) => {
     if(!match) {
         return false;
     }
-    console.log(location);
+    // console.log(location);
 };
 
 class TabBar extends Component {
@@ -57,15 +56,24 @@ class TabBar extends Component {
         }
     }
     handleCurrTab(currTab) {
-        this.setState({
-            selectedTab: currTab
-        })
+
+        // this.setState({
+        //     selectedTab: currTab
+        // });
     }
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
+    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log(nextProps);
+    //     return true;
+    // }
+    
+    
     render() {
         const {
-            selectedTab
-        } = this.state;
-
+            currTab
+        } = this.props;
 
         return (
             <div className={styles.tabBar}>
@@ -75,8 +83,8 @@ class TabBar extends Component {
                             <div className={styles.tabBarTab} key={index} onClick={this.handleCurrTab.bind(this, item.selectedTab)}>
                                 <NavLink
                                     to={item.path}
-                                    activeClassName={styles.tabBarTabActive}
-                                    isActive={oddEvent}
+                                    activeClassName={item.selectedTab === currTab ? styles.tabBarTabActive : ""}
+                                    // isActive={oddEvent}
                                 >
                                     <p className={styles.tabBarTabIcon}>
                                         {item.component}

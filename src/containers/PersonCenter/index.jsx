@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import TabBar from 'components/TabBar';
 
-class PersonCenter extends Component {
-  render() {
-    return (
-      <div>
-        PersonCenter
-        <TabBar />
-      </div>
-    );
-  }
+const PersonCenter = (props) => (
+  <div>
+    PersonCenter
+    <TabBar currTab={props.currTab} />
+  </div>
+);
+
+PersonCenter.defaultProps = {
+  currTab: 'centerTab'
+}
+PersonCenter.propTypes = {
+  currTab: PropTypes.string.isRequired
 }
 
 export default PersonCenter;

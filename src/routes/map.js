@@ -18,7 +18,7 @@ import Login from 'containers/Login';
 
 const RouteMap = () => (
   <Switch>
-    <Route exact path="/" component={Login} />
+    <Route exact path="/" component={HomePage} />
     <Route path="/home" component={HomePage} />
     <Route path="/sort" component={SortPage} />
     <Route path="/shopcard" component={ShopCardPage} />
