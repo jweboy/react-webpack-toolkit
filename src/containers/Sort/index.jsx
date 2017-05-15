@@ -5,11 +5,11 @@ import TabBar from 'components/TabBar';
 
 class SortPage extends Component {
   static defaultProps = {
-    currTab: 'sortTab'
+    currTab: 'sortTab',
   }
 
   static propTypes = {
-    currTab: PropTypes.string.isRequired
+    currTab: PropTypes.string.isRequired,
   }
   render() {
     return (

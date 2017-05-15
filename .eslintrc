@@ -3,7 +3,10 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "arrowFunctions": true,
+      "classes": true,
+      "modules": true
     }
   },
   "env": {
@@ -13,11 +16,16 @@
     "mocha": true
   },
   "plugins": [
-    "react"
+    "react",
+    "import"
   ],
   "parser": "babel-eslint",
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "airbnb-base",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "rules": {
     "quotes": 0,
@@ -77,6 +85,37 @@
     "react/require-extension": 1,
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    "react/wrap-multilines": 1,
+    "import/extensions": [
+      2,
+      "never",
+      {
+        "scss": "always",
+        "jpg": "always",
+        "png": "always"
+      }
+    ],
+    "class-methods-use-this": [
+      2,
+      {
+        "exceptMethods": [
+          "render",
+          "componentWillMount",
+          "componentDidMount",
+          "componentWillReceiveProps",
+          "shouldComponentUpdate",
+          "componentWillUpdate",
+          "componentDidUpdate",
+          "componentWillUnmount"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./build/webpack.base.config.js"
+      }
+    }
   }
 }

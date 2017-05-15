@@ -1,3 +1,2 @@
-node_modules/**
-src/assets/**
+#node_modules/*
 release/**

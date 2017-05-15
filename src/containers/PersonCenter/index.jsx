@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import TabBar from 'components/TabBar';
 
-const PersonCenter = (props) => (
+const PersonCenter = props => (
   <div>
     PersonCenter
     <TabBar {...props} />
@@ -11,10 +11,10 @@ const PersonCenter = (props) => (
 );
 
 PersonCenter.defaultProps = {
-  currTab: 'centerTab'
-}
+  currTab: 'centerTab',
+};
 PersonCenter.propTypes = {
-  currTab: PropTypes.string.isRequired
-}
+  currTab: PropTypes.string.isRequired,
+};
 
 export default PersonCenter;

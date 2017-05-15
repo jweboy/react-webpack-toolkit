@@ -1,18 +1,20 @@
 import React from 'react';
 import {
-  render
+  render,
 } from 'react-dom';
-import { 
-  AppContainer
+import {
+  AppContainer,
 } from 'react-hot-loader';
 import Redbox from 'redbox-react';
 
-import App from './routes';
 import _DEV_ from 'util/env';
+import App from './routes';
 // console.log(_DEV_);
 
 // 获取装载组件的根节点
 const mountNode = document.getElementById('root');
+
+const RedBox = require('redbox-react').default;
 
 // 定义根组件渲染的函数
 const rootRender = (Component) => {
@@ -20,7 +22,7 @@ const rootRender = (Component) => {
     <AppContainer errorReporter={Redbox}>
       <Component />
     </AppContainer>,
-    mountNode
+    mountNode,
   );
 };
 
@@ -28,16 +30,15 @@ rootRender(App);
 
 // 模块热更新 Hot Module Replacement API
 if (module.hot) {
-  if(_DEV_) {
-    const RedBox = require('redbox-react').default;
+  if (_DEV_) {
     try {
       rootRender(App);
-    } catch(error) {
+    } catch (error) {
       render(
         <RedBox error={error} />,
-        mountNode
+        mountNode,
       );
-    } 
+    }
   } else {
     rootRender(App);
   }

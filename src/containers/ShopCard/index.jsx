@@ -15,10 +15,10 @@ class ShopCardPage extends Component {
 }
 
 ShopCardPage.defaultProps = {
-  currTab: 'shopTab'
-}
+  currTab: 'shopTab',
+};
 ShopCardPage.propsTypes = {
-  currTab: PropTypes.string.isRequired
-}
+  currTab: PropTypes.string.isRequired,
+};
 
 export default ShopCardPage;

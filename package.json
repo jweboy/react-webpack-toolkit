@@ -18,7 +18,8 @@
     "build": "rimraf ./release && webpack --config webpack.pro.config.js --progress --colors",
     "clean:modules": "rimraf node_modules",
     "clean:dist": "rimraf dist",
-    "test": "rimraf dist && webpack --config ./build/webpack.dev.config.js"
+    "test": "rimraf dist && webpack --config ./build/webpack.dev.config.js",
+    "linter": "eslint --ext .js,.jsx  --fix src"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -35,9 +36,13 @@
     "browser-sync": "^2.18.8",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.1",
-    "eslint": "^3.7.0",
-    "eslint-loader": "^1.6.3",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-import-resolver-webpack": "^0.8.1",
+    "eslint-loader": "^1.7.1",
     "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
@@ -51,6 +56,7 @@
     "postcss-loader": "^1.3.3",
     "postcss-pxtorem": "^4.0.0",
     "postcss-scss": "^0.4.1",
+    "pre-commit": "^1.2.2",
     "precss": "^1.4.0",
     "prop-types": "^15.5.8",
     "react-css-modules": "^4.0.5",
@@ -70,10 +76,23 @@
     "webpack-module-hot-accept": "^1.0.5"
   },
   "dependencies": {
+    "assets": "^2.1.0",
     "axios": "^0.16.1",
     "history": "^4.6.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router-dom": "^4.1.1"
+  },
+  "pre-commit": [
+    "linter"
+  ],
+  "peerDependencies": {
+    "react": ">=15.0.0 <16.0.0",
+    "react-icons": ">=2.2.0",
+    "react-css-modules": ">=4.0.0",
+    "prop-types": ">15.5.0",
+    "classnames": ">=2.2.5",
+    "react-hot-loader": "next",
+    "redbox-react": ">=1.3.6"
   }
 }

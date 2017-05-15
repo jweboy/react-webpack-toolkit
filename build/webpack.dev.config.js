@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -17,7 +18,27 @@ baseWebpackConfig.entry.unshift(
     webpackHotClient,
     webpackHotMiddlewareClient
 );
-// console.log(baseWebpackConfig);
+
+const resolve = (dir) => (path.join(__dirname, '..', dir));
+
+const srcPath = resolve('src');
+const nodeModulesPath = resolve('node_modules');
+
+baseWebpackConfig.module.rules.unshift({
+    test: /\.js[x]$/,
+    enforce: 'pre',
+    use: [
+        {
+            loader: 'eslint-loader',
+            options: {
+                fix: true
+            }
+        }
+    ],
+    exclude: nodeModulesPath,
+    include: srcPath
+})
+console.log(baseWebpackConfig.module.rules);
 
 module.exports = merge(baseWebpackConfig, {
     // devtool: 'cheap-eval-source-map',
