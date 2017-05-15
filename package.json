@@ -18,8 +18,8 @@
     "build": "rimraf ./release && webpack --config webpack.pro.config.js --progress --colors",
     "clean:modules": "rimraf node_modules",
     "clean:dist": "rimraf dist",
-    "test": "rimraf dist && webpack --config ./build/webpack.dev.config.js",
-    "linter": "eslint --ext .js,.jsx  --fix src"
+    "test": "eslint --ext .js,.jsx  --fix src",
+    "lint": "eslint --ext .js,.jsx  --fix src"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
