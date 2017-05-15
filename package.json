@@ -87,12 +87,12 @@
     "linter"
   ],
   "peerDependencies": {
-    "react": ">=15.0.0 <16.0.0",
-    "react-icons": ">=2.2.0",
-    "react-css-modules": ">=4.0.0",
-    "prop-types": ">15.5.0",
     "classnames": ">=2.2.5",
+    "prop-types": ">15.5.0",
+    "react": ">=15.0.0 <16.0.0",
+    "react-css-modules": ">=4.0.0",
     "react-hot-loader": "next",
+    "react-icons": ">=2.2.0",
     "redbox-react": ">=1.3.6"
   }
 }
