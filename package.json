@@ -81,6 +81,7 @@
     "history": "^4.6.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-lazyload": "^2.2.7",
     "react-router-dom": "^4.1.1"
   },
   "pre-commit": [

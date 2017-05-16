@@ -1,0 +1,26 @@
+.list{
+  position: relative;
+  margin-bottom: 1.1rem;
+}
+.item{
+  padding:.2rem;
+  height: 2.2rem;
+  background-color: #eee;
+  border:1px solid #ccc;
+  position: relative;
+  padding-left: 20%;
+}
+.once{
+  color: #f00;
+}
+.count{
+  position: absolute;
+  left: 0;
+  right: 0;
+  color:blue;
+  font: 1.2rem/1 Arial;
+}
+.render_count{
+  color: orange;
+  font-size: .4rem;
+}

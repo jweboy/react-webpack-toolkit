@@ -8,15 +8,15 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.config');
 const babelPolyfill = 'babel-polyfill';
 const reactHotClient = 'react-hot-loader/patch';
-const webpackHotClient = 'webpack/hot/dev-server';
+const webpackHotClient = 'webpack/hot/only-dev-server';
 const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?noInfo=true&reload=true';
 
 
 baseWebpackConfig.entry.unshift(
     babelPolyfill,
     reactHotClient, // 开启模块热替换(HMR)
-    webpackHotClient,
-    webpackHotMiddlewareClient
+    webpackHotMiddlewareClient,
+    webpackHotClient
 );
 
 const resolve = (dir) => (path.join(__dirname, '..', dir));
