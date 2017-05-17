@@ -1,7 +1,7 @@
 # react webpack2 react-router4 es6/es7 项目模板
 
 ## 集成测试
-[![Build Status](https://travis-ci.org/jweboy/react-webpack-biolerplate.svg?branch=master)](https://travis-ci.org/jweboy/react-webpack-biolerplate)
+[![Build Status](https://travis-ci.org/jweboy/react-webpack-biolerplate.svg?branch=feature)](https://travis-ci.org/jweboy/react-webpack-biolerplate)
 
 ## 代办事项
 - 调整react-router的页面组织架构 (I) - ok
