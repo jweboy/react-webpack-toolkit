@@ -1,0 +1,18 @@
+.inputBox{
+  height: 100%;
+}
+.line{
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+}
+input[type="password"], input[type="text"]{
+  margin: .1rem 0;
+  width: 100%;
+  height: .6rem;
+  line-height: .6rem;
+  border: none;
+  background: #fff;
+  font-size: .24rem;
+  letter-spacing: normal;
+  color: #333;
+}

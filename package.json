@@ -14,7 +14,7 @@
     "axios"
   ],
   "scripts": {
-    "dev": "node build/mb-server.js",
+    "dev": "node build/mb-server.js && eslint --ext .js,.jsx  --fix src",
     "build": "rimraf ./release && webpack --config webpack.pro.config.js --progress --colors",
     "clean:modules": "rimraf node_modules",
     "clean:dist": "rimraf dist",

@@ -1,15 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const autoprefixer = require('autoprefixer');
-const px2rem = require('postcss-pxtorem');
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const config = require('../config');
 
-const px2remOpts = {
-    rootValue: 16
-};
 const resolve = (dir) => (path.join(__dirname, '..', dir));
 
 const srcPath = resolve('src');
@@ -96,19 +89,19 @@ module.exports = {
                             localIdentName: "[name]__[local]--[hash:base64:6]"
                         }
                     }, {
-                        loader: 'postcss-loader',
-                        options: {
-                            parser: 'postcss-scss',
-                            plugins: [
-                                autoprefixer({
-                                    browsers: [
-                                        'last 3 version',
-                                        'ie >= 10'
-                                    ]
-                                }),
-                                px2rem(px2remOpts)
-                            ]
-                        }
+                        loader: 'postcss-loader'
+                        // options: {
+                        //     parser: 'postcss-scss',
+                        //     plugins: [
+                        //         autoprefixer({
+                        //             browsers: [
+                        //                 'last 3 version',
+                        //                 'ie >= 10'
+                        //             ]
+                        //         }),
+                        //         px2rem(px2remOpts)
+                        //     ]
+                        // }
                     }
                 ]
             },
@@ -137,32 +130,5 @@ module.exports = {
                 ]
             }
         ]
-    },
-    plugins: [
-        // new webpack.LoaderOptionsPlugin({
-        //     options: {
-        //         postcss: [
-        //             autoprefixer({
-        //                 browsers: [
-        //                     'last 3 version',
-        //                     'ie >= 10'
-        //                 ]
-        //             }),
-        //             px2rem(px2remOpts)
-        //         ],
-        //         context: srcPath
-        //     }
-        // }),
-        // new ExtractTextPlugin({
-        //     filename: 'bundle.css',
-        //     allChunks: true
-        // })
-        // new HtmlWebpackHarddiskPlugin({
-        //     alwaysWriteToDisk: true,
-        //     filename: 'index.html'
-        // })
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor'
-        // })
-    ],
+    }
 };

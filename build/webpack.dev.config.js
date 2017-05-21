@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const px2rem = require('postcss-pxtorem');
+const autoprefixer = require('autoprefixer');
 
 // const config = require('../config');
 const baseWebpackConfig = require('./webpack.base.config');
@@ -10,6 +12,10 @@ const babelPolyfill = 'babel-polyfill';
 const reactHotClient = 'react-hot-loader/patch';
 const webpackHotClient = 'webpack/hot/only-dev-server';
 const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?noInfo=true&reload=true';
+
+const px2remOpts = {
+    rootValue: 16
+};
 
 
 baseWebpackConfig.entry.unshift(
@@ -63,8 +69,19 @@ module.exports = merge(baseWebpackConfig, {
             hash: true,
             inject: 'body' // 脚本注入位置 设置true 或者 body 将打包的脚本放在页面底部
         }),
-        // new WriteFileWebpackPlugin({
-        //     test:  /\.scss$/,
-        // })
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: [
+                    autoprefixer({
+                        browsers: [
+                            'last 3 version',
+                            'ie >= 10'
+                        ]
+                    }),
+                    px2rem(px2remOpts)
+                ],
+                context: srcPath
+            }
+        }),
     ]
 });
