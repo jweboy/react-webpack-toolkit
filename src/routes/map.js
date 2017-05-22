@@ -8,7 +8,7 @@ import {
 import HomePage from 'containers/Home';
 import SortPage from 'containers/Sort';
 import ShopCardPage from 'containers/ShopCard';
-import PersonCenterPage from 'containers/PersonCenter';
+// import PersonCenterPage from 'containers/PersonCenter';
 import NotMatch from 'containers/NotMatch';
 import Login from 'containers/Login';
 
