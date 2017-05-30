@@ -15,6 +15,7 @@ class Button extends Component {
     );
   }
 }
+
 Button.propTypes = {
   text: PropTypes.string.isRequired,
 };

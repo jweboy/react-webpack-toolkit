@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules';
 
 import TabBar from 'components/TabBar';
 import InputBox from 'components/InputBox';
-import Button from 'components/Button';
+import Button from 'widgets/Button';
 import styles from './index.scss';
 
 @CSSModules(styles)

@@ -39,7 +39,7 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
 
 
 const hotMiddleware = require('webpack-hot-middleware')(compiler, {
-  log: () => { }
+  // log: () => { }
 });
 
 // 设置代理,跨域访问api资源
