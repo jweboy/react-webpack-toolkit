@@ -1,13 +1,33 @@
-import React from 'react';
+import React, {
+  Component,
+} from 'react';
 import PropTypes from 'prop-types';
+import CSSModules from 'react-css-modules';
 
-import './index.scss';
+import styles from './index.scss';
 
-const Button = props => (
-  <div className={''}>
-    <a className={'btn'}>{props.text}</a>
-  </div>
-);
+@CSSModules(styles, {
+  allowMultiple: true,
+})
+class Button extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+    };
+  }
+  render() {
+    const {
+      text,
+    } = this.props;
+    return (
+      <div styleName={''}>
+        <a styleName={"btn active"}>{text}</a>
+      </div >
+    );
+  }
+}
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,

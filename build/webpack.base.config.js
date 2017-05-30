@@ -1,6 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
-
+const autoprefixer = require('autoprefixer');
 const config = require('../config');
 
 const resolve = (dir) => (path.join(__dirname, '..', dir));
@@ -57,26 +56,6 @@ module.exports = {
         exclude: nodeModulesPath,
         include: srcPath
       },
-      // {
-      //     test: /\.scss?$/,
-      //     use: ExtractTextPlugin.extract({
-      //         fallback: 'style-loader',
-      //         use: [
-      //             {
-      //                 loader: 'css-loader',
-      //                 options: {
-      //                     modules: true,
-      //                     localIdentName: "[path][name]__[local]--[hash:base64:6]"
-      //                 }
-      //             }, {
-      //                 loader: 'postcss-loader',
-      //                 options: {
-      //                     parser: 'postcss-scss'
-      //                 }
-      //             }
-      //         ]
-      //     })
-      // },
       {
         test: /\.scss?$/,
         use: [
@@ -86,11 +65,18 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              root: srcPath,
               modules: true,
+              sourceMap: true,
               localIdentName: "[name]__[local]--[hash:base64:6]"
             }
           }, {
-            loader: 'postcss-loader'
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                autoprefixer()
+              ]
+            }
             // options: {
             //     parser: 'postcss-scss',
             //     plugins: [

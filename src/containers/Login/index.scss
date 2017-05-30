@@ -1,7 +1,21 @@
 .login{
   background: #fff;
 }
-.loginForm{
+.form{
   padding: 0 .3rem;
   margin-top: .24rem;
+}
+.text{
+  font-size: 0.25rem;
+  color: #7f7f7f;
+}
+.unlogin{
+  display: flex;
+  // flex-direction: 
+}
+.register{
+  composes: text
+}
+.forgetpwd{
+  composes: text
 }

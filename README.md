@@ -13,7 +13,7 @@
 - px to rem 问题 - ok
 - TabBar 组件默认状态未添加 - ok
 - TabBar 组件将接收到props转变为可变的state - ok
-- react-hot-loader 参考官方更改细致
+- react-hot-loader 参考官方更改细致 - ok
 
 
 ## 问题

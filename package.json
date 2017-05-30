@@ -22,7 +22,6 @@
     "linter": "eslint --ext .js,.jsx  --fix src"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
     "axios-mock-adapter": "^1.8.1",
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.3",
@@ -77,6 +76,7 @@
   },
   "dependencies": {
     "assets": "^2.1.0",
+    "autoprefixer": "^7.1.1",
     "axios": "^0.16.1",
     "history": "^4.6.1",
     "react": "^15.4.2",
