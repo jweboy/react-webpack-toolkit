@@ -1,9 +1,13 @@
 .login{
+  display: flex;
+  align-items: center;
+  height: 100vh;
   background: #fff;
 }
 .form{
   padding: 0 .3rem;
   margin-top: .24rem;
+  width: 100%;
 }
 .text{
   font-size: 0.25rem;
@@ -11,7 +15,8 @@
 }
 .unlogin{
   display: flex;
-  // flex-direction: 
+  flex-direction: row;
+  justify-content: space-between;
 }
 .register{
   composes: text

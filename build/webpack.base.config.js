@@ -68,7 +68,7 @@ module.exports = {
               root: srcPath,
               modules: true,
               sourceMap: true,
-              localIdentName: "[name]__[local]--[hash:base64:6]"
+              localIdentName: "[path][local]__[hash:base64:6]"
             }
           }, {
             loader: 'postcss-loader',

@@ -22,10 +22,10 @@ class Login extends Component {
           <Input {...username} />
           <Input {...password} />
           <Button {...button} />
-          <p styleName="unlogin">
+          <div styleName="unlogin">
             <a href="#" styleName="register">注册账号</a>
             <a href="#" styleName="forgetpwd">忘记密码</a>
-          </p>
+          </div>
           <TabBar currTab={currTab} />
         </form>
       </div>

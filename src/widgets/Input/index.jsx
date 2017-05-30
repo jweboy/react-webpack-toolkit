@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CSSModules from 'react-css-modules';
+import FaAdjust from 'react-icons/lib/fa/adjust';
 
 import styles from './index.scss';
 
@@ -19,12 +20,16 @@ class Input extends Component {
 
     return (
       <div>
-        <div>
+        <div styleName="box">
           <input
+            styleName="input"
             type={type}
             name={name}
             placeholder={placeholder}
           />
+          <i styleName="clear">
+            <FaAdjust />
+          </i>
         </div>
         <div styleName="line">{''}</div>
       </div>

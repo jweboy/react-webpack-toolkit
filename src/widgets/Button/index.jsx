@@ -23,7 +23,7 @@ class Button extends Component {
     } = this.props;
     return (
       <div styleName={''}>
-        <a styleName={"btn active"}>{text}</a>
+        <a styleName={"btn"}>{text}</a>
       </div >
     );
   }
