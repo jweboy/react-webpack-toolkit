@@ -1,0 +1,43 @@
+.header{
+  position: relative;
+  padding: 0 .4rem;
+  height: .96rem;
+  background: #fff;
+  line-height: .96rem;
+  text-align: center;
+}
+.logo{
+  display: inline-block;
+  font-size: .36rem;
+}
+.right{
+  position: absolute;
+  right: .4rem;
+  font-size: .3rem;
+}
+.service_policy{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding: 0 .3rem;
+  height: .7rem;
+  line-height: .7rem;
+}
+.item{
+  list-style: circle;
+  font-size: .24rem;
+  color: #666;
+}
+.noCart{
+  composes: horizontalVerticalCenter from 'styles/mixin.scss';
+}
+.noCart__text{
+  margin-bottom: .5rem;
+  line-height: 1;
+  color: #999;
+  font-size: .27rem;
+}
+.noCart__btn{
+  width: 4.8rem;
+}

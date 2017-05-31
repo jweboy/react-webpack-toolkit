@@ -20,10 +20,11 @@ class Button extends Component {
   render() {
     const {
       text,
+      isActive,
     } = this.props;
     return (
       <div styleName={''}>
-        <a styleName={"btn"}>{text}</a>
+        <a styleName={isActive ? "btn active" : "btn"}>{text}</a>
       </div >
     );
   }
@@ -31,6 +32,7 @@ class Button extends Component {
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
+  isActive: PropTypes.bool,
 };
 
 export default Button;

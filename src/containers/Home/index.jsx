@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import Card from 'components/Card';
 import TabBar from 'components/TabBar';
-import LazyLoadList from 'components/LazyLoadList';
+import ScrollList from 'components/ScrollList';
+
+// import Swipe from 'widgets/Swipe';
+
 import 'styles/reset.scss';
 
 const HomePage = props => (
   <div>
     {/* <Card />*/}
-    <LazyLoadList />
+    {/* <Swipe />*/}
+    <ScrollList />
     <TabBar currTab={props.currTab} />
   </div>
 );

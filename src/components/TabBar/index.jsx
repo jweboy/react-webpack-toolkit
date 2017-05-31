@@ -27,7 +27,7 @@ const TabBarData = [
     selectedTab: 'sortTab',
     component: <FaHandORight />,
   }, {
-    path: '/shopcard',
+    path: '/shopcart',
     text: '购物车',
     selectedTab: 'shopTab',
     component: <FaHandODown />,

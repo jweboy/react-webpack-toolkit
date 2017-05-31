@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazyload';
 import CSSModules from 'react-css-modules';
 
 import SubLazyLoadItem from './SubLazyLoadItem';
-// import LazyLoadPlaceHolder from './LazyLoadPlaceHoder';
+import LazyLoadPlaceHolder from './LazyLoadPlaceHoder';
 import styles from './index.scss';
 
 const uniqueId = () => (`${Math.random().toString(36)}00000000000000000`).slice(2, 10);
@@ -14,7 +14,7 @@ class LazyLoadList extends Component {
     super();
 
     this.state = {
-      arr: Array(...Array(20)).map((item, index) => ({
+      arr: Array(...Array(2)).map((item, index) => ({
         uniqueId: uniqueId(),
         once: [6, 7].indexOf(index) > -1,
       })),
@@ -34,6 +34,7 @@ class LazyLoadList extends Component {
               height={200}
               offset={[-200, 0]}
               debounce={200}
+              placeholder={<LazyLoadPlaceHolder />}
             >
               <SubLazyLoadItem {...item} count={index + 1} />
             </LazyLoad>
