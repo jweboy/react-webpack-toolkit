@@ -1,26 +1,33 @@
-.list{
+.goods__list{
   position: relative;
   margin-bottom: 1.1rem;
+  display: flex;
+  flex-flow: row wrap;
 }
-.item{
-  padding:.2rem;
-  height: 2.2rem;
-  background-color: #eee;
-  border:1px solid #ccc;
+.goods__grid{
+  background: #fff;
+  width: 50%;
+  height: auto;
+}
+.goods__singular{
+  composes: goods__grid;
+  padding:0 .1rem .33rem .2rem;
+}
+.goods__even{
+  composes: goods__grid;
+  padding: 0 .2rem .33rem .1rem;
+}
+.goods__itemHeader{
+  background: #f4f4f4;
+}
+.goods__itemLogo{
+  display: block;
+  margin: auto;
+  width: 3rem;
+  height: 2.95rem;
+  background: #f4f4f4;
+}
+.goods__wrapper{
   position: relative;
-  padding-left: 20%;
-}
-.once{
-  color: #f00;
-}
-.count{
-  position: absolute;
-  left: 0;
-  right: 0;
-  color:blue;
-  font: 1.2rem/1 Arial;
-}
-.render_count{
-  color: orange;
-  font-size: .4rem;
+  // padding-bottom: 118%;
 }

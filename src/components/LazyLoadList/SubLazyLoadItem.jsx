@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import CSSModules from 'react-css-modules';
+
+import goodsPic from 'assets/goods.png';
+
 import styles from './index.scss';
+
 
 @CSSModules(styles)
 class SubLazyLoadItem extends Component {
@@ -44,30 +47,40 @@ class SubLazyLoadItem extends Component {
   render() {
     const {
       isReady,
-      renderCount,
+      //renderCount,
     } = this.state;
     const {
-      once,
-      count,
+      // once,
+      mapIndex,
       uniqueId,
     } = this.props;
+
+    console.log(mapIndex);
+
     return isReady ? (
-      <div styleName="item">
-        <span styleName="count">{count}</span>
-        {
-          once ? (
-            <div styleName="once">
-              SubLazyLoadItem once
-            </div>
-          ) : (
-              <div>
-                SubLazyLoadItem
-            </div>
-            )
-        }
-        <p styleName="render_count">render次数:{renderCount}</p>
-        <p>props from parent:{uniqueId}</p>
-      </div>
+      <li styleName={mapIndex % 2 !== 0 ? "goods__singular" : "goods__even"}>
+        <div styleName="goods__wrapper">
+          <div styleName="goods__itemHeader" id={uniqueId} >
+            <img styleName="goods__itemLogo" src={goodsPic} alt="" />
+          </div>
+        </div>
+        {/* <div styleName="item">
+          <span styleName="count">{count}</span>
+          {
+            once ? (
+              <div styleName="once">
+                SubLazyLoadItem once
+              </div>
+            ) : (
+                <div>
+                  SubLazyLoadItem
+              </div>
+              )
+          }
+          <p styleName="render_count">render次数:{renderCount}</p>
+          <p>props from parent:{uniqueId}</p>
+        </div>*/}
+      </li>
     ) : (
         <div styleName="item">
           loading
@@ -79,7 +92,7 @@ class SubLazyLoadItem extends Component {
 SubLazyLoadItem.propTypes = {
   uniqueId: PropTypes.string.isRequired,
   once: PropTypes.bool.isRequired,
-  count: PropTypes.number.isRequired,
+  mapIndex: PropTypes.number.isRequired,
 };
 
 export default SubLazyLoadItem;

@@ -14,7 +14,7 @@ class LazyLoadList extends Component {
     super();
 
     this.state = {
-      arr: Array(...Array(2)).map((item, index) => ({
+      arr: Array(...Array(4)).map((item, index) => ({
         uniqueId: uniqueId(),
         once: [6, 7].indexOf(index) > -1,
       })),
@@ -25,22 +25,20 @@ class LazyLoadList extends Component {
       arr,
     } = this.state;
     return (
-      <div styleName="list">
-        <div className="widget-list">
-          {arr.map((item, index) => (
-            <LazyLoad
-              key={index}
-              once={item.once}
-              height={200}
-              offset={[-200, 0]}
-              debounce={200}
-              placeholder={<LazyLoadPlaceHolder />}
-            >
-              <SubLazyLoadItem {...item} count={index + 1} />
-            </LazyLoad>
-          ))}
-        </div>
-      </div >
+      <ul styleName="goods__list">
+        {arr.map((item, index) => (
+          <LazyLoad
+            key={index}
+            once={item.once}
+            height={200}
+            offset={[-200, 0]}
+            debounce={200}
+            placeholder={<LazyLoadPlaceHolder />}
+          >
+            <SubLazyLoadItem {...item} mapIndex={index + 1} />
+          </LazyLoad>
+        ))}
+      </ul>
     );
   }
 }

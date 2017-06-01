@@ -10,8 +10,8 @@ import styles from './index.scss';
 class ScrollList extends Component {
   render() {
     return (
-      <div styleName="floor">
-        <h3 styleName="title">志趣好物</h3>
+      <div styleName="goods__floor">
+        <h3 styleName="goods__title">志趣好物</h3>
         <LazyLoadList />
       </div>
     );
