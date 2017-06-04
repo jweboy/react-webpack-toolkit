@@ -1,0 +1,74 @@
+.sortMenu{
+  margin-top: .88rem;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.sideLeft{
+  position: fixed;
+  top: .9rem;
+  bottom: 1.06rem;
+  padding-bottom: .2rem;
+  width: 1.62rem;
+  overflow: scroll; 
+  background: #fff;
+  border-right: 1px solid #d9d9d9;
+}
+.sideRight{
+  flex: 2;
+  margin-left: 1.63rem;
+  padding: .3rem;
+  background: #fff;
+}
+.leftList{
+  // padding: .35rem 0;
+  font-size: .24rem;
+}
+.leftItem{
+  height: .5rem;
+  line-height: .5rem;
+  text-align: center;
+  color: #333;
+  font-size: .27rem;
+  margin-top: .4rem;
+}
+.rightBanner{
+  height: 1.92rem;
+  background: center no-repeat #f4f4f4;
+  background-size: cover;
+  background-image: url(assets/banner.png);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rightBanner__desc{
+  text-align: center;
+  color: #fff;
+  font-size: .27rem;
+}
+.rightHeader{
+  height: 1.08rem;
+  line-height: 1.08rem;
+  font-size: .24rem;
+  color: #333;
+  text-align: center;
+}
+.rightHeader__text{
+  position: relative;
+}
+.rightList{
+  display: flex;
+  flex-flow: row wrap;
+}
+.rightList__item{
+  width: 33.33%;
+}
+.rightList__thumbnails{
+  display: block;
+  margin: auto
+}
+.rightList__name{
+  height: .72rem;
+  font-size: .24rem;
+  color: #333;
+  text-align: center;
+}

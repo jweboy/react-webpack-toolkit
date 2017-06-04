@@ -1,0 +1,26 @@
+.topBar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: .5rem;
+}
+.header{
+  background: #fafafa;
+  padding-left: .13rem;
+  padding-right: .08rem;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.right{
+  position: absolute;
+  right: 0;
+}
+.name{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}

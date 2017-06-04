@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CSSModules from 'react-css-modules';
 
 import TabBar from 'components/TabBar';
+import TopBar from 'components/TopBar';
 import Button from 'widgets/Button';
 import Input from 'widgets/Input';
 import styles from './index.scss';
@@ -18,6 +19,7 @@ class Login extends Component {
     } = this.props;
     return (
       <div styleName="login">
+        <TopBar />
         <form action="" styleName="form">
           <Input {...username} />
           <Input {...password} />

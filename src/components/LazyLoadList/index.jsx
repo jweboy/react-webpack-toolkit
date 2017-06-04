@@ -14,7 +14,7 @@ class LazyLoadList extends Component {
     super();
 
     this.state = {
-      arr: Array(...Array(4)).map((item, index) => ({
+      arr: Array(...Array(10)).map((item, index) => ({
         uniqueId: uniqueId(),
         once: [6, 7].indexOf(index) > -1,
       })),
@@ -33,7 +33,9 @@ class LazyLoadList extends Component {
             height={200}
             offset={[-200, 0]}
             debounce={200}
-            placeholder={<LazyLoadPlaceHolder />}
+            placeholder={
+              <LazyLoadPlaceHolder mapIndex={index + 1} />
+            }
           >
             <SubLazyLoadItem {...item} mapIndex={index + 1} />
           </LazyLoad>

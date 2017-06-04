@@ -55,37 +55,26 @@ class SubLazyLoadItem extends Component {
       uniqueId,
     } = this.props;
 
-    console.log(mapIndex);
+    console.log(isReady);
 
-    return isReady ? (
+    return (
       <li styleName={mapIndex % 2 !== 0 ? "goods__singular" : "goods__even"}>
         <div styleName="goods__wrapper">
           <div styleName="goods__itemHeader" id={uniqueId} >
             <img styleName="goods__itemLogo" src={goodsPic} alt="" />
           </div>
+          <div styleName="goods__desc" >日系纯色，面料轻柔舒透</div>
+          <div styleName="goods__tagWraper">
+            <span styleName="goods__tag">毕业季特惠</span>
+          </div>
+          <h5 styleName="goods___title">全棉针织纯色四件套</h5>
+          <div styleName="goods__price">
+            <span>¥</span>
+            <span>399</span>
+          </div>
         </div>
-        {/* <div styleName="item">
-          <span styleName="count">{count}</span>
-          {
-            once ? (
-              <div styleName="once">
-                SubLazyLoadItem once
-              </div>
-            ) : (
-                <div>
-                  SubLazyLoadItem
-              </div>
-              )
-          }
-          <p styleName="render_count">render次数:{renderCount}</p>
-          <p>props from parent:{uniqueId}</p>
-        </div>*/}
       </li>
-    ) : (
-        <div styleName="item">
-          loading
-      </div>
-      );
+    );
   }
 }
 
