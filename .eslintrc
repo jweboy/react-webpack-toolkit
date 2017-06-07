@@ -41,6 +41,16 @@
       "error",
       2
     ],
+    "comma-dangle": [
+      "error",
+      {
+        "functions": "ignore",
+        "arrays": "ignore",
+        "objects": "always",
+        "imports": "always",
+        "exports": "always"
+      }
+    ],
     "no-trailing-spaces": 0,
     "eol-last": 0,
     "no-underscore-dangle": 0,

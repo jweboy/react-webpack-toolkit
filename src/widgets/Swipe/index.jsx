@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 import Slider from 'react-slick';
 import CSSModules from 'react-css-modules';
 

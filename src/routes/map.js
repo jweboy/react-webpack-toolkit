@@ -11,6 +11,7 @@ import ShopCart from 'containers/ShopCart';
 // import PersonCenterPage from 'containers/PersonCenter';
 import NotMatch from 'containers/NotMatch';
 import Login from 'containers/Login';
+import Detail from 'containers/Detail';
 
 // TODO 理解Switch, exact的作用
 
@@ -21,6 +22,7 @@ const RouteMap = () => (
     <Route path="/sort" component={SortPage} />
     <Route path="/shopcart" component={ShopCart} />
     <Route path="/personcenter" component={Login} />
+    <Route path="/detail" component={Detail} />
     <Route path="*" component={NotMatch} />
   </Switch>
 );

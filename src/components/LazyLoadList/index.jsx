@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 import LazyLoad from 'react-lazyload';
 import CSSModules from 'react-css-modules';
 

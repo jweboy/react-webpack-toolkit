@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 import CSSModules from 'react-css-modules';
+import {
+  Link,
+} from 'react-router-dom';
 
 import thumbnails from 'assets/thumbnails.png';
 import styles from './index.scss';
@@ -23,8 +26,10 @@ class SideRight extends Component {
           {
             Array(...(Array(18))).map((item, index) => (
               <li styleName="rightList__item" key={index}>
-                <img styleName="rightList__thumbnails" src={thumbnails} alt="" />
-                <div styleName="rightList__name">锅具</div>
+                <Link to="/detail">
+                  <img styleName="rightList__thumbnails" src={thumbnails} alt="" />
+                  <div styleName="rightList__name">锅具</div>
+                </Link>
               </li>
             ))
           }
