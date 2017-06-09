@@ -1,14 +1,14 @@
 import React from 'react';
 import {
-  render
+  render,
 } from 'react-dom';
-import { 
-  AppContainer
+import {
+  AppContainer,
 } from 'react-hot-loader';
 import Redbox from 'redbox-react';
 
 import App from './routes';
-import _DEV_ from 'util/env';
+// import _DEV_ from 'util/env';
 // console.log(_DEV_);
 
 // 获取装载组件的根节点
@@ -20,7 +20,7 @@ const rootRender = (Component) => {
     <AppContainer errorReporter={Redbox}>
       <Component />
     </AppContainer>,
-    mountNode
+    mountNode,
   );
 };
 
@@ -28,19 +28,19 @@ rootRender(App);
 
 // 模块热更新 Hot Module Replacement API
 if (module.hot) {
-  if(_DEV_) {
-    const RedBox = require('redbox-react').default;
-    try {
-      rootRender(App);
-    } catch(error) {
-      render(
-        <RedBox error={error} />,
-        mountNode
-      );
-    } 
-  } else {
-    rootRender(App);
-  }
+  // if(_DEV_) {
+  //   const RedBox = require('redbox-react').default;
+  //   try {
+  //     rootRender(App);
+  //   } catch(error) {
+  //     render(
+  //       <RedBox error={error} />,
+  //       mountNode
+  //     );
+  //   } 
+  // } else {
+  //   rootRender(App);
+  // }
   module.hot.accept('./routes', () => {
     rootRender(App);
   });

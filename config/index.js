@@ -10,12 +10,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     port: 8888,
-    uiPort: 8889
+    uiPort: 8889,
   },
   build: {
     // env: buildEnv,
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/'
-  }
+    assetsPublicPath: '/',
+  },
 };

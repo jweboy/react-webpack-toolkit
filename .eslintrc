@@ -3,7 +3,10 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "arrowFunctions": true,
+      "classes": true,
+      "modules": true
     }
   },
   "env": {
@@ -13,11 +16,16 @@
     "mocha": true
   },
   "plugins": [
-    "react"
+    "react",
+    "import"
   ],
   "parser": "babel-eslint",
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "airbnb-base",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "rules": {
     "quotes": 0,
@@ -29,11 +37,26 @@
       1,
       "always"
     ],
+    "indent": [
+      "error",
+      2
+    ],
+    "comma-dangle": [
+      "error",
+      {
+        "functions": "ignore",
+        "arrays": "ignore",
+        "objects": "always",
+        "imports": "always",
+        "exports": "always"
+      }
+    ],
     "no-trailing-spaces": 0,
     "eol-last": 0,
     "no-underscore-dangle": 0,
     "no-alert": 0,
     "no-lone-blocks": 0,
+    "no-useless-constructor": 1,
     "jsx-quotes": 1,
     "react/display-name": [
       1,
@@ -74,9 +97,41 @@
     "react/prefer-es6-class": 1,
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 1,
-    "react/require-extension": 1,
+    // "react/require-extension": 1, /* deprecated  该属性合并到import plugin的extensions规则中 */
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    // "react/wrap-multilines": 1, /* deprecated 该用jsx-wrap-multilines代替 */
+    "react/jsx-wrap-multilines": 1,
+    "import/extensions": [
+      2,
+      "never",
+      {
+        "scss": "always",
+        "jpg": "always",
+        "png": "always"
+      }
+    ],
+    "class-methods-use-this": [
+      2,
+      {
+        "exceptMethods": [
+          "render",
+          "componentWillMount",
+          "componentDidMount",
+          "componentWillReceiveProps",
+          "shouldComponentUpdate",
+          "componentWillUpdate",
+          "componentDidUpdate",
+          "componentWillUnmount"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./build/webpack.base.config.js"
+      }
+    }
   }
 }

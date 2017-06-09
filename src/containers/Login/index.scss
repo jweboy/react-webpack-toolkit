@@ -1,0 +1,26 @@
+.login{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background: #fff;
+}
+.form{
+  padding: 0 .3rem;
+  margin-top: .24rem;
+  width: 100%;
+}
+.text{
+  font-size: 0.25rem;
+  color: #7f7f7f;
+}
+.unlogin{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.register{
+  composes: text
+}
+.forgetpwd{
+  composes: text
+}
