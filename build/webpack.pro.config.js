@@ -12,19 +12,10 @@ const baseWebpackConfig = require('./webpack.base.config');
 const config = require('../config');
 const utils = require('./utils');
 
-// baseWebpackConfig.entry = {
-//   app: path.resolve(__dirname, '../src/index'),
-//   vendor: [
-//     'react',
-//     'react-dom',
-//     'react-router-dom'
-//   ],
-// }
-
 const webpackConfig = webpackMerge(baseWebpackConfig, {
   devtool: '#source-map',
   output: {
-    path: config.build.assetsRoot,
+    path: `${config.build.assetsRoot}/${utils.setDistPath()}`,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
   },
@@ -40,9 +31,7 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
+      'process.env': config.build.env,
     }),
     new webpack.optimize.UglifyJsPlugin({
       conpress: {
@@ -67,13 +56,14 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
+        minifyCSS: true, // 压缩行内style标签
+        minifyJS: true, // 压缩行内script标签
         removeAttributeQuotes: true,
       },
-      chunksSortMode: 'dependency',
+      chunksSortMode: 'dependency', //允许控制块在添加到页面之前的排序方式
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      // filename: 'vendor.js',
       minChunks: module => (
         module.resource &&
         /\.js$/.test(module.resource) &&
@@ -86,13 +76,11 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor'],
     }),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
-        ignore: ['.*'],
-      }
-    ])
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, '../static'),
+      to: config.build.assetsSubDirectory,
+      ignore: ['.*'],
+    }])
   ],
 });
 
