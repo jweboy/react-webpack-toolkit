@@ -1,17 +1,17 @@
 /* import React, {
     Component,
-} from 'react';
+} from 'react'
 import {
     Redirect,
     Switch,
     Route,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
-import Card from 'components/Card';
-import List from 'components/List';
-import Home from 'containers/Home';
-import Detail from 'containers/Detail';
-import NotFound from 'containers/NotFoundPage';
+import Card from 'components/Card'
+import List from 'components/List'
+import Home from 'containers/Home'
+import Detail from 'containers/Detail'
+import NotFound from 'containers/NotFoundPage'
 
 const routes = [
   {
@@ -30,16 +30,16 @@ const routes = [
     path: '/404',
     component: NotFound,
   },
-];
+]
 
 class SubRoute extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
   render() {
     const {
             route,
-        } = this.props;
+        } = this.props
     return (
             <Route
                 path={route.path}
@@ -47,7 +47,7 @@ class SubRoute extends Component {
                     <route.component />
                 )}
             />
-    );
+    )
   }
 }
 
@@ -60,8 +60,8 @@ const route = () => (
         <Route path="/card" component={Card} />
         <Route path="/list" component={List} />
     </div>
-);
+)
 
 // TODO 理解Switch, exact的作用
 
-export default route;*/
+export default route*/

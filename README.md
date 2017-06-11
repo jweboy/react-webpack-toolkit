@@ -25,4 +25,12 @@
 - TabBar组件中每次接收到的props是每个不同组件页面默认的props, 无需在componentWillReceiveProps中转变为当前组件的可变state。
 - 代理middleware部分
 
+## TODO
+> 后期需要增加webpack-hot-middleware监听模版页index.html变化的刷新问题
+> 设置项目接口代理、编写mock数据、线上json管理
+
+## github
+> https://github.com/webpack/webpack-dev-middleware
+> https://github.com/geowarin/friendly-errors-webpack-plugin
+> https://github.com/ampedandwired/html-webpack-plugin
 

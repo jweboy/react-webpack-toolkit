@@ -1,16 +1,36 @@
-const path = require('path');
-const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const CompressionWebpackPlugin = require('compression-webpack-plugin');
-// const BundleAnalyzerReport = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const path = require('path')
+const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const CompressionWebpackPlugin = require('compression-webpack-plugin')
+// const BundleAnalyzerReport = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-const baseWebpackConfig = require('./webpack.base.config');
-const config = require('../config');
-const utils = require('./utils');
+const baseWebpackConfig = require('./webpack.base.config')
+const config = require('../config')
+const utils = require('./utils')
+
+baseWebpackConfig.module.rules.push({
+  test: /\.scss?$/,
+  use: ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    use: [{
+      loader: 'css-loader',
+      options: {
+        sourceMap: true,
+        modules: true,
+        importLoaders: 1,
+      },
+    }, {
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: true,
+      },
+    }],
+  }),
+})
 
 const webpackConfig = webpackMerge(baseWebpackConfig, {
   devtool: '#source-map',
@@ -18,16 +38,6 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
     path: `${config.build.assetsRoot}/${utils.setDistPath()}`,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
-  },
-  module: {
-    // rules: [{
-    //   loader: 'css-loader',
-    //   options: {
-    //     sourceMap: true,
-    //     extract: true,
-    //     minimize: true,
-    //   },
-    // }],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -82,7 +92,7 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
       ignore: ['.*'],
     }])
   ],
-});
+})
 
 // if (config.build.productionGzip) {
 //   webpackConfig.plugins.push(
@@ -104,6 +114,6 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
 //   webpackConfig.plugins.push(new BundleAnalyzerReport())
 // }
 
-console.log(webpackConfig);
+console.log(webpackConfig)
 
-module.exports = webpackConfig;
+module.exports = webpackConfig

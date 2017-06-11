@@ -1,12 +1,12 @@
-import React, { Component, } from 'react';
-import PropTypes from 'prop-types';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import PropTypes from 'prop-types'
+import CSSModules from 'react-css-modules'
 
-import TabBar from 'components/TabBar';
-import NOEditableSearch from 'widgets/NoEditableSearch';
-import SortMenu from 'components/SortMenu';
+import TabBar from 'components/TabBar'
+import NOEditableSearch from 'widgets/NoEditableSearch'
+import SortMenu from 'components/SortMenu'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 @CSSModules(styles)
 class SortPage extends Component {
@@ -26,8 +26,8 @@ class SortPage extends Component {
         <SortMenu />
         <TabBar {...this.props} />
       </div>
-    );
+    )
   }
 }
 
-export default SortPage;
+export default SortPage

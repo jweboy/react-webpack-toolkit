@@ -1,29 +1,27 @@
-const path = require('path');
-const webpack = require('webpack');
-const browserSync = require('browser-sync');
-const express = require('express');
+const path = require('path')
+const webpack = require('webpack')
+const browserSync = require('browser-sync')
+const express = require('express')
 const ora = require('ora')
-const connectHistoryApiFallback = require('connect-history-api-fallback')();
+const connectHistoryApiFallback = require('connect-history-api-fallback')
 
-const webpackConfig = require('./webpack.dev.config');
-const config = require('../config');
-// const data = require('../mock/data.json');
+const webpackConfig = require('./webpack.dev.config')
+const config = require('../config')
+// const data = require('../mock/data.json')
 
-// process.env.NODE_ENV = 'development'
+// declare the development environment variable
 if (!process.env.NODE_ENV) {
-  process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV);
+  process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
-const compiler = webpack(webpackConfig);
-const port = config.dev.port;
-const uiPort = config.dev.uiPort;
-const uri = `http://localhost:${port}`;
-// const router = express.Router();
-const app = express();
+const compiler = webpack(webpackConfig)
+const port = config.dev.port
+const uiPort = config.dev.uiPort
+const uri = `http://localhost:${port}`
+// const router = express.Router()
+const app = express()
 
-console.log('server', process.env.NODE_ENV)
-
-// https://github.com/webpack/webpack-dev-middleware
+// serve webpack bundle output
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   stats: {
@@ -31,28 +29,32 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
   },
   quiet: true, // 不显示任何bundle信息
   noInfo: true, // 只显示错误和警告bundle信息
-});
+})
 
+// enable hot-reload and state-preserving
+// compilation error display
 const hotMiddleware = require('webpack-hot-middleware')(compiler, {
   // reload: true,
   // log: () => { },
-});
+})
 
+// TODO 设置项目接口代理、编写mock数据、线上json管理
 // 设置代理,跨域访问api资源
 // const proxyMiddleware = require('http-proxy-middleware')({
 //     target: 'https://api.github.com',
 //     changeOrigin: true,
 //     logLevel: 'debug'
-// });
-
+// })
 // 前端静态路由模拟数据请求
-// router.get('/api/data', (req, res) => (res.send(data)));
+// router.get('/api/data', (req, res) => (res.send(data)))
 // 在express中注册路由
-// app.use(router);
+// app.use(router)
 
-const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory);
-app.use(staticPath, express.static('./static'));
+// serve pure static assets
+const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
+app.use(staticPath, express.static('./static'))
 
+// run browsersync and use middleware for Hot Module Replacement
 const browserSyncConfig = {
   port,
   ui: {
@@ -67,20 +69,21 @@ const browserSyncConfig = {
       devMiddleware,
       hotMiddleware,
       // proxyMiddleware
-      connectHistoryApiFallback,
+      connectHistoryApiFallback(),
       app,
     ],
   },
   file: [
     '/index.html',
   ],
-};
+}
 
-const spinner = ora('Starting dev server...');
+const spinner = ora('Starting dev server...')
 spinner.start()
 
+// wait for the middleware to load after opening the service
 devMiddleware.waitUntilValid(() => {
-  // 开启服务，加载app中间件
-  spinner.succeed(`Listening at ${uri}\n`);
-  browserSync(browserSyncConfig);
-});
+  spinner.succeed(`Listening at ${uri}\n`)
+
+  browserSync(browserSyncConfig)
+})

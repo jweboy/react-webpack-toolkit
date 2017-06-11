@@ -1,20 +1,42 @@
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
-const config = require('../config');
-const baseWebpackConfig = require('./webpack.base.config');
+const config = require('../config')
+const {
+  generateLoaders,
+} = require('./utils')
+const baseWebpackConfig = require('./webpack.base.config')
 
-const babelPolyfill = 'babel-polyfill';
-const reactHotClient = 'react-hot-loader/patch';
-const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?reload=true';
+const babelPolyfill = 'babel-polyfill'
+const reactHotClient = 'react-hot-loader/patch'
+const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?reload=true'
 
 baseWebpackConfig.entry.unshift(
   babelPolyfill,
   reactHotClient, // 开启模块热替换(HMR)
   webpackHotMiddlewareClient
-);
+)
+
+console.log(generateLoaders().use[1].options)
+
+baseWebpackConfig.module.rules.push({
+  test: /\.scss?$/,
+  use: [{
+    loader: 'style-loader',
+  }, {
+    loader: 'css-loader',
+    options: {
+      modules: true,
+      sourceMap: true,
+      importLoaders: 1,
+      localIdentName: "[path][local]__[hash:base64:6]",
+    },
+  }, {
+    loader: 'postcss-loader',
+  }],
+})
 
 module.exports = merge(baseWebpackConfig, {
   // cheap-module-eval-source-map is faster for development
@@ -31,4 +53,4 @@ module.exports = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HTMLWebpackPlugin(config.dev.template),
   ],
-});
+})

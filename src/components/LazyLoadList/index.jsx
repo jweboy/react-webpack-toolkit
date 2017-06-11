@@ -1,29 +1,29 @@
-import React, { Component, } from 'react';
-import LazyLoad from 'react-lazyload';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import LazyLoad from 'react-lazyload'
+import CSSModules from 'react-css-modules'
 
-import SubLazyLoadItem from './SubLazyLoadItem';
-import LazyLoadPlaceHolder from './LazyLoadPlaceHoder';
-import styles from './index.scss';
+import SubLazyLoadItem from './SubLazyLoadItem'
+import LazyLoadPlaceHolder from './LazyLoadPlaceHoder'
+import styles from './index.scss'
 
-const uniqueId = () => (`${Math.random().toString(36)}00000000000000000`).slice(2, 10);
+const uniqueId = () => (`${Math.random().toString(36)}00000000000000000`).slice(2, 10)
 
 @CSSModules(styles)
 class LazyLoadList extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
       arr: Array(...Array(10)).map((item, index) => ({
         uniqueId: uniqueId(),
         once: [6, 7].indexOf(index) > -1,
       })),
-    };
+    }
   }
   render() {
     const {
       arr,
-    } = this.state;
+    } = this.state
     return (
       <ul styleName="goods__list">
         {arr.map((item, index) => (
@@ -41,8 +41,8 @@ class LazyLoadList extends Component {
           </LazyLoad>
         ))}
       </ul>
-    );
+    )
   }
 }
 
-export default LazyLoadList;
+export default LazyLoadList

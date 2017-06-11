@@ -1,19 +1,19 @@
 import React, {
   Component,
-} from 'react';
-import PropTypes from 'prop-types';
+} from 'react'
+import PropTypes from 'prop-types'
 import {
   NavLink,
-} from 'react-router-dom';
-import CSSModules from 'react-css-modules';
+} from 'react-router-dom'
+import CSSModules from 'react-css-modules'
 import {
   FaHandOUp,
   FaHandORight,
   FaHandODown,
   FaHandOLeft,
-} from 'react-icons/lib/fa';
+} from 'react-icons/lib/fa'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 const TabBarData = [
   {
@@ -37,38 +37,38 @@ const TabBarData = [
     selectedTab: 'centerTab',
     component: <FaHandOLeft />,
   },
-];
+]
 
 // const oddEvent = (match, location) => {
 //   if (!match) {
-//     return false;
+//     return false
 //   }
-//     // console.log(location);
-// };
+//     // console.log(location)
+// }
 @CSSModules(styles)
 class TabBar extends Component {
   static propTypes = {
     currTab: PropTypes.string.isRequired,
   }
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       // selectedTab: 'homeTab'
-    };
+    }
   }
 
   // componentWillReceiveProps(nextProps) {
-  //     console.log(nextProps);
+  //     console.log(nextProps)
   // }
   // shouldComponentUpdate(nextProps, nextState) {
-  //     console.log(nextProps);
-  //     return true;
+  //     console.log(nextProps)
+  //     return true
   // }
   render() {
     const {
         currTab,
-    } = this.props;
+    } = this.props
 
     return (
       <div className={styles.tabBar}>
@@ -88,8 +88,8 @@ class TabBar extends Component {
           ))
         }
       </div>
-    );
+    )
   }
 }
 
-export default TabBar;
+export default TabBar

@@ -1,7 +1,7 @@
-import React, { Component, } from 'react';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import CSSModules from 'react-css-modules'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 
 @CSSModules(styles)
@@ -19,8 +19,8 @@ class SideLeft extends Component {
           }
         </ul>
       </div>
-    );
+    )
   }
 }
 
-export default SideLeft;
+export default SideLeft

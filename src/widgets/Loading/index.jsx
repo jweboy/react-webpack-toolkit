@@ -1,7 +1,7 @@
-import React from 'react';
-import classNames from 'classnames';
+import React from 'react'
+import classNames from 'classnames'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 const Loading = () => (
   <div className={styles.doubleBounce}>
@@ -15,6 +15,6 @@ const Loading = () => (
       })
     } />
   </div>
-);
+)
 
-export default Loading;
+export default Loading

@@ -1,11 +1,11 @@
-import React, { Component, } from 'react';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import CSSModules from 'react-css-modules'
 import {
   Link,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
-import thumbnails from 'assets/thumbnails.png';
-import styles from './index.scss';
+import thumbnails from 'assets/thumbnails.png'
+import styles from './index.scss'
 
 
 @CSSModules(styles)
@@ -35,8 +35,8 @@ class SideRight extends Component {
           }
         </ul>
       </div>
-    );
+    )
   }
 }
 
-export default SideRight;
+export default SideRight

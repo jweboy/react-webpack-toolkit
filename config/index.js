@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 const devEnv = require('./dev.env')
 const buildEnv = require('./pro.env')
 
@@ -38,4 +38,4 @@ module.exports = {
       chunksSortMode: 'dependency', //允许控制块在添加到页面之前的排序方式
     },
   },
-};
+}

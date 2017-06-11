@@ -33,10 +33,7 @@
     "no-debugger": 1,
     "no-var": 1,
     "import/named": 0,
-    "semi": [
-      1,
-      "always"
-    ],
+    "semi": 0,
     "indent": [
       "error",
       2
@@ -57,6 +54,8 @@
     "no-alert": 0,
     "no-lone-blocks": 0,
     "no-useless-constructor": 1,
+    "consistent-return": 0,
+    "no-restricted-syntax": 0,
     "jsx-quotes": 1,
     "react/display-name": [
       1,
@@ -130,7 +129,7 @@
   "settings": {
     "import/resolver": {
       "webpack": {
-        "config": "./build/webpack.base.config.js"
+        "config": "build/webpack.base.config.js"
       }
     }
   }

@@ -1,12 +1,12 @@
-import React, { Component, } from 'react';
-import PropTypes from 'prop-types';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import PropTypes from 'prop-types'
+import CSSModules from 'react-css-modules'
 
-import TabBar from 'components/TabBar';
-import TopBar from 'components/TopBar';
-import Button from 'widgets/Button';
-import Input from 'widgets/Input';
-import styles from './index.scss';
+import TabBar from 'components/TabBar'
+import TopBar from 'components/TopBar'
+import Button from 'widgets/Button'
+import Input from 'widgets/Input'
+import styles from './index.scss'
 
 @CSSModules(styles)
 class Login extends Component {
@@ -16,7 +16,7 @@ class Login extends Component {
       username,
       password,
       button,
-    } = this.props;
+    } = this.props
     return (
       <div styleName="login">
         <TopBar />
@@ -31,7 +31,7 @@ class Login extends Component {
           <TabBar currTab={currTab} />
         </form>
       </div>
-    );
+    )
   }
 }
 Login.defaultProps = {
@@ -49,12 +49,12 @@ Login.defaultProps = {
   button: {
     text: '登陆',
   },
-};
+}
 Login.propTypes = {
   currTab: PropTypes.string.isRequired,
   username: PropTypes.object.isRequired,
   password: PropTypes.object.isRequired,
   button: PropTypes.object.isRequired,
-};
+}
 
-export default Login;
+export default Login

@@ -1,20 +1,20 @@
 import React, {
   Component,
-} from 'react';
+} from 'react'
 // http://gorangajic.github.io/react-icons/index.html
-import FaBeer from 'react-icons/lib/fa/beer';
-import MdAccessibility from 'react-icons/lib/md/accessibility';
-import TiAdjustBrightness from 'react-icons/lib/ti/adjust-brightness';
-import GoAlignmentAlignedTo from 'react-icons/lib/go/alignment-aligned-to';
-import Md3dRotation from 'react-icons/lib/md/3d-rotation';
+import FaBeer from 'react-icons/lib/fa/beer'
+import MdAccessibility from 'react-icons/lib/md/accessibility'
+import TiAdjustBrightness from 'react-icons/lib/ti/adjust-brightness'
+import GoAlignmentAlignedTo from 'react-icons/lib/go/alignment-aligned-to'
+import Md3dRotation from 'react-icons/lib/md/3d-rotation'
 import {
   Link,
-} from 'react-router-dom';
-import CSSModules from 'react-css-modules';
+} from 'react-router-dom'
+import CSSModules from 'react-css-modules'
 
-import TabBar from 'components/TabBar';
-import logo from 'assets/test.jpg';
-import styles from './index.scss';
+import TabBar from 'components/TabBar'
+import logo from 'assets/test.jpg'
+import styles from './index.scss'
 
 @CSSModules(styles)
 class Card extends Component {
@@ -40,7 +40,7 @@ class Card extends Component {
         <h4 styleName="title">test1</h4>
         <p styleName="description">这是一段描述内容</p>
         <hr />
-        <div styleName="next">&nbsp;</div>
+        <div styleName="next">&nbsp</div>
         <span styleName="small-icon">
           <FaBeer />
           <MdAccessibility />
@@ -57,8 +57,8 @@ class Card extends Component {
         <div styleName="break" />
         <TabBar />
       </div>
-    );
+    )
   }
 }
 
-export default Card;
+export default Card

@@ -1,11 +1,11 @@
-import React, { Component, } from 'react';
-import CSSModules from 'react-css-modules';
-import FaAlignJustify from 'react-icons/lib/fa/align-justify';
-import FaSearch from 'react-icons/lib/fa/search';
-import FaShoppingCart from 'react-icons/lib/fa/shopping-cart';
-import FaClose from 'react-icons/lib/fa/close';
+import React, { Component, } from 'react'
+import CSSModules from 'react-css-modules'
+import FaAlignJustify from 'react-icons/lib/fa/align-justify'
+import FaSearch from 'react-icons/lib/fa/search'
+import FaShoppingCart from 'react-icons/lib/fa/shopping-cart'
+import FaClose from 'react-icons/lib/fa/close'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 @CSSModules(styles)
 class TopBar extends Component {
@@ -44,8 +44,8 @@ class TopBar extends Component {
           </ul>
         </div>
       </nav>
-    );
+    )
   }
 }
 
-export default TopBar;
+export default TopBar

@@ -1,8 +1,8 @@
-import React, { Component, } from 'react';
-import CSSModules from 'react-css-modules';
-import MdSearch from 'react-icons/lib/md/search';
+import React, { Component, } from 'react'
+import CSSModules from 'react-css-modules'
+import MdSearch from 'react-icons/lib/md/search'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 @CSSModules(styles)
 class NoEditableSearch extends Component {
@@ -18,8 +18,8 @@ class NoEditableSearch extends Component {
           </span>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default NoEditableSearch;
+export default NoEditableSearch

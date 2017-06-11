@@ -1,22 +1,26 @@
-import React, { Component, } from 'react';
-import PropTypes from 'prop-types';
-import CSSModules from 'react-css-modules';
-import FaAdjust from 'react-icons/lib/fa/adjust';
+import React, { Component, } from 'react'
+import PropTypes from 'prop-types'
+import CSSModules from 'react-css-modules'
+import FaAdjust from 'react-icons/lib/fa/adjust'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 @CSSModules(styles)
 class Input extends Component {
   constructor(props) {
-    super(props);
+    super(props)
+
+    this.state = {
+
+    }
   }
   render() {
-    console.log(this.props);
+    console.log(this.props)
     const {
       type,
       name,
       placeholder,
-    } = this.props;
+    } = this.props
 
     return (
       <div>
@@ -33,7 +37,7 @@ class Input extends Component {
         </div>
         <div styleName="line">{''}</div>
       </div>
-    );
+    )
   }
 }
 
@@ -41,6 +45,6 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-};
+}
 
-export default Input;
+export default Input

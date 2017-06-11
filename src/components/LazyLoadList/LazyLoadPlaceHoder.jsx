@@ -1,10 +1,11 @@
-import React, { Component, } from 'react';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import CSSModules from 'react-css-modules'
+import PropTypes from 'prop-types'
 
-// import loading from 'assets/loading.gif';
-import Loading from 'widgets/Loading';
+// import loading from 'assets/loading.gif'
+import Loading from 'widgets/Loading'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 @CSSModules(styles)
 class LazyLoadPlaceholder extends Component {
@@ -12,7 +13,7 @@ class LazyLoadPlaceholder extends Component {
     const {
       // once,
       mapIndex,
-    } = this.props;
+    } = this.props
     return (
       <li styleName={mapIndex % 2 !== 0 ? "goods__singular" : "goods__even"}>
         <div styleName="goods__wrapper">
@@ -33,8 +34,12 @@ class LazyLoadPlaceholder extends Component {
           </div>
         </div>
       </li>
-    );
+    )
   }
 }
 
-export default LazyLoadPlaceholder;
+LazyLoadPlaceholder.propTypes = {
+  mapIndex: PropTypes.number.isRequired,
+}
+
+export default LazyLoadPlaceholder

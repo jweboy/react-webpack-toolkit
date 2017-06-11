@@ -1,9 +1,9 @@
-import React, { Component, } from 'react';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import CSSModules from 'react-css-modules'
 
-import SideLeft from './SideLeft';
-import SideRight from './SideRight';
-import styles from './index.scss';
+import SideLeft from './SideLeft'
+import SideRight from './SideRight'
+import styles from './index.scss'
 
 @CSSModules(styles)
 class SortMenu extends Component {
@@ -13,8 +13,8 @@ class SortMenu extends Component {
         <SideLeft />
         <SideRight />
       </div>
-    );
+    )
   }
 }
 
-export default SortMenu;
+export default SortMenu

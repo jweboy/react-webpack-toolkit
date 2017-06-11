@@ -1,49 +1,49 @@
-import React, { Component, } from 'react';
-import PropTypes from 'prop-types';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import PropTypes from 'prop-types'
+import CSSModules from 'react-css-modules'
 import {
   Link,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
-import goodsPic from 'assets/goods.png';
+import goodsPic from 'assets/goods.png'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 
 @CSSModules(styles)
 class SubLazyLoadItem extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       isReady: true,
       renderCount: 1,
-    };
+    }
   }
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
+    console.log(nextProps)
     const {
       uniqueId,
-    } = this.props;
+    } = this.props
     const {
       renderCount,
-    } = this.state;
+    } = this.state
 
     if (nextProps.uniqueId !== uniqueId && uniqueId) {
       this.setState({
         isReady: false,
-      });
+      })
 
       setTimeout(() => {
         this.setState({
           isReady: true,
           renderCount: renderCount + 1,
-        });
-      }, 3000);
+        })
+      }, 3000)
     } else {
       this.setState({
         isReady: true,
-      });
+      })
     }
   }
 
@@ -51,14 +51,14 @@ class SubLazyLoadItem extends Component {
     const {
       isReady,
       // renderCount,
-    } = this.state;
+    } = this.state
     const {
       // once,
       mapIndex,
       uniqueId,
-    } = this.props;
+    } = this.props
 
-    console.log(isReady);
+    console.log(isReady)
 
     return (
       <li styleName={mapIndex % 2 !== 0 ? "goods__singular" : "goods__even"}>
@@ -79,7 +79,7 @@ class SubLazyLoadItem extends Component {
           </div>
         </Link>
       </li>
-    );
+    )
   }
 }
 
@@ -87,6 +87,6 @@ SubLazyLoadItem.propTypes = {
   uniqueId: PropTypes.string.isRequired,
   once: PropTypes.bool.isRequired,
   mapIndex: PropTypes.number.isRequired,
-};
+}
 
-export default SubLazyLoadItem;
+export default SubLazyLoadItem

@@ -1,10 +1,10 @@
-import React, { Component, } from 'react';
-import Slider from 'react-slick';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import Slider from 'react-slick'
+import CSSModules from 'react-css-modules'
 
-import testPic from 'assets/test.jpg';
+import testPic from 'assets/test.jpg'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 @CSSModules(styles)
 class Swipe extends Component {
@@ -22,8 +22,8 @@ class Swipe extends Component {
           <img src={testPic} styleName="item" />
         </Slider>
       </div>
-    );
+    )
   }
 }
 
-export default Swipe;
+export default Swipe

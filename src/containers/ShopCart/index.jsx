@@ -1,11 +1,11 @@
-import React, { Component, } from 'react';
-import PropTypes from 'prop-types';
-import CSSModules from 'react-css-modules';
+import React, { Component, } from 'react'
+import PropTypes from 'prop-types'
+import CSSModules from 'react-css-modules'
 
-import TabBar from 'components/TabBar';
-import Button from 'widgets/Button';
+import TabBar from 'components/TabBar'
+import Button from 'widgets/Button'
 
-import styles from './index.scss';
+import styles from './index.scss'
 
 @CSSModules(styles)
 class ShopCart extends Component {
@@ -18,7 +18,7 @@ class ShopCart extends Component {
     const {
       noCartBtnText,
       noCartBtnIsActice,
-    } = this.props;
+    } = this.props
 
     return (
       <div>
@@ -50,7 +50,7 @@ class ShopCart extends Component {
         </div>
         <TabBar {...this.props} />
       </div>
-    );
+    )
   }
 }
 
@@ -58,11 +58,11 @@ ShopCart.defaultProps = {
   currTab: 'shopTab',
   noCartBtnText: '登陆',
   noCartBtnIsActice: true,
-};
+}
 // ShopCart.propsTypes = {
 //   currTab: PropTypes.string.isRequired,
 //   noCartBtnText: PropTypes.string.isRequired,
 //   noCartBtnIsActice: PropTypes.bool.isRequired,
-// };
+// }
 
-export default ShopCart;
+export default ShopCart
