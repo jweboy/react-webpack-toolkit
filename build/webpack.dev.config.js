@@ -4,22 +4,20 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 const config = require('../config')
-const {
-  generateLoaders,
-} = require('./utils')
+// const {
+//   generateLoaders,
+// } = require('./utils')
 const baseWebpackConfig = require('./webpack.base.config')
 
 const babelPolyfill = 'babel-polyfill'
 const reactHotClient = 'react-hot-loader/patch'
-const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?reload=true'
+const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?reload=true&noInfo=true'
 
 baseWebpackConfig.entry.unshift(
   babelPolyfill,
   reactHotClient, // 开启模块热替换(HMR)
   webpackHotMiddlewareClient
 )
-
-console.log(generateLoaders().use[1].options)
 
 baseWebpackConfig.module.rules.push({
   test: /\.scss?$/,

@@ -8,14 +8,17 @@ import Loading from 'widgets/Loading'
 import styles from './index.scss'
 
 @CSSModules(styles)
-class LazyLoadPlaceholder extends Component {
+class PlaceHolder extends Component {
+
   render() {
     const {
-      // once,
-      mapIndex,
+      description,
+      price,
+      title,
+      index,
     } = this.props
     return (
-      <li styleName={mapIndex % 2 !== 0 ? "goods__singular" : "goods__even"}>
+      <li styleName={index % 2 !== 0 ? "goods__singular" : "goods__even"}>
         <div styleName="goods__wrapper">
           <div styleName="goods__itemHeader" >
             {/* <img styleName="goods__itemLogo" src={loading} alt="" />*/}
@@ -23,14 +26,14 @@ class LazyLoadPlaceholder extends Component {
               <Loading />
             </div>
           </div>
-          <div styleName="goods__desc" >日系纯色，面料轻柔舒透</div>
+          <div styleName="goods__desc" >{description}</div>
           <div styleName="goods__tagWraper">
             <span styleName="goods__tag">毕业季特惠</span>
           </div>
-          <h5 styleName="goods___title">全棉针织纯色四件套</h5>
+          <h5 styleName="goods___title">{title}</h5>
           <div styleName="goods__price">
             <span>¥</span>
-            <span>399</span>
+            <span>{price}</span>
           </div>
         </div>
       </li>
@@ -38,8 +41,11 @@ class LazyLoadPlaceholder extends Component {
   }
 }
 
-LazyLoadPlaceholder.propTypes = {
-  mapIndex: PropTypes.number.isRequired,
+PlaceHolder.propTypes = {
+  index: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 }
 
-export default LazyLoadPlaceholder
+export default PlaceHolder

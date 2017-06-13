@@ -1,48 +1,63 @@
 import React, { Component, } from 'react'
+import Proptypes from 'prop-types'
 import LazyLoad from 'react-lazyload'
 import CSSModules from 'react-css-modules'
 
-import SubLazyLoadItem from './SubLazyLoadItem'
-import LazyLoadPlaceHolder from './LazyLoadPlaceHoder'
+import ItemCard from './ItemCard'
+import PlaceHolder from './PlaceHolder'
 import styles from './index.scss'
-
-const uniqueId = () => (`${Math.random().toString(36)}00000000000000000`).slice(2, 10)
 
 @CSSModules(styles)
 class LazyLoadList extends Component {
-  constructor() {
-    super()
+  static defaultProps = {
+    height: 200,
+    offset: [-200, 0],
+    debounce: 200,
+  }
+  constructor(props) {
+    super(props)
 
     this.state = {
-      arr: Array(...Array(10)).map((item, index) => ({
-        uniqueId: uniqueId(),
-        once: [6, 7].indexOf(index) > -1,
-      })),
+      list: [],
     }
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      list: nextProps.list,
+    })
+  }
+
   render() {
     const {
-      arr,
-    } = this.state
+      list,
+    } = this.props
+
     return (
       <ul styleName="goods__list">
-        {arr.map((item, index) => (
+        {list.map((item, index) => (
           <LazyLoad
-            key={index}
-            once={item.once}
-            height={200}
-            offset={[-200, 0]}
-            debounce={200}
+            {...this.props}
+            key={item.id}
             placeholder={
-              <LazyLoadPlaceHolder mapIndex={index + 1} />
+              <PlaceHolder
+                index={index + 1}
+                {...item}
+              />
             }
           >
-            <SubLazyLoadItem {...item} mapIndex={index + 1} />
+            <ItemCard
+              {...item}
+              index={index + 1}
+            />
           </LazyLoad>
         ))}
       </ul>
     )
   }
+}
+
+LazyLoadList.propTypes = {
+  list: Proptypes.array.isRequired,
 }
 
 export default LazyLoadList

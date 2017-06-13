@@ -16,14 +16,10 @@ const mountNode = document.getElementById('root')
 
 // 定义根组件渲染的函数
 const rootRender = (Component) => {
-  render(<
-    AppContainer errorReporter = {
-      Redbox
-    } >
-    <
-    Component / >
-    <
-    /AppContainer>,
+  render(
+    <AppContainer errorReporter={Redbox} >
+      <Component />
+    </AppContainer>,
     mountNode,
   )
 }
@@ -45,7 +41,7 @@ if (module.hot) {
   // } else {
   //   rootRender(App)
   // }
-  module.hot.accept('./routes', () => {
+  module.hot.accept('./routes/map', () => {
     rootRender(App)
   })
 }

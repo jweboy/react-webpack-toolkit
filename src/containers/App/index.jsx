@@ -1,8 +1,16 @@
 import React from 'react'
-import RouteMap from 'routes/map'
+// import RouteMap from 'routes/map'
+import {
+  withRouter,
+} from 'react-router-dom'
 
-const App = () => (
-  <RouteMap />
-)
+const App = () =>
+  // console.info(location)
 
-export default App
+  (
+    <div>
+      app
+    </div>
+  )
+
+export default withRouter(App)

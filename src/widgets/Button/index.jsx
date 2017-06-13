@@ -17,13 +17,16 @@ class Button extends Component {
 
     }
   }
+  handleClick = () => {
+    console.log('btn')
+  }
   render() {
     const {
       text,
       isActive,
     } = this.props
     return (
-      <div styleName={''}>
+      <div styleName={''} onClick={this.handleClick}>
         <a styleName={isActive ? "btn active" : "btn"}>{text}</a>
       </div >
     )

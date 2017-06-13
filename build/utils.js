@@ -57,15 +57,15 @@ const getRandomNum = (n) => {
 
 const getLocalTime = () => {
   const newDate = new Date()
-  const timeString = newDate.toLocaleTimeString().split(':').join('')
+  // const timeString = newDate.toLocaleTimeString().split(':').join('')
   const timer = {
     year: `${newDate.getFullYear()}`,
     month: newDate.getMonth() < 10 ? `0${newDate.getMonth()}` : newDate.getMonth(),
     date: newDate.getDate() < 10 ? `0${newDate.getDate()}` : newDate.getDate(),
-    timeStr: timeString.substr(0, timeString.length - 2).trim(),
+    // timeStr: timeString.substr(0, timeString.length - 2).trim(),
   }
 
-  console.log(timer)
+  // console.log(timer)
   return timer
 }
 

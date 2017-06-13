@@ -114,6 +114,4 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
 //   webpackConfig.plugins.push(new BundleAnalyzerReport())
 // }
 
-console.log(webpackConfig)
-
 module.exports = webpackConfig
