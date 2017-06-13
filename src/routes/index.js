@@ -5,12 +5,6 @@ import {
   Redirect,
   HashRouter as Router,
 } from 'react-router-dom'
-import {
-  RouteTransition,
-} from 'react-router-transition'
-import {
-  spring,
-} from 'react-motion'
 
 import HomePage from 'containers/Home'
 import SortPage from 'containers/Sort'
@@ -25,26 +19,59 @@ import SearchPage from 'containers/Search'
 
 const supportsHistory = 'pushState' in window.history
 
-const AppRoute = () => (
-  <Router
-    basename="/"
-    forceRefresh={!supportsHistory}
-  >
-    <Route render={() => (
-      <Switch>
-        <Route exact path="/" render={() => (< Redirect to="/home" />)} />
-        <Route path="/home" component={HomePage} />
-        <Route path="/sort" component={SortPage} />
-        <Route path="/shopcart" component={ShopCart} />
-        <Route path="/personcenter" component={Login} />
-        <Route path="/detail" component={Detail} />
-        <Route path="/search" component={SearchPage} />
-        <Route component={NotMatch} />
-      </Switch>
-    )}
-    />
-  </Router >
+const AppRoute = () => (<
+  Router basename = "/"
+  forceRefresh = {!supportsHistory
+  } >
+  <
+  Route render = {
+    () => (<
+      Switch >
+      <
+      Route exact path = "/"
+      render = {
+        () => (< Redirect to = "/home" / >)
+      }
+      /> <
+      Route path = "/home"
+      component = {
+        HomePage
+      }
+      /> <
+      Route path = "/sort"
+      component = {
+        SortPage
+      }
+      /> <
+      Route path = "/shopcart"
+      component = {
+        ShopCart
+      }
+      /> <
+      Route path = "/personcenter"
+      component = {
+        Login
+      }
+      /> <
+      Route path = "/detail"
+      component = {
+        Detail
+      }
+      /> <
+      Route path = "/search"
+      component = {
+        SearchPage
+      }
+      /> <
+      Route component = {
+        NotMatch
+      }
+      /> <
+      /Switch>
+    )
+  }
+  /> <
+  /Router >
 )
 
 export default AppRoute
-
