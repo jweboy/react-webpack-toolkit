@@ -1,12 +1,17 @@
-import React, { Component, } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
 
+import {
+  loginBtn,
+} from 'hoc'
 import TabBar from 'components/TabBar'
 import TopBar from 'components/TopBar'
 import Button from 'widgets/Button'
 import Input from 'widgets/Input'
 import styles from './index.scss'
+
+const LoginBtn = loginBtn(Button)
 
 @CSSModules(styles)
 class Login extends Component {
@@ -23,7 +28,7 @@ class Login extends Component {
         <form action="" styleName="form">
           <Input {...username} />
           <Input {...password} />
-          <Button {...button} />
+          <LoginBtn {...button} />
           <div styleName="unlogin">
             <a href="#" styleName="register">注册账号</a>
             <a href="#" styleName="forgetpwd">忘记密码</a>

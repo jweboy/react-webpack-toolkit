@@ -1,18 +1,43 @@
-import React, { Component, } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
-import FaAdjust from 'react-icons/lib/fa/adjust'
-
+import FaClose from 'react-icons/lib/fa/close'
 import styles from './index.scss'
 
-@CSSModules(styles)
+@CSSModules(styles, {
+  allowMultiple: true,
+})
 class Input extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-
+      isShow: false,
+      value: '',
     }
+  }
+  handleChange = (e) => {
+    const value = e.target.value
+    const {
+      isShow,
+    } = this.state
+
+    if (value.trim() !== '') {
+      this.setState({
+        isShow: !isShow,
+        value,
+      })
+    }
+  }
+  handleClear = () => {
+    const {
+      isShow,
+    } = this.state
+
+    this.setState({
+      value: '',
+      isShow: !isShow,
+    })
   }
   render() {
     // console.log(this.props)
@@ -22,6 +47,11 @@ class Input extends Component {
       placeholder,
     } = this.props
 
+    const {
+      isShow,
+      value,
+    } = this.state
+
     return (
       <div>
         <div styleName="box">
@@ -30,9 +60,11 @@ class Input extends Component {
             type={type}
             name={name}
             placeholder={placeholder}
+            value={value}
+            onChange={this.handleChange}
           />
-          <i styleName="clear">
-            <FaAdjust />
+          <i styleName={isShow ? "clear" : "hidden"} onClick={this.handleClear}>
+            <FaClose />
           </i>
         </div>
         <div styleName="line">{''}</div>

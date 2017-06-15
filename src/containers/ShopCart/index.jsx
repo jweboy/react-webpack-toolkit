@@ -1,23 +1,29 @@
-import React, { Component, } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
 
 import TabBar from 'components/TabBar'
 import Button from 'widgets/Button'
+import {
+  routeBtn,
+} from 'hoc'
 
 import styles from './index.scss'
+
+const RouteBtn = routeBtn(Button, '/personcenter')
 
 @CSSModules(styles)
 class ShopCart extends Component {
   static propTypes = {
     currTab: PropTypes.string.isRequired,
-    noCartBtnText: PropTypes.string.isRequired,
-    noCartBtnIsActice: PropTypes.bool.isRequired,
+    history: PropTypes.object.isRequired,
+  }
+  handleClick = () => {
+
   }
   render() {
     const {
-      noCartBtnText,
-      noCartBtnIsActice,
+      history,
     } = this.props
 
     return (
@@ -42,10 +48,7 @@ class ShopCart extends Component {
             去添加点什么吧～
           </div>
           <div styleName="noCart__btn">
-            <Button
-              text={noCartBtnText}
-              isActive={noCartBtnIsActice}
-            />
+            <RouteBtn history={history} />
           </div>
         </div>
         <TabBar {...this.props} />

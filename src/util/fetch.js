@@ -1,4 +1,5 @@
-// const APIURL = ''
+const env = require('./env')
+
 const fetchTimeOut = (fetchPromise, timeout = 10000) => {
   let timeoutFunc = null
 
@@ -22,11 +23,18 @@ const fetchTimeOut = (fetchPromise, timeout = 10000) => {
   return abortablePromise
 }
 
-const fetchRequest = (url, method = 'GET', params) => {
+// let APIURL = ''
+// let APIURL = 'https://easy-mock.com/mock/591534589aba4141cf221a76/react/biolerplate'
+// if (!env.__esModule) {
+// console.warn(env.__esModule)
+// APIURL = 'https://easy-mock.com/mock/591534589aba4141cf221a76/react/biolerplate'
+// }
+
+const fetchRequest = (api, method = 'GET', params) => {
   const headers = {
     'Content-Type': 'application/json;charset=UTF-8',
   }
-  console.log(`request url: ${url}, ${params}`) // 打印请求参数
+  console.log(`request api: ${api}, ${params}`) // 打印请求参数
 
   const requestBody = {
     method,
@@ -38,14 +46,14 @@ const fetchRequest = (url, method = 'GET', params) => {
   }
 
   return new Promise((resolve, reject) => {
-    fetchTimeOut(fetch(url, requestBody))
+    fetchTimeOut(fetch(`${api}`, requestBody))
       .then(response => response.json())
       .then((res) => {
-        console.log('res:', url, res) // 请求成功返回数据
+        console.log('res:', api, res) // 请求成功返回数据
         resolve(res)
       })
       .catch((error) => {
-        console.error('error', url, error) // 请求失败返回数据
+        console.error('error', api, error) // 请求失败返回数据
         reject(error)
       })
   })

@@ -1,9 +1,9 @@
-import React, { Component, } from 'react'
+import React, { Component } from 'react'
 import CSSModules from 'react-css-modules'
 import PropTypes from 'prop-types'
 
 // import loading from 'assets/loading.gif'
-import Loading from 'widgets/Loading'
+import Loading from 'widgets/LoadingScale'
 
 import styles from './index.scss'
 

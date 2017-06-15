@@ -13,8 +13,8 @@
   "env": {
     "development": {
       "plugins": [
-        "react-hot-loader/babel", // 开启模块热替换(HMR)
-        "transform-decorators-legacy" // 编译stage2的class声明
+        "transform-decorators-legacy", // 编译stage2的class声明
+        "react-hot-loader/babel" // 开启模块热替换(HMR)
       ]
     },
     "production": {

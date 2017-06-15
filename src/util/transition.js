@@ -3,8 +3,8 @@ import {
 } from 'react-motion'
 
 const fadeTransitionConfig = {
-  stiffness: 200,
-  damping: 22,
+  stiffness: 20,
+  damping: 50,
 }
 const popTransitionConfig = {
   stiffness: 360,

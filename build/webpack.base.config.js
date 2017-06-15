@@ -39,6 +39,7 @@ module.exports = {
       util: resolvePath('src/util'),
       routes: resolvePath('src/routes'),
       widget: resolvePath('src/widget'),
+      nodeModules: nodeModulesPath,
     },
   },
   module: {

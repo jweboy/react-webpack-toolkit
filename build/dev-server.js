@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const browserSync = require('browser-sync')
 const express = require('express')
 const ora = require('ora')
+const winston = require('winston')
 const httpProxyMiddleware = require('http-proxy-middleware')
 const connectHistoryApiFallback = require('connect-history-api-fallback')
 
@@ -46,6 +47,17 @@ const proxyMiddleware = httpProxyMiddleware({
   target: APIURL,
   changeOrigin: true,
   logLevel: 'debug',
+  logProvider: () => (winston),
+  onError: (err, req, res) => {
+    res.writeHead({
+      'Content-Type': 'text/plain',
+    })
+
+    res.send('Something went wrong. And we are reporting a custom error message.')
+  },
+  // router: {
+  //   '/home': APIURL,
+  // },
 })
 // 前端静态路由模拟数据请求
 // router.get('/api/data', (req, res) => (res.send(data)))

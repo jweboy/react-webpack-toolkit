@@ -1,4 +1,4 @@
-import React, { Component, } from 'react'
+import React, { Component } from 'react'
 import CSSModules from 'react-css-modules'
 import {
   Link,
@@ -53,17 +53,17 @@ class TopBar extends Component {
     this.state = {
       isShow: false,
     }
+
+    this.handleToggleMenu = this.handleToggleMenu.bind(this)
   }
   handleToggleMenu = () => {
-    // const {
-    //   isShow,
-    // } = this.state
+    const {
+      isShow,
+    } = this.state
 
-    alert(1)
-
-    // this.setState({
-    //   isShow: !isShow,
-    // })
+    this.setState({
+      isShow: !isShow,
+    })
   }
   render() {
     const {
@@ -77,13 +77,12 @@ class TopBar extends Component {
     return (
       <nav styleName="topBar">
         <div styleName="header">
-          <div>
+          <div onClick={this.handleToggleMenu}>
             <FaAlignJustify
               styleName={isShow ? "hidden" : ""}
             />
             <FaClose
               styleName={isShow ? "" : "hidden"}
-              onClick={this.handleToggleMenu}
             />
           </div>
           <div styleName="name">{title}</div>

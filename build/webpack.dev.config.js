@@ -11,7 +11,7 @@ const baseWebpackConfig = require('./webpack.base.config')
 
 const babelPolyfill = 'babel-polyfill'
 const reactHotClient = 'react-hot-loader/patch'
-const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?reload=true&noInfo=true'
+const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?reload=true&noInfo=false'
 
 baseWebpackConfig.entry.unshift(
   babelPolyfill,

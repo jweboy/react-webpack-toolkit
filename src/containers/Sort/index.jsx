@@ -1,4 +1,4 @@
-import React, { Component, } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
 
@@ -17,11 +17,16 @@ class SortPage extends Component {
   static propTypes = {
     currTab: PropTypes.string.isRequired,
   }
+  constructor(props) {
+    super(props)
+
+    this.state = {}
+  }
   render() {
     return (
       <div styleName="sortWraper">
         <div styleName="sortHeader">
-          <NOEditableSearch />
+          <NOEditableSearch {...this.props} />
         </div>
         <SortMenu />
         <TabBar {...this.props} />

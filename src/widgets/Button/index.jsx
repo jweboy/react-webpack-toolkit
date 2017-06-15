@@ -18,7 +18,17 @@ class Button extends Component {
     }
   }
   handleClick = () => {
-    console.log('btn')
+    const {
+      handleClickRoute,
+      handleClickLogin,
+    } = this.props
+
+    if (typeof handleClickRoute === 'function') {
+      handleClickRoute()
+    }
+    if (typeof handleClickLogin === 'function') {
+      handleClickLogin()
+    }
   }
   render() {
     const {
@@ -36,6 +46,8 @@ class Button extends Component {
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
+  handleClickRoute: PropTypes.func,
+  handleClickLogin: PropTypes.func,
 }
 
 export default Button

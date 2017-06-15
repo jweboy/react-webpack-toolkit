@@ -1,29 +1,34 @@
-.sortMenu{
+.sortMenu {
   margin-top: .88rem;
   display: flex;
   flex-flow: row nowrap;
 }
-.sideLeft{
+
+.sideLeft {
   position: fixed;
   top: .9rem;
   bottom: 1.06rem;
   padding-bottom: .2rem;
   width: 1.62rem;
-  overflow: scroll; 
+  overflow: scroll;
   background: #fff;
   border-right: 1px solid #d9d9d9;
 }
-.sideRight{
+
+.sideRight {
   flex: 2;
   margin-left: 1.63rem;
   padding: .3rem;
   background: #fff;
 }
-.leftList{
+
+.leftList {
   // padding: .35rem 0;
   font-size: .24rem;
 }
-.leftItem{
+
+.leftItem {
+  position: relative;
   height: .5rem;
   line-height: .5rem;
   text-align: center;
@@ -31,7 +36,21 @@
   font-size: .27rem;
   margin-top: .4rem;
 }
-.rightBanner{
+
+.leftItemActive {
+  color: #ab2b2b;
+  font-size: .36rem; // &:before {
+  //   content: ' ';
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   bottom: 0;
+  //   width: .1rem;
+  //   background-color: #ab2b2b;
+  // }
+}
+
+.rightBanner {
   height: 1.92rem;
   background: center no-repeat #f4f4f4;
   background-size: cover;
@@ -40,33 +59,40 @@
   justify-content: center;
   align-items: center;
 }
-.rightBanner__desc{
+
+.rightBanner__desc {
   text-align: center;
   color: #fff;
   font-size: .27rem;
 }
-.rightHeader{
+
+.rightHeader {
   height: 1.08rem;
   line-height: 1.08rem;
   font-size: .24rem;
   color: #333;
   text-align: center;
 }
-.rightHeader__text{
+
+.rightHeader__text {
   position: relative;
 }
-.rightList{
+
+.rightList {
   display: flex;
   flex-flow: row wrap;
 }
-.rightList__item{
+
+.rightList__item {
   width: 33.33%;
 }
-.rightList__thumbnails{
+
+.rightList__thumbnails {
   display: block;
   margin: auto
 }
-.rightList__name{
+
+.rightList__name {
   height: .72rem;
   font-size: .24rem;
   color: #333;

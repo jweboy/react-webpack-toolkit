@@ -43,9 +43,9 @@
       {
         "functions": "ignore",
         "arrays": "ignore",
-        "objects": "always",
-        "imports": "always",
-        "exports": "always"
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline"
       }
     ],
     "no-trailing-spaces": 0,
