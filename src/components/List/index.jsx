@@ -46,7 +46,7 @@ class List extends Component {
     })
   }
   render() {
-    const { user, msg, } = this.state
+    const { user, msg } = this.state
 
     const status = user.isShow === 1 ? 'Processs' : 'Er00ro00r'
     const btnClass = cx({

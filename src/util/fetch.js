@@ -1,4 +1,4 @@
-const env = require('./env')
+// const env = require('./env')
 
 const fetchTimeOut = (fetchPromise, timeout = 10000) => {
   let timeoutFunc = null
