@@ -8,9 +8,9 @@ const App = () =>
   // console.info(location)
 
   (
-    <div>
+  <div>
       app
-    </div>
+  </div>
   )
 
 export default withRouter(App)

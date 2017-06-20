@@ -11,7 +11,7 @@ Flexible.prototype.apply = function (compiler) {
     compilation.plugin('html-webpack-plugin-before-html-processing', (htmlPluginData, callback) => {
       paths.map((path) => {
         console.log(htmlPluginData.assets.js)
-        htmlPluginData.assets.js.unshift(path)
+        return htmlPluginData.assets.js.unshift(path)
       })
       callback(null, htmlPluginData)
     })

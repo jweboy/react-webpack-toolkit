@@ -70,7 +70,7 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
         minifyJS: true, // 压缩行内script标签
         removeAttributeQuotes: true,
       },
-      chunksSortMode: 'dependency', //允许控制块在添加到页面之前的排序方式
+      chunksSortMode: 'dependency', // 允许控制块在添加到页面之前的排序方式
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

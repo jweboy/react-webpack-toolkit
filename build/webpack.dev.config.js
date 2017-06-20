@@ -4,9 +4,9 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 const config = require('../config')
-const {
-  resolvePath,
-} = require('./utils')
+// const {
+//   resolvePath,
+// } = require('./utils')
 const baseWebpackConfig = require('./webpack.base.config')
 
 const babelPolyfill = 'babel-polyfill'
