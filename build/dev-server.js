@@ -4,6 +4,7 @@ const browserSync = require('browser-sync')
 const express = require('express')
 const ora = require('ora')
 const winston = require('winston')
+const bodyParser = require('body-parser')
 const httpProxyMiddleware = require('http-proxy-middleware')
 const connectHistoryApiFallback = require('connect-history-api-fallback')
 
@@ -21,7 +22,6 @@ const port = config.dev.port
 const uiPort = config.dev.uiPort
 const uri = `http://localhost:${port}`
 const APIURL = 'https://easy-mock.com/mock/591534589aba4141cf221a76/react/biolerplate'
-// const router = express.Router()
 const app = express()
 
 // serve webpack bundle output
@@ -43,7 +43,7 @@ const hotMiddleware = require('webpack-hot-middleware')(compiler, {
 
 // TODO 设置项目接口代理、编写mock数据、线上json管理
 // 设置代理,跨域访问api资源
-const proxyMiddleware = httpProxyMiddleware({
+const proxyMiddleware = httpProxyMiddleware('/mock/*', {
   target: APIURL,
   changeOrigin: true,
   logLevel: 'debug',
@@ -55,14 +55,18 @@ const proxyMiddleware = httpProxyMiddleware({
 
     res.send('Something went wrong. And we are reporting a custom error message.')
   },
-  // router: {
-  //   '/home': APIURL,
-  // },
 })
+
+app.use(bodyParser.urlencoded({
+  extended: true,
+}))
+app.use(bodyParser.json())
+
 // 前端静态路由模拟数据请求
-// router.get('/api/data', (req, res) => (res.send(data)))
-// 在express中注册路由
-// app.use(router)
+app.post('/api/*', (req, res) => {
+  console.log('api res', req.body)
+  res.send(req.body)
+})
 
 // serve pure static assets
 const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
@@ -76,7 +80,7 @@ const browserSyncConfig = {
   },
   logPrefix: process.env.NODE_ENV,
   reloadOnRestart: true,
-  open: true,
+  open: false,
   server: {
     baseDir: '/src',
     middleware: [

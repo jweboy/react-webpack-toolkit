@@ -9,14 +9,8 @@ import styles from './index.scss'
 
 @CSSModules(styles)
 class LazyLoadList extends Component {
-  static defaultProps = {
-    height: 200,
-    offset: [-200, 0],
-    debounce: 200,
-  }
-  constructor(props) {
-    super(props)
-
+  constructor() {
+    super()
     this.state = {
       list: [],
     }
@@ -33,7 +27,7 @@ class LazyLoadList extends Component {
     } = this.props
 
     return (
-      <ul styleName="goods__list">
+      <ul styleName="list">
         {list.map((item, index) => (
           <LazyLoad
             {...this.props}
@@ -54,6 +48,12 @@ class LazyLoadList extends Component {
       </ul>
     )
   }
+}
+
+LazyLoadList.defaultProps = {
+  height: 200,
+  offset: [-200, 0],
+  debounce: 200,
 }
 
 LazyLoadList.propTypes = {

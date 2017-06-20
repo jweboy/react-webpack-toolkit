@@ -87,8 +87,12 @@ class TopBar extends Component {
           </div>
           <div styleName="name">{title}</div>
           <div styleName="right">
-            <FaSearch />
-            <FaShoppingCart />
+            <Link to="search">
+              <FaSearch />
+            </Link>
+            <Link to="/shopcart">
+              <FaShoppingCart />
+            </Link>
           </div>
         </div>
         <div styleName={isShow ? "menu" : "hidden"}>

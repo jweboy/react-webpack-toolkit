@@ -9,7 +9,6 @@ import styles from './index.scss'
 
 @CSSModules(styles)
 class PlaceHolder extends Component {
-
   render() {
     const {
       description,
@@ -18,20 +17,20 @@ class PlaceHolder extends Component {
       index,
     } = this.props
     return (
-      <li styleName={index % 2 !== 0 ? "goods__singular" : "goods__even"}>
-        <div styleName="goods__wrapper">
-          <div styleName="goods__itemHeader" >
-            {/* <img styleName="goods__itemLogo" src={loading} alt="" />*/}
+      <li styleName={index % 2 !== 0 ? "singular" : "even"}>
+        <div styleName="wrapper">
+          <div styleName="header" >
+            {/* <img styleName="itemLogo" src={loading} alt="" />*/}
             <div>
               <Loading />
             </div>
           </div>
-          <div styleName="goods__desc" >{description}</div>
-          <div styleName="goods__tagWraper">
-            <span styleName="goods__tag">毕业季特惠</span>
+          <div styleName="desc" >{description}</div>
+          <div styleName="tagWraper">
+            <span styleName="tag">毕业季特惠</span>
           </div>
-          <h5 styleName="goods___title">{title}</h5>
-          <div styleName="goods__price">
+          <h5 styleName="title">{title}</h5>
+          <div styleName="price">
             <span>¥</span>
             <span>{price}</span>
           </div>

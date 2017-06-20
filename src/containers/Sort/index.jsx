@@ -5,6 +5,7 @@ import CSSModules from 'react-css-modules'
 import TabBar from 'components/TabBar'
 import NOEditableSearch from 'widgets/NoEditableSearch'
 import SortMenu from 'components/SortMenu'
+import fetchRequest from 'util/fetch'
 
 import styles from './index.scss'
 
@@ -20,15 +21,28 @@ class SortPage extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      menuList: [],
+    }
+  }
+  componentDidMount() {
+    fetchRequest('/mock/menu')
+      .then((res) => {
+        this.setState({
+          menuList: res.menu,
+        })
+      })
   }
   render() {
+    const {
+      menuList,
+    } = this.state
     return (
       <div styleName="sortWraper">
         <div styleName="sortHeader">
           <NOEditableSearch {...this.props} />
         </div>
-        <SortMenu />
+        <SortMenu list={menuList} />
         <TabBar {...this.props} />
       </div>
     )

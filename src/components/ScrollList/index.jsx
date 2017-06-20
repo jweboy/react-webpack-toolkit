@@ -9,28 +9,13 @@ import styles from './index.scss'
 
 @CSSModules(styles)
 class ScrollList extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.state = {
       list: [],
     }
   }
-  // componentWillReceiveProps(nextProps) {
-  //   console.log(nextProps)
-  //   this.setState({
-  //     list: nextProps.list,
-  //   })
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   // const {
-  //   //   list,
-  //   // } = this.state
-
-  //   // return nextState.goodsList.gid !== goodsList.gid
-  //   return false
-  // }
   render() {
     const {
       list,
@@ -42,7 +27,10 @@ class ScrollList extends Component {
           list.map(item => (
             <div styleName="goods__floor" key={item.gid}>
               <h3 styleName="goods__title">{item.name}</h3>
-              <LazyLoadList list={item.list} />
+              <LazyLoadList
+                list={item.list}
+                key={item.gid}
+              />
             </div>
           ))
         }

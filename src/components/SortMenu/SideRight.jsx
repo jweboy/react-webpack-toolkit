@@ -3,14 +3,25 @@ import CSSModules from 'react-css-modules'
 import {
   Link,
 } from 'react-router-dom'
+import {
+  connect,
+} from 'react-redux'
 
 import thumbnails from 'assets/thumbnails.png'
 import styles from './index.scss'
+import sort from '../../actions/sort'
 
 
 @CSSModules(styles)
 class SideRight extends Component {
+  componentWillReceiveProps(nextProps) {
+    console.error(nextProps)
+  }
+  componentDidMount() {
+    console.error(this.props)
+  }
   render() {
+    console.error(this.props.id)
     return (
       <div styleName="sideRight">
         <div styleName="rightBanner">
@@ -39,4 +50,10 @@ class SideRight extends Component {
   }
 }
 
-export default SideRight
+export default connect(state =>
+  // console.log(state)
+  ({
+    id: state.id,
+  }), {
+  sort,
+})(SideRight)

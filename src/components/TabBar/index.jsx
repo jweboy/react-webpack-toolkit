@@ -67,7 +67,7 @@ class TabBar extends Component {
   // }
   render() {
     const {
-        currTab,
+      currTab,
     } = this.props
 
     return (

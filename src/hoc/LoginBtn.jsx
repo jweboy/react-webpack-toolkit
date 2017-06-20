@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+
+import fetchRequest from 'util/fetch'
 
 export default function loginBtn(WrappedComponent) {
   return class extends Component {
@@ -9,6 +11,13 @@ export default function loginBtn(WrappedComponent) {
     }
     handleLogin = () => {
       console.log('login')
+      fetchRequest('/api/login', 'POST', {
+        username: 'jweboy',
+        password: 'test',
+      })
+        .then(((res) => {
+          console.log(res)
+        }))
     }
     render() {
       return (

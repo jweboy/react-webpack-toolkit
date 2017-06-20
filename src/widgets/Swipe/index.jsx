@@ -2,15 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import CSSModules from 'react-css-modules'
-import {
-  Link,
-} from 'react-router-dom'
 
-import testPic from 'assets/test.jpg'
-
+import SliderItem from './SliderItem'
 import styles from './index.scss'
-// import '../../../node_modules/slick-carousel/slick/slick.css'
-// import '../../../node_modules/slick-carousel/slick/slick-theme.css'
 
 @CSSModules(styles)
 class Swipe extends Component {
@@ -24,8 +18,8 @@ class Swipe extends Component {
   static propTypes = {
     data: PropTypes.array.isRequired,
   }
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.state = {
       list: [],
@@ -36,11 +30,11 @@ class Swipe extends Component {
       list: nextProps.data,
     })
   }
-
   render() {
     const {
       list,
     } = this.state
+
     return (
       <div>
         {
@@ -48,12 +42,10 @@ class Swipe extends Component {
             <Slider {...this.props}>
               {
                 list.map(item => (
-                  <Link to="/detail" key={`banner_${item.bid}`}>
-                    <img
-                      src={item.url ? item.url : testPic}
-                      styleName="item"
-                    />
-                  </Link>
+                  <div key={item.bid}>
+                    {/* 包裹一层div fix Cannot read property 'getBoundingClientRect' of null */}
+                    <SliderItem {...item} />
+                  </div>
                 ))
               }
             </Slider> :

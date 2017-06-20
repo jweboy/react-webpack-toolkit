@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
+import {
+  connect,
+} from 'react-redux'
 
 import {
   loginBtn,
@@ -22,6 +25,7 @@ class Login extends Component {
       password,
       button,
     } = this.props
+
     return (
       <div styleName="login">
         <TopBar />
@@ -62,4 +66,4 @@ Login.propTypes = {
   button: PropTypes.object.isRequired,
 }
 
-export default Login
+export default connect()(Login)

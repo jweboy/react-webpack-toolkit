@@ -5,6 +5,10 @@ import {
   Redirect,
   HashRouter as Router,
 } from 'react-router-dom'
+// import {
+//   syncHistoryWithStore,
+// } from 'react-router-redux'
+
 
 import HomePage from 'containers/Home'
 import SortPage from 'containers/Sort'

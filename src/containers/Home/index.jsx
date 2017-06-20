@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import {
-  RouteTransition,
-} from 'react-router-transition'
 import CSSModules from 'react-css-modules'
 
 import TabBar from 'components/TabBar'
@@ -11,18 +8,17 @@ import NoEditableSearch from 'widgets/NoEditableSearch'
 import Loading from 'widgets/LoadingStretch'
 import fetchRequest from 'util/fetch'
 import Swipe from 'widgets/Swipe'
+// import transition from 'util/transition'
 
-import transition from 'util/transition'
-import 'styles/reset.scss'
 import styles from './index.scss'
 
 @CSSModules(styles)
 class HomePage extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.state = {
-      goodsList: [],
+      goods: [],
       banner: [],
       loading: true,
     }
@@ -32,10 +28,10 @@ class HomePage extends Component {
       loading,
     } = this.state
 
-    fetchRequest('/home')
+    fetchRequest('/mock/home')
       .then((res) => {
         this.setState({
-          goodsList: res.goodsList,
+          goods: res.goods,
           loading: !loading,
           banner: res.banner,
         })
@@ -47,14 +43,14 @@ class HomePage extends Component {
     } = this.props
 
     const {
-      goodsList,
+      goods,
       loading,
       banner,
     } = this.state
 
-    const {
-      fade,
-    } = transition
+    // const {
+    //   fade,
+    // } = transition
 
     return (
       <div styleName="container">
@@ -65,12 +61,7 @@ class HomePage extends Component {
             <div styleName="loading">
               <Loading />
             </div> :
-            <RouteTransition
-              pathname="/home"
-              {...fade}
-            >
-              <ScrollList list={goodsList} />
-            </RouteTransition>
+            <ScrollList list={goods} />
         }
         <TabBar currTab={currTab} />
       </div>
