@@ -1,17 +1,10 @@
 import React, { Component } from 'react'
-import {
-  RouteTransition,
-} from 'react-router-transition'
 import CSSModules from 'react-css-modules'
 
-import transition from 'util/transition'
 import TopBar from 'components/TopBar'
+import CartTab from 'components/CartTab'
 
 import styles from './index.scss'
-
-const {
-  slideLeft,
-} = transition
 
 @CSSModules(styles)
 class Detail extends Component {
@@ -19,14 +12,9 @@ class Detail extends Component {
     return (
       <div>
         <TopBar />
-        <RouteTransition
-          pathname={location.pathname}
-          {...slideLeft}
-        >
-          <div styleName="main">
-            内容页部分
-          </div>
-        </RouteTransition>
+        <div styleName="main">
+          <CartTab />
+        </div>
       </div>
     );
   }
