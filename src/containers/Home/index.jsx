@@ -40,6 +40,7 @@ class HomePage extends Component {
   render() {
     const {
       currTab,
+      swipeConfig,
     } = this.props
 
     const {
@@ -55,7 +56,7 @@ class HomePage extends Component {
     return (
       <div styleName="container">
         <NoEditableSearch {...this.props} />
-        <Swipe data={banner} />
+        <Swipe data={banner} {...swipeConfig} />
         {
           loading ?
             <div styleName="loading">
@@ -71,9 +72,13 @@ class HomePage extends Component {
 
 HomePage.defaultProps = {
   currTab: 'homeTab',
+  swipeConfig: {
+    dots: true,
+  },
 }
 HomePage.propTypes = {
   currTab: PropTypes.string.isRequired,
+  swipeConfig: PropTypes.object.isRequired,
 }
 
 export default HomePage

@@ -90,7 +90,8 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
       from: path.resolve(__dirname, '../static'),
       to: config.build.assetsSubDirectory,
       ignore: ['.*'],
-    }])
+    }]),
+    new webpack.optimize.ModuleConcatenationPlugin(), // v3 -> 作用域提升
   ],
 })
 

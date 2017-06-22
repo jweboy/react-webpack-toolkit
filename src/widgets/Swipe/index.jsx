@@ -9,11 +9,10 @@ import styles from './index.scss'
 @CSSModules(styles)
 class Swipe extends Component {
   static defaultProps = {
-    dots: true,
     infinite: false,
     speed: 500,
     autoplay: true,
-    lazyload: true,
+    lazyLoad: true,
   }
   static propTypes = {
     data: PropTypes.array.isRequired,
@@ -23,23 +22,29 @@ class Swipe extends Component {
 
     this.state = {
       list: [],
+      dots: true,
     }
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
       list: nextProps.data,
+      dots: nextProps.dots,
     })
   }
   render() {
     const {
       list,
+      dots,
     } = this.state
 
     return (
       <div>
         {
           list.length > 0 ?
-            <Slider {...this.props}>
+            <Slider
+              {...this.props}
+              dots={dots}
+            >
               {
                 list.map(item => (
                   <div key={item.bid}>
