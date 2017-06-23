@@ -68,6 +68,10 @@ app.post('/api/*', (req, res) => {
   res.send(req.body)
 })
 
+app.post('/report', (req, res) => {
+  res.send(req.body)
+})
+
 // serve pure static assets
 const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))

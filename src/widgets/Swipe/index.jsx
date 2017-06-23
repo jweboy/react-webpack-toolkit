@@ -61,4 +61,8 @@ class Swipe extends Component {
   }
 }
 
+Swipe.propTypes = {
+  dots: PropTypes.bool.isRequired,
+}
+
 export default Swipe
