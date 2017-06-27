@@ -14,14 +14,14 @@ import sort from '../../actions/sort'
 
 @CSSModules(styles)
 class SideRight extends Component {
-  componentWillReceiveProps(nextProps) {
-    console.error(nextProps)
-  }
   componentDidMount() {
     console.error(this.props)
   }
+  componentWillReceiveProps(nextProps) {
+    console.error(nextProps)
+  }
   render() {
-    console.error(this.props.id)
+    // console.error(this.props.id)
     return (
       <div styleName="sideRight">
         <div styleName="rightBanner">

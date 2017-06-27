@@ -20,7 +20,7 @@ html {
 body {
   user-select: none;
   line-height: 1.5;
-  font-size: .32rem;
+  font-size: 0.32rem;
   background-color: #f5f5f9;
   position: relative;
   font-family: PingFangSC-Light, helvetica, 'Heiti SC';
@@ -54,7 +54,7 @@ strong {
 
 ul,
 li {
-  list-style: none
+  list-style: none;
 }
 
 a {
@@ -72,5 +72,5 @@ button {
 }
 
 button {
-  border: none
+  border: none;
 }

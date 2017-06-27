@@ -1,3 +1,4 @@
+const path = require('path')
 const eslintFriendlyFormatter = require('eslint-friendly-formatter')
 const config = require('../config')
 const {
@@ -5,12 +6,15 @@ const {
   assetsPath,
 } = require('./utils')
 
+const rootPath = path.join(__dirname, '../')
 const srcPath = resolvePath('src')
 const nodeModulesPath = resolvePath('node_modules')
-const testPath = resolvePath('test')
+const testPath = resolvePath('./src/test')
 const imgPath = resolvePath('./src/assets')
 
+
 module.exports = {
+  context: rootPath,
   entry: [
     './src/index', // 入口文件
   ],

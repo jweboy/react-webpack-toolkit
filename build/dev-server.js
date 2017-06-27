@@ -7,9 +7,14 @@ const winston = require('winston')
 const bodyParser = require('body-parser')
 const httpProxyMiddleware = require('http-proxy-middleware')
 const connectHistoryApiFallback = require('connect-history-api-fallback')
+const easyMonitor = require('easy-monitor')
 
 const webpackConfig = require('./webpack.dev.config')
 const config = require('../config')
+
+// 添加node性能检测工具
+easyMonitor('recat-webpack-biolerplate')
+
 // const data = require('../mock/data.json')
 
 // declare the development environment variable

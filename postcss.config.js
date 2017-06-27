@@ -1,13 +1,13 @@
 const autoprefixer = require('autoprefixer');
+// const postcssReporter = require('postcss-reporter')
 
 module.exports = {
   parser: 'postcss-scss',
   sourceMap: true,
   plugins: [
-    autoprefixer({
-      browsers: [
-        'last 2 version',
-      ],
-    })
+    autoprefixer(), // 迁移配置 -> .browserslistrc
+    // postcssReporter({
+    //   clearMessages: true,
+    // })
   ],
 };
