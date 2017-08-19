@@ -1,5 +1,5 @@
 const path = require('path')
-const eslintFriendlyFormatter = require('eslint-friendly-formatter')
+// const eslintFriendlyFormatter = require('eslint-friendly-formatter')
 const config = require('../config')
 const {
   resolvePath,
@@ -52,19 +52,21 @@ module.exports = {
       loader: 'babel-loader',
       exclude: nodeModulesPath,
       include: [srcPath, testPath],
-    }, {
-      test: /\.js[x]$/,
-      enforce: 'pre',
-      use: [{
-        loader: 'eslint-loader',
-        options: {
-          fix: true,
-          formatter: eslintFriendlyFormatter,
-        },
-      }],
-      exclude: nodeModulesPath,
-      include: [srcPath, testPath],
-    }, {
+    },
+    // {
+    //   test: /\.js[x]$/,
+    //   enforce: 'pre',
+    //   use: [{
+    //     loader: 'eslint-loader',
+    //     options: {
+    //       fix: true,
+    //       formatter: eslintFriendlyFormatter,
+    //     },
+    //   }],
+    //   exclude: nodeModulesPath,
+    //   include: [srcPath, testPath],
+    //   },
+    {
       test: /\.(jpe?g|png|gif|svg|ico)(\?.*)?$/,
       include: imgPath,
       exclude: nodeModulesPath,

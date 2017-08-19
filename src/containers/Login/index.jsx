@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
 import { connect } from 'react-redux'
 import { setLogin } from 'redux/form/login'
-import TabBar from 'components/TabBar'
-import TopBar from 'components/TopBar'
+import { TabBar, TopBar, Toastr } from 'components'
 import { Button, Input } from 'widgets'
 import fetchRequest from 'util/fetch'
 import styles from './index.scss'
@@ -15,6 +14,7 @@ class Login extends Component {
   state = {
     form: {},
     btnActive: false,
+    showErrMsg: false,
   }
   getInputValue = (obj) => {
     console.info(obj);
@@ -25,16 +25,28 @@ class Login extends Component {
     }))
   }
   handleLogin = () => {
-    const { form } = this.state;
-    fetchRequest('/api/login', 'POST', form)
-      .then(((res) => {
-        // console.log(res, this.props)
-        this.props.setLogin(res)
-      }))
+    const { form } = this.state
+    const keys = Object.keys(form)
+    let showError = null
+    if (keys.length < 2) {
+      showError = true
+      this.setState({ showErrMsg: showError })
+      return
+    }
+    if (keys.length === 2) {
+      showError = false
+      this.setState({ showErrMsg: showError })
+
+      fetchRequest('/api/login', 'POST', form)
+        .then(((res) => {
+          // console.log(res, this.props)
+          this.props.setLogin(res)
+        }))
+    }
   }
   render() {
     const { currTab, username, password, button } = this.props
-    const { form, btnActive } = this.state;
+    const { form, btnActive, showErrMsg } = this.state;
 
     return (
       <div styleName="login">
@@ -53,6 +65,7 @@ class Login extends Component {
           </div>
           <TabBar currTab={currTab} />
         </form>
+        <Toastr enter={showErrMsg} leave={!showErrMsg} />
       </div>
     )
   }
