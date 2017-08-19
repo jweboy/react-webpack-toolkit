@@ -2,5 +2,9 @@ dist/*
 
 node_modules/*
 
+.idea
+
 yarn-error.log
 yarn.lock
+
+npm-debug.*

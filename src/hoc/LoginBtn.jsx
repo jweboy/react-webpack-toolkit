@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import fetchRequest from 'util/fetch'
+// import fetchRequest from 'util/fetch'
 
 export default function loginBtn(WrappedComponent) {
   return class extends Component {
@@ -10,14 +10,11 @@ export default function loginBtn(WrappedComponent) {
       text: '登陆',
     }
     handleLogin = () => {
-      console.log('login')
-      fetchRequest('/api/login', 'POST', {
-        username: 'jweboy',
-        password: 'test',
-      })
-        .then(((res) => {
-          console.log(res)
-        }))
+      // const { loginForm } = this.props;
+      // fetchRequest('/api/login', 'POST', loginForm)
+      //   .then(((res) => {
+      //     console.log(res)
+      //   }))
     }
     render() {
       return (

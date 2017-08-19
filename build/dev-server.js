@@ -7,13 +7,14 @@ const winston = require('winston')
 const bodyParser = require('body-parser')
 const httpProxyMiddleware = require('http-proxy-middleware')
 const connectHistoryApiFallback = require('connect-history-api-fallback')
-const easyMonitor = require('easy-monitor')
+// const easyMonitor = require('easy-monitor')
+const md5 = require('md5')
 
 const webpackConfig = require('./webpack.dev.config')
 const config = require('../config')
 
 // 添加node性能检测工具
-easyMonitor('recat-webpack-biolerplate')
+// easyMonitor('recat-webpack-biolerplate')
 
 // const data = require('../mock/data.json')
 
@@ -68,9 +69,14 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 // 前端静态路由模拟数据请求
-app.post('/api/*', (req, res) => {
+app.post('/api/login', (req, res) => {
   console.log('api res', req.body)
-  res.send(req.body)
+  const { body } = req
+  let params = ''
+
+  Object.keys(body).map(item => (params += body[item]))
+  body.token = md5(params);
+  res.send(body)
 })
 
 app.post('/report', (req, res) => {
@@ -89,7 +95,7 @@ const browserSyncConfig = {
   },
   logPrefix: process.env.NODE_ENV,
   reloadOnRestart: true,
-  open: false,
+  open: true,
   server: {
     baseDir: '/src',
     middleware: [

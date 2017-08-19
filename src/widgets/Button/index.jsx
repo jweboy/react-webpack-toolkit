@@ -17,37 +17,29 @@ class Button extends Component {
 
     }
   }
-  handleClick = () => {
-    const {
-      handleClickRoute,
-      handleClickLogin,
-    } = this.props
-
-    if (typeof handleClickRoute === 'function') {
-      handleClickRoute()
-    }
-    if (typeof handleClickLogin === 'function') {
-      handleClickLogin()
-    }
+  shouldComponentUpdate = nextProps => nextProps.active !== this.props.active
+  handleClick = (e) => {
+    this.props.onClick(e);
   }
   render() {
-    const {
-      text,
-      isActive,
-    } = this.props
+    const { text, active } = this.props
     return (
       <div styleName={''} onClick={this.handleClick}>
-        <a styleName={isActive ? "btn active" : "btn"}>{text}</a>
+        <a styleName={active ? "btn active" : "btn"}>{text}</a>
       </div >
     )
   }
 }
+Button.defaultProps = {
+  text: '按钮文字',
+  active: false,
+  onClick: () => { },
+}
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
-  handleClickRoute: PropTypes.func,
-  handleClickLogin: PropTypes.func,
+  active: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default Button

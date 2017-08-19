@@ -12,48 +12,45 @@ class Input extends Component {
     super(props)
 
     this.state = {
-      isShow: false,
       value: '',
+      clearVisible: false,
     }
   }
+  checkEmptyValue = () => (this.state.value === '')
+  checkFormatValue = () => (this.state.value.trim())
   handleChange = (e) => {
-    const value = e.target.value
-    const {
-      isShow,
-    } = this.state
+    const { target: { value, name } } = e
 
-    if (value.trim() !== '') {
-      this.setState({
-        isShow: !isShow,
-        value,
-      })
+    if (this.props.mapPropsToFields) {
+      this.props.mapPropsToFields({
+        [name]: this.checkFormatValue(value),
+      });
     }
+    this.setState({ value, clearVisible: true });
   }
+  // TODO 清除按钮事件会同时出发onBlur事件，需要解决方案
   handleClear = () => {
-    const {
-      isShow,
-    } = this.state
-
-    this.setState({
-      value: '',
-      isShow: !isShow,
-    })
+    console.warn('clear');
+    // this.setState({
+    //   value: '23',
+    //   // clearVisible: false,
+    // })
+  }
+  handleOnFocus = () => {
+    console.warn('focus');
+    this.setState({ clearVisible: true });
+  }
+  handleOnBlur = () => {
+    console.warn('blur');
+    this.setState({ clearVisible: false });
   }
   render() {
-    // console.log(this.props)
-    const {
-      type,
-      name,
-      placeholder,
-    } = this.props
+    const { type, name, placeholder } = this.props
+    const { value, clearVisible } = this.state
 
-    const {
-      isShow,
-      value,
-    } = this.state
-
+    // console.info(value, clearVisible)
     return (
-      <div>
+      <div >
         <div styleName="box">
           <input
             styleName="input"
@@ -62,8 +59,10 @@ class Input extends Component {
             placeholder={placeholder}
             value={value}
             onChange={this.handleChange}
+            onFocus={this.handleOnFocus}
+            onBlur={this.handleOnBlur}
           />
-          <i styleName={isShow ? "clear" : "hidden"} onClick={this.handleClear}>
+          <i styleName={clearVisible ? "clear" : "hidden"} onClick={this.handleClear}>
             <FaClose />
           </i>
         </div>
@@ -73,10 +72,24 @@ class Input extends Component {
   }
 }
 
+Input.defaultProps = {
+  type: 'text',
+  name: 'input',
+  placeholder: '请输入相关内容',
+  mapPropsToFields: () => { },
+}
+
 Input.propTypes = {
   type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  name: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  placeholder: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  mapPropsToFields: PropTypes.func.isRequired,
 }
 
 export default Input

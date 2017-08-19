@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const config = require('../config')
 // const {
@@ -50,5 +51,6 @@ module.exports = merge(baseWebpackConfig, {
     new FriendlyErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HTMLWebpackPlugin(config.dev.template),
+    new DashboardPlugin(),
   ],
 })

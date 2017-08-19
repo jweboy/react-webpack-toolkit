@@ -2,7 +2,7 @@ function Flexible(options) {
   this.options = options
 }
 
-Flexible.prototype.apply = function (compiler) {
+Flexible.prototype.apply = function flexible(compiler) {
   const paths = this.options.paths
 
   compiler.plugin('compilation', (compilation) => {
