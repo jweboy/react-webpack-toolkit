@@ -1,25 +1,32 @@
 import React from 'react'
-import {
-  render,
-} from 'react-dom'
-import {
-  AppContainer,
-} from 'react-hot-loader'
-import {
-  Provider,
-} from 'react-redux'
-// import {
-//   syncHistoryWithStore,
-// } from 'react-router-redux'
+import { render } from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import logger from 'redux-logger'
 
 import ConsoleErrorReporter from 'widgets/Error'
 import 'styles/reset.scss'
 
 import App from './routes'
-import store from './store'
+import reducers from './redux/allReducers'
 
 // 获取装载组件的根节点
 const mountNode = document.getElementById('root')
+
+let finalCreateStore = null
+const middlewares = [logger]
+
+if (window.devToolsExtension) {
+  finalCreateStore = compose(
+    applyMiddleware(...middlewares),
+    window.devToolsExtension(),
+  )(createStore)
+} else {
+  finalCreateStore = compose(applyMiddleware(...middlewares)(createStore))
+}
+
+const store = finalCreateStore(reducers)
 
 // 定义根组件渲染的函数
 const rootRender = (Component) => {

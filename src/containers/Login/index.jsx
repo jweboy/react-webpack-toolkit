@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
 import { connect } from 'react-redux'
-
+import { setLogin } from 'redux/form/login'
 import TabBar from 'components/TabBar'
 import TopBar from 'components/TopBar'
 import { Button, Input } from 'widgets'
 import fetchRequest from 'util/fetch'
 import styles from './index.scss'
 
+@connect(() => ({}), { setLogin })
 @CSSModules(styles)
 class Login extends Component {
   state = {
@@ -24,11 +25,11 @@ class Login extends Component {
     }))
   }
   handleLogin = () => {
-    console.warn('login');
     const { form } = this.state;
     fetchRequest('/api/login', 'POST', form)
       .then(((res) => {
-        console.log(res)
+        // console.log(res, this.props)
+        this.props.setLogin(res)
       }))
   }
   render() {
@@ -71,12 +72,14 @@ Login.defaultProps = {
   button: {
     text: '登陆',
   },
+  setLogin: () => { },
 }
 Login.propTypes = {
   currTab: PropTypes.string.isRequired,
   username: PropTypes.object.isRequired,
   password: PropTypes.object.isRequired,
   button: PropTypes.object.isRequired,
+  setLogin: PropTypes.func.isRequired,
 }
 
 export default connect()(Login)
