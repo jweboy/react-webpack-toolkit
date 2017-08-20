@@ -99,6 +99,7 @@
   "dependencies": {
     "assets": "^2.1.0",
     "autoprefixer": "^7.1.1",
+    "codacy-coverage": "^2.0.2",
     "md5": "^2.2.1",
     "mongodb": "^2.2.31",
     "placeholder.js": "^3.1.0",
