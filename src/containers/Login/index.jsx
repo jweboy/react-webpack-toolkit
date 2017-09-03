@@ -114,6 +114,9 @@ Login.propTypes = {
   password: PropTypes.object.isRequired,
   button: PropTypes.object.isRequired,
   setLogin: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    history: PropTypes.func,
+  }),
 }
 
 export default Login
