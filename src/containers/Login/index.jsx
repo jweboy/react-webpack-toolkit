@@ -115,7 +115,7 @@ Login.propTypes = {
   button: PropTypes.object.isRequired,
   setLogin: PropTypes.func.isRequired,
   history: PropTypes.shape({
-    history: PropTypes.func,
+    push: PropTypes.func,
   }),
 }
 
