@@ -24,3 +24,8 @@
 .forgetpwd{
   composes: text
 }
+.loginBtn{
+  padding: 15px 0;
+  display: flex;
+  justify-content: flex-end;
+}

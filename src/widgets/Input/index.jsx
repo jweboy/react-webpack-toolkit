@@ -14,19 +14,21 @@ class Input extends Component {
     this.state = {
       value: '',
       clearVisible: false,
+      size: 1,
     }
   }
   checkEmptyValue = () => (this.state.value === '')
   checkFormatValue = () => (this.state.value.trim())
   handleChange = (e) => {
     const { target: { value, name } } = e
-
     if (this.props.mapPropsToFields) {
-      this.props.mapPropsToFields({
-        [name]: this.checkFormatValue(value),
-      });
+      this.props.mapPropsToFields({ [name]: value });
     }
-    this.setState({ value, clearVisible: true });
+    this.setState({
+      value,
+      clearVisible: true,
+      size: value.length,
+    });
   }
   // TODO 清除按钮事件会同时出发onBlur事件，需要解决方案
   handleClear = () => {
@@ -44,23 +46,32 @@ class Input extends Component {
     console.warn('blur');
     this.setState({ clearVisible: false });
   }
+  renderPlaceHolder() {
+    if (this.state.value) {
+      return null;
+    }
+    return (
+      <div>{this.props.placeholder}</div>
+    )
+  }
   render() {
-    const { type, name, placeholder } = this.props
-    const { value, clearVisible } = this.state
+    const { type, name } = this.props
+    const { value, clearVisible, size } = this.state
 
-    // console.info(value, clearVisible)
     return (
       <div >
         <div styleName="box">
+          {this.renderPlaceHolder()}
           <input
             styleName="input"
             type={type}
             name={name}
-            placeholder={placeholder}
             value={value}
             onChange={this.handleChange}
             onFocus={this.handleOnFocus}
             onBlur={this.handleOnBlur}
+            autoComplete={'off'}
+            size={size}
           />
           <i styleName={clearVisible ? "clear" : "hidden"} onClick={this.handleClear}>
             <FaClose />

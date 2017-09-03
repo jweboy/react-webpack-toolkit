@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import TextField from 'material-ui/TextField'
+import Button from 'material-ui/Button'
 import CSSModules from 'react-css-modules'
 import { connect } from 'react-redux'
 import { setLogin } from 'redux/form/login'
-import { TabBar, TopBar, Toastr } from 'components'
-import { Button, Input } from 'widgets'
+import { TabBar, TopBar } from 'components'
+// import { Button, Input } from 'widgets'
 import fetchRequest from 'util/fetch'
 import styles from './index.scss'
 
@@ -12,60 +14,73 @@ import styles from './index.scss'
 @CSSModules(styles)
 class Login extends Component {
   state = {
-    form: {},
-    btnActive: false,
-    showErrMsg: false,
+    form: {
+      username: '',
+      password: '',
+    },
+    error: {
+      usernameError: false,
+      passwordError: false,
+    },
   }
-  getInputValue = (obj) => {
-    console.info(obj);
-    const key = Object.keys(obj).length
+  /* eslint no-continue: 0 */
+  checkLoginError() {
+    const { form } = this.state
+    const error = {}
+    for (const key in form) {
+      if (!form[key]) {
+        Object.assign(error, { [`${key}Error`]: true });
+        continue;
+      }
+    }
+    return error;
+  }
+  handleBtnLogin = () => {
+    const error = this.checkLoginError()
+    if (error && Object.keys(error).length) {
+      this.setState({ error })
+      return;
+    }
+    fetchRequest('/api/login', 'POST', this.state.form)
+      .then(((res) => {
+        this.props.history.push('/home')
+        this.props.setLogin(res)
+      }))
+  }
+  handleInputBlur = (e) => {
+    const { target: { name, value } } = e
     this.setState(({ form }) => ({
-      form: Object.assign(form, obj),
-      btnActive: key > 0,
+      form: Object.assign(form, { [name]: value }),
+      error: { [`${name}Error`]: !value },
     }))
   }
-  handleLogin = () => {
-    const { form } = this.state
-    const keys = Object.keys(form)
-    let showError = null
-    if (keys.length < 2) {
-      showError = true
-      this.setState({ showErrMsg: showError })
-      return
-    }
-    if (keys.length === 2) {
-      showError = false
-      this.setState({ showErrMsg: showError })
-
-      fetchRequest('/api/login', 'POST', form)
-        .then(((res) => {
-          // console.log(res, this.props)
-          this.props.setLogin(res)
-        }))
-    }
-  }
   render() {
-    const { currTab, username, password, button } = this.props
-    const { form, btnActive, showErrMsg } = this.state;
+    const {
+      currTab,
+      username,
+      password,
+      button: { text, ...otherProps },
+    } = this.props
+    const {
+      form,
+      error: { usernameError, passwordError },
+    } = this.state;
 
     return (
       <div styleName="login">
         <TopBar />
         <form action="" styleName="form">
-          <Input {...username} mapPropsToFields={this.getInputValue} />
-          <Input {...password} mapPropsToFields={this.getInputValue} />
-          <Button
-            {...button}
-            onClick={this.handleLogin}
-            active={btnActive}
-          />
+          <TextField error={usernameError} {...username} onBlur={this.handleInputBlur} />
+          <TextField error={passwordError} {...password} onBlur={this.handleInputBlur} />
+          <div styleName="loginBtn">
+            <Button {...otherProps} onClick={this.handleBtnLogin}>{text}</Button>
+          </div>
           <div styleName="unlogin">
             <a href="#" styleName="register">注册账号</a>
             <a href="#" styleName="forgetpwd">忘记密码</a>
           </div>
           <TabBar currTab={currTab} />
         </form>
-        <Toastr enter={showErrMsg} leave={!showErrMsg} />
       </div>
     )
   }
@@ -73,17 +88,23 @@ class Login extends Component {
 Login.defaultProps = {
   currTab: 'centerTab',
   username: {
+    label: '账号',
+    placeholder: '请输入账号',
+    fullWidth: true,
     type: 'text',
     name: 'username',
-    placeholder: '请输入账号',
   },
   password: {
+    label: '密码',
+    placeholder: '请输入密码',
+    fullWidth: true,
     type: 'password',
     name: 'password',
-    placeholder: '请输入密码',
   },
   button: {
     text: '登陆',
+    color: 'primary',
+    raised: true,
   },
   setLogin: () => { },
 }
@@ -95,4 +116,4 @@ Login.propTypes = {
   setLogin: PropTypes.func.isRequired,
 }
 
-export default connect()(Login)
+export default Login

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import formLogin from './form/login'
+import userInfo from './form/login'
 
 export default combineReducers({
-  formLogin,
+  userInfo,
 })
