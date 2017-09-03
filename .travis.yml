@@ -11,4 +11,4 @@ branches:
   only:
     - feature
 script:
-    - npm run lint
+    - npm run linter
