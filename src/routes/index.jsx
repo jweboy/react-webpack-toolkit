@@ -33,8 +33,8 @@ const AppRouter = () => (
         <Route exact path="/" render={() => (< Redirect to="/home" />)} />
         <Route path="/home" component={HomePage} />
         <Route path="/sort" component={SortPage} />
-        <Route path="/shopcart" component={ShopCart} />
-        <Route path="/personcenter" component={Login} />
+        <Route path="/shop" component={ShopCart} />
+        <Route path="/center" component={Login} />
         <Route path="/detail" component={Detail} />
         <Route path="/search" component={SearchPage} />
         <Route component={NotMatch} />
@@ -43,6 +43,5 @@ const AppRouter = () => (
     />
   </Router>
 )
-
 
 export default AppRouter

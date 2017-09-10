@@ -55,7 +55,7 @@ class HomePage extends Component {
 
     return (
       <div styleName="container">
-        <NoEditableSearch {...this.props} />
+        <NoEditableSearch />
         <Swipe data={banner} {...swipeConfig} />
         {
           loading ?

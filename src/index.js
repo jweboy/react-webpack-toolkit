@@ -2,8 +2,11 @@ import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import logger from 'redux-logger'
+import { routerReducer, routerMiddleware } from 'react-router-redux'
+import thunk from 'redux-thunk'
+// import createHistory from 'history/createBrowserHistory'
 
 import ConsoleErrorReporter from 'widgets/Error'
 import 'styles/reset.scss'
@@ -14,19 +17,36 @@ import reducers from './redux/allReducers'
 // 获取装载组件的根节点
 const mountNode = document.getElementById('root')
 
-let finalCreateStore = null
-const middlewares = [logger]
+// let finalCreateStore = null
+// react-router 相关的中间件
+// const history = createHistory()
+// const middleware = routerMiddleware(history)
 
-if (window.devToolsExtension) {
-  finalCreateStore = compose(
-    applyMiddleware(...middlewares),
-    window.devToolsExtension(),
-  )(createStore)
-} else {
-  finalCreateStore = compose(applyMiddleware(...middlewares)(createStore))
-}
+const middlewares = [routerMiddleware, logger]
 
-const store = finalCreateStore(reducers)
+// if (window.devToolsExtension) {
+//   finalCreateStore = compose(
+//     applyMiddleware(...middlewares),
+//     window.devToolsExtension(),
+//   )(createStore)
+// } else {
+//   finalCreateStore = compose(applyMiddleware(...middlewares)(createStore))
+// }
+
+// const store = finalCreateStore(reducers)
+
+const store = createStore(
+  combineReducers({
+    ...reducers,
+    router: routerReducer,
+  }),
+  compose(
+    applyMiddleware(...middlewares, thunk),
+    // 开启 redux devtool
+    window.devToolsExtension &&
+    window.devToolsExtension()
+  )
+)
 
 // 定义根组件渲染的函数
 const rootRender = (Component) => {

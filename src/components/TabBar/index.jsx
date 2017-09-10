@@ -1,95 +1,97 @@
-import React, {
-  Component,
-} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  NavLink,
-} from 'react-router-dom'
-import CSSModules from 'react-css-modules'
-import {
-  FaHandOUp,
-  FaHandORight,
-  FaHandODown,
-  FaHandOLeft,
-} from 'react-icons/lib/fa'
+import { withRouter } from 'react-router-dom'
+import { withStyles } from 'material-ui/styles'
+import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
+import PersonIcon from 'material-ui-icons/Person'
+import SortIcon from 'material-ui-icons/Sort'
+import ShoppingCartIcon from 'material-ui-icons/ShoppingCart'
+import HomeIcon from 'material-ui-icons/Home'
 
-import styles from './index.scss'
-
-const TabBarData = [
-  {
-    path: '/home',
-    text: '首页',
-    selectedTab: 'homeTab',
-    component: <FaHandOUp />,
-  }, {
-    path: '/sort',
-    text: '分类',
-    selectedTab: 'sortTab',
-    component: <FaHandORight />,
-  }, {
-    path: '/shopcart',
-    text: '购物车',
-    selectedTab: 'shopTab',
-    component: <FaHandODown />,
-  }, {
-    path: '/personcenter',
-    text: '个人中心',
-    selectedTab: 'centerTab',
-    component: <FaHandOLeft />,
+const styles = {
+  root: {
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
   },
-]
+  item: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+}
 
-// const oddEvent = (match, location) => {
-//   if (!match) {
-//     return false
-//   }
-//     // console.log(location)
-// }
-@CSSModules(styles)
-class TabBar extends Component {
-  static propTypes = {
-    currTab: PropTypes.string.isRequired,
-  }
-  constructor(props) {
-    super(props)
+@withRouter
+@withStyles(styles)
+class Navigation extends React.Component {
+  state = {
+    value: 'homeTab',
+  };
 
-    this.state = {
-      // selectedTab: 'homeTab'
-    }
-  }
-
-  // componentWillReceiveProps(nextProps) {
-  //     console.log(nextProps)
-  // }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //     console.log(nextProps)
-  //     return true
-  // }
+  handleChange = (event, value) => {
+    const url = `/${value.split('Tab')[0]}`;
+    this.props.history.push(url);
+    // this.setState({ value });
+  };
+  renderItem = ({ text, component, selectedTab }) => (
+    <BottomNavigationButton
+      value={selectedTab}
+      key={text}
+      label={text}
+      icon={component}
+      className={this.props.classes.item}
+    />
+  )
   render() {
-    const {
-      currTab,
-    } = this.props
+    const { list, classes, currTab } = this.props
 
     return (
-      <div className={styles.tabBar}>
-        {
-          TabBarData.map((item, index) => (
-            <div className={styles.tabBarTab} key={index} >
-              <NavLink
-                to={item.path}
-                activeClassName={item.selectedTab === currTab ? styles.tabBarTabActive : ""}
-              >
-                <p className={styles.tabBarTabIcon}>
-                  {item.component}
-                </p>
-                {item.text}
-              </NavLink>
-            </div>
-          ))
-        }
-      </div>
-    )
+      <BottomNavigation
+        value={currTab}
+        onChange={this.handleChange}
+        showLabels
+        className={classes.root}
+      >
+        {list.map(item => this.renderItem(item))}
+      </BottomNavigation>
+    );
   }
 }
 
-export default TabBar
+Navigation.defaultProps = {
+  list: [
+    {
+      path: '/home',
+      text: '首页',
+      selectedTab: 'homeTab',
+      component: <HomeIcon />,
+    }, {
+      path: '/sort',
+      text: '分类',
+      selectedTab: 'sortTab',
+      component: <SortIcon />,
+    }, {
+      path: '/shop',
+      text: '购物车',
+      selectedTab: 'shopTab',
+      component: <ShoppingCartIcon />,
+    }, {
+      path: '/center',
+      text: '个人中心',
+      selectedTab: 'centerTab',
+      component: <PersonIcon />,
+    },
+  ],
+}
+
+Navigation.propTypes = {
+  classes: PropTypes.object,
+  list: PropTypes.array,
+  history: PropTypes.object,
+  currTab: PropTypes.string,
+}
+
+export default Navigation

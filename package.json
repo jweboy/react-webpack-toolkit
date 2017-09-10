@@ -20,7 +20,7 @@
     "clean:modules": "rimraf node_modules",
     "clean:dist": "rimraf dist",
     "test": "eslint --fix .",
-    "linter": "eslint --fix --color --ext .js,.jsx ."
+    "lint": "eslint --fix --color --ext .js,.jsx ."
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -100,7 +100,9 @@
     "assets": "^2.1.0",
     "autoprefixer": "^7.1.1",
     "codacy-coverage": "^2.0.2",
+    "history": "^4.7.2",
     "material-ui": "next",
+    "material-ui-icons": "^1.0.0-beta.5",
     "md5": "^2.2.1",
     "mongodb": "^2.2.31",
     "placeholder.js": "^3.1.0",
@@ -113,10 +115,13 @@
     "react-router-redux": "^4.0.8",
     "react-router-transition": "^0.1.1",
     "react-slick": "^0.14.11",
+    "react-toolbox": "^2.0.0-beta.12",
     "react-transition-group": "next",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "shortid": "^2.2.8",
-    "slick-carousel": "^1.6.0"
+    "slick-carousel": "^1.6.0",
+    "styled-components": "^2.1.2"
   },
   "pre-commit": [
     "linter"

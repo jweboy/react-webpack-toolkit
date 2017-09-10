@@ -21,7 +21,7 @@ baseWebpackConfig.entry.unshift(
 )
 
 baseWebpackConfig.module.rules.push({
-  test: /\.scss?$/,
+  test: /\.(scss|css)?$/,
   use: [{
     loader: 'style-loader',
   }, {

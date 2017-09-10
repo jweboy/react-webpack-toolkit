@@ -108,7 +108,7 @@ const browserSyncConfig = {
     ],
   },
   file: [
-    '/index.html',
+    './index.html',
   ],
 }
 
