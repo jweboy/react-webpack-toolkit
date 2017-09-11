@@ -152,6 +152,7 @@ Login.propTypes = {
   setLogin: PropTypes.func.isRequired,
   history: PropTypes.object,
   classes: PropTypes.object,
+  headerTitle: PropTypes.string,
 }
 
 export default Login

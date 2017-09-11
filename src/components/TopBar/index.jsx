@@ -43,6 +43,7 @@ const ButtonAppBar = ({ classes, title }) => (
 
 ButtonAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
+  title: PropTypes.string,
 }
 
 export default withStyles(styles)(ButtonAppBar)
