@@ -14,13 +14,13 @@ const imgPath = resolvePath('./src/assets')
 
 
 module.exports = {
+  target: 'web',
   context: rootPath,
   entry: [
     './src/index', // 入口文件
   ],
   output: { // 编译输出
-    publicPath: process.env.NODE_ENV === 'production' ?
-      config.build.assetsPublicPath : config.dev.assetsPublicPath, // 输出目录 dev -> '/' build -> './'
+    publicPath: '/',
     path: config.build.assetsRoot, // 输出目录
     filename: '[name].js', // 编译后的文件名
   },

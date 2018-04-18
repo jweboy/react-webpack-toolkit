@@ -64,4 +64,4 @@ const route = () => (
 
 // TODO 理解Switch, exact的作用
 
-export default route*/
+export default route */

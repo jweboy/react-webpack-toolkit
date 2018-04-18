@@ -11,13 +11,13 @@ import {
 
 
 import HomePage from 'containers/Home'
-import SortPage from 'containers/Sort'
-import ShopCart from 'containers/ShopCart'
-// import PersonCenterPage from 'containers/PersonCenter'
-import NotMatch from 'containers/NotMatch'
-import Login from 'containers/Login'
-import Detail from 'containers/Detail'
-import SearchPage from 'containers/Search'
+// import SortPage from 'containers/Sort'
+// import ShopCart from 'containers/ShopCart'
+// // import PersonCenterPage from 'containers/PersonCenter'
+// import NotMatch from 'containers/NotMatch'
+// import Login from 'containers/Login'
+// import Detail from 'containers/Detail'
+// import SearchPage from 'containers/Search'
 
 // import App from 'containers/App'
 
@@ -32,12 +32,12 @@ const AppRouter = () => (
       <Switch>
         <Route exact path="/" render={() => (< Redirect to="/home" />)} />
         <Route path="/home" component={HomePage} />
-        <Route path="/sort" component={SortPage} />
+        {/* <Route path="/sort" component={SortPage} />
         <Route path="/shop" component={ShopCart} />
         <Route path="/center" component={Login} />
         <Route path="/detail" component={Detail} />
         <Route path="/search" component={SearchPage} />
-        <Route component={NotMatch} />
+        <Route component={NotMatch} /> */}
       </Switch>
     )}
     />

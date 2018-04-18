@@ -3,9 +3,7 @@ import {
   compose,
   combineReducers,
 } from 'redux'
-import {
-  routerReducer,
-} from 'react-router-redux'
+import { routerReducer } from 'react-router-redux'
 
 import DevTools from 'containers/DevTools'
 import env from 'util/env'

@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import CSSModules from 'react-css-modules'
 import PropTypes from 'prop-types'
-import {
-  connect,
-} from 'react-redux'
+import { connect } from 'react-redux'
 
 // import fetchRequest from 'util/fetch'
 import sort from '../../actions/sort'

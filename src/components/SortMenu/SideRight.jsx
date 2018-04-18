@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import CSSModules from 'react-css-modules'
-import {
-  Link,
-} from 'react-router-dom'
-import {
-  connect,
-} from 'react-redux'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import thumbnails from 'assets/thumbnails.png'
 import styles from './index.scss'

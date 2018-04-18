@@ -1,15 +1,11 @@
-import React, {
-  Component,
-} from 'react'
+import React, { Component } from 'react'
 // http://gorangajic.github.io/react-icons/index.html
 import FaBeer from 'react-icons/lib/fa/beer'
 import MdAccessibility from 'react-icons/lib/md/accessibility'
 import TiAdjustBrightness from 'react-icons/lib/ti/adjust-brightness'
 import GoAlignmentAlignedTo from 'react-icons/lib/go/alignment-aligned-to'
 import Md3dRotation from 'react-icons/lib/md/3d-rotation'
-import {
-  Link,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import CSSModules from 'react-css-modules'
 
 import TabBar from 'components/TabBar'

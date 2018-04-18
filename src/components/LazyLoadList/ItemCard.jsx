@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  Link,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import goodsPic from 'assets/goods.png'
 
 import styles from './index.scss'
 
-const ItemCard = ({ title, description, price, index }) => (
+const ItemCard = ({
+  title, description, price, index, 
+}) => (
   <li className={index % 2 !== 0 ? styles.singular : styles.even}>
     <Link to="/detail">
       <div className={styles.wrapper}>

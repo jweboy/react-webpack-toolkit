@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -14,44 +14,78 @@ const utils = require('./utils')
 
 baseWebpackConfig.module.rules.push({
   test: /\.scss?$/,
-  use: ExtractTextPlugin.extract({
-    fallback: 'style-loader',
-    use: [{
-      loader: 'css-loader',
-      options: {
-        sourceMap: true,
-        modules: true,
-        importLoaders: 1,
-      },
-    }, {
-      loader: 'postcss-loader',
-      options: {
-        sourceMap: true,
-      },
-    }],
-  }),
+  use: [{
+    loader: 'css-loader',
+    options: {
+      sourceMap: true,
+      modules: true,
+      importLoaders: 1,
+    },
+  }, {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: true,
+    },
+  }],
+  // use: ExtractTextPlugin.extract({
+  //   fallback: 'style-loader',
+  //   use: [{
+  //     loader: 'css-loader',
+  //     options: {
+  //       sourceMap: true,
+  //       modules: true,
+  //       importLoaders: 1,
+  //     },
+  //   }, {
+  //     loader: 'postcss-loader',
+  //     options: {
+  //       sourceMap: true,
+  //     },
+  //   }],
+  // }),
 })
 
 const webpackConfig = webpackMerge(baseWebpackConfig, {
+  mode: 'production',
   devtool: '#source-map',
   output: {
     path: `${config.build.assetsRoot}/${utils.setDistPath()}`,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': config.build.env,
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      conpress: {
-        warnings: false,
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: chunk => (
+            chunk.resource && 
+            /.js$/.test(chunk.resource) &&
+            /node_modules/.test(chunk.resource)
+          ),
+        },
+        'async-vendors': {
+          test: /[\\/]node_modules[\\/]/,
+          minChunks: 2,
+          chunks: 'async',
+          name: 'async-vendors',
+        },
       },
-      sourceMap: true,
-    }),
-    new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css'),
-    }),
+    },
+    runtimeChunk: { name: 'runtime' },
+  },
+  plugins: [
+    // new webpack.DefinePlugin({
+    //   'process.env': config.build.env,
+    // }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   conpress: {
+    //     warnings: false,
+    //   },
+    //   sourceMap: true,
+    // }),
+    // new ExtractTextPlugin({
+    //   filename: utils.assetsPath('css/[name].[contenthash].css'),
+    // }),
     new OptimizeCssPlugin({
       cssProcessorOptions: {
         safe: true,
@@ -72,20 +106,20 @@ const webpackConfig = webpackMerge(baseWebpackConfig, {
       },
       chunksSortMode: 'dependency', // 允许控制块在添加到页面之前的排序方式
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: module => (
-        module.resource &&
-        /\.js$/.test(module.resource) &&
-        module.resource.indexOf(
-          path.join(__dirname, '../node_modules')
-        ) === 0
-      ),
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor'],
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   minChunks: module => (
+    //     module.resource &&
+    //     /\.js$/.test(module.resource) &&
+    //     module.resource.indexOf(
+    //       path.join(__dirname, '../node_modules')
+    //     ) === 0
+    //   ),
+    // }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'manifest',
+    //   chunks: ['vendor'],
+    // }),
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, '../static'),
       to: config.build.assetsSubDirectory,

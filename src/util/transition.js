@@ -1,6 +1,4 @@
-import {
-  spring,
-} from 'react-motion'
+import { spring } from 'react-motion'
 
 const fadeTransitionConfig = {
   stiffness: 20,

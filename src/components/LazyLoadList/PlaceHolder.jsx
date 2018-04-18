@@ -20,7 +20,7 @@ class PlaceHolder extends Component {
       <li styleName={index % 2 !== 0 ? "singular" : "even"}>
         <div styleName="wrapper">
           <div styleName="header" >
-            {/* <img styleName="itemLogo" src={loading} alt="" />*/}
+            {/* <img styleName="itemLogo" src={loading} alt="" /> */}
             <div>
               <Loading />
             </div>

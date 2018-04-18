@@ -27,7 +27,8 @@ const compiler = webpack(webpackConfig)
 const port = config.dev.port
 const uiPort = config.dev.uiPort
 const uri = `http://localhost:${port}`
-const APIURL = 'https://easy-mock.com/mock/591534589aba4141cf221a76/react/biolerplate'
+const APIURL = 'https://api.github.com/user'
+// const APIURL = 'https://easy-mock.com/mock/591534589aba4141cf221a76/react/biolerplate'
 const app = express()
 
 // serve webpack bundle output
@@ -56,7 +57,7 @@ const proxyMiddleware = httpProxyMiddleware('/mock/*', {
   logProvider: () => (winston),
   onError: (err, req, res) => {
     res.writeHead({
-      'Content-Type': 'text/plain',
+      'Content-Type': 'text/json',
     })
 
     res.send('Something went wrong. And we are reporting a custom error message.')

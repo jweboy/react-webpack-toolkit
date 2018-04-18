@@ -4,9 +4,7 @@ import CSSModules from 'react-css-modules'
 
 import TabBar from 'components/TabBar'
 import Button from 'widgets/Button'
-import {
-  routeBtn,
-} from 'hoc'
+import { routeBtn } from 'hoc'
 
 import styles from './index.scss'
 
