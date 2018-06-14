@@ -1,58 +1,102 @@
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+process.env.NODE_ENV = 'development';
+
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dashboard = require('webpack-dashboard');
 const DashboardPlugin = require('webpack-dashboard/plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-const config = require('../config')
-// const {
-//   resolvePath,
-// } = require('./utils')
-const baseWebpackConfig = require('./webpack.base.config')
+const baseWebpackConfig = require('./webpack.base.config');
+const DynamicScript = require('./plugins/dynamic-script')
+const webpackDevServer = require('./webpackDevServer.config')
+const manifest = require('../dist/dll/vendor-manifest.json')
+const { dynamicScripts } = require('../config')
+const paths = require('./paths')
 
-const babelPolyfill = 'babel-polyfill'
-const reactHotClient = 'react-hot-loader/patch'
-const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?reload=true&noInfo=false'
-
-baseWebpackConfig.entry.unshift(
-  babelPolyfill,
-  reactHotClient, // 开启模块热替换(HMR)
-  webpackHotMiddlewareClient
-)
-
-baseWebpackConfig.module.rules.push({
-  test: /\.(scss|css)?$/,
-  use: [{
-    loader: 'style-loader',
-  }, {
-    loader: 'css-loader',
-    options: {
-      modules: true,
-      sourceMap: true,
-      importLoaders: 1,
-      localIdentName: "[path][local]__[hash:base64:6]",
-    },
-  }, {
-    loader: 'postcss-loader',
-  }],
-})
+// const dashboard = new Dashboard()
+const publicPath = '/'
+const pathsToClean = ['dist', 'swaggerGen']
 
 module.exports = merge(baseWebpackConfig, {
-  mode: 'development',
-  // cheap-module-eval-source-map is faster for development
-  devtool: 'cheap-module-source-map',
-  
-  plugins: [
-    // new webpack.DefinePlugin({
-    //   'process.env': config.dev.env,
-    // }),
-    new webpack.HotModuleReplacementPlugin(), // 开启全局的模块热替换(HMR)
-    // new webpack.NamedModulesPlugin(), // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
-    new webpack.NoEmitOnErrorsPlugin(),
-    // https://github.com/geowarin/friendly-errors-webpack-plugin
-    new FriendlyErrorsPlugin(),
-    // https://github.com/ampedandwired/html-webpack-plugin
-    new HTMLWebpackPlugin(config.dev.template),
-    new DashboardPlugin(),
-  ],
-})
+	// 开发环境这个模式更快
+	devtool: 'cheap-module-source-map',
+	// 输出目录
+	output: {
+		// 在bundle中引入所包含模块信息的相关注释
+		pathinfo: true,
+		// 文件保存在 WebpackDevServer 的虚拟内存中
+		filename: 'static/js/bundle.js',
+		// 文件代码拆分
+		chunkFilename: 'static/js/[name].chunk.js',
+		// 静态资源目录,一般指向 '/'
+		publicPath,
+	},
+	devServer: webpackDevServer({ publicPath }),
+	module: {
+		rules: [
+			// 解析node_modules里的css文件
+			{
+				test: /\.css$/,
+				include: paths.apppNodeModules,
+				exclude: paths.appSrc,
+				use: ['style-loader', 'css-loader']
+			},
+			// 解析src项目里的less文件
+			{
+				test: /\.less$/,
+				exclude: paths.apppNodeModules,
+				include: paths.appSrc,
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true, // 开启 CSS Modules
+							sourceMap: true, // 开启 sourceMap
+							camelCase: true, // 支持驼峰 .active-btn => activeBtn
+							localIdentName: '[local]-[hash:base64:5]'
+						}
+					},
+					{
+						loader: 'less-loader'
+					},
+					{
+						// autoprefixer等css新属性的支持
+						loader: 'postcss-loader'
+					}
+				]
+			}
+		]
+	},
+	plugins: [
+		// 热加载模块
+		new webpack.HotModuleReplacementPlugin(),
+		// 热加载显示模块的相对路径
+		new webpack.NamedModulesPlugin(),
+		// 自动删除dist等目录
+		new CleanWebpackPlugin(pathsToClean),
+		// index.html插件
+		new HtmlWebpackPlugin({
+			title: 'creams',
+			template: paths.appIndexHtml,
+		}),
+		// 打包时在动态链接库查找导入的模块
+		// 如果存在直接从动态库中获取，无需重复打包
+		new webpack.DllReferencePlugin({
+			manifest
+		}),
+		// 动态写入脚本集合
+		new DynamicScript({
+			assets: dynamicScripts
+		}),
+		// webpack运行详细记录面板
+		// new DashboardPlugin(dashboard.setData)
+	],
+	// 开发环境关闭性能提示
+	performance: {
+		hints: false
+	}
+});

@@ -1,12 +1,12 @@
-dist/*
+.history/
+.vscode/
+.idea/
+node_modules/
 
-node_modules/*
+dist/
 
-.idea
 
-yarn-error.log
-yarn.lock
+*.log
+*.lock
 
 npm-debug.*
-
-.history

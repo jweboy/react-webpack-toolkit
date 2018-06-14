@@ -1,36 +1,22 @@
-# react webpack2 react-router4 es6/es7 项目模板
+# 可考虑的功能
 
-## 集成测试
-[![Build Status](https://travis-ci.org/jweboy/react-webpack-biolerplate.svg?branch=feature)](https://travis-ci.org/jweboy/react-webpack-biolerplate)
+1. 无需重启webpack即可实现模块的自动安装
+  参考地址[https://sourcegraph.com/github.com/facebook/create-react-app/-/blob/packages/react-scripts/config/webpack.config.dev.js#L363]
+2. 自动打开浏览器改用插件方式,如果已经打开则只刷新不打开新的
+  参考地址 [https://sourcegraph.com/github.com/facebook/create-react-app/-/blob/packages/react-dev-utils/openBrowser.js#L43:10]
 
-## 代办事项
-- 调整react-router的页面组织架构 (I) - ok
-- 解决router4 + react-hot-loader结合页面热更新失效问题 (I) - ok
-- 解决相同路由触发的警告问题 (II)
-> Hash history cannot PUSH the same path; a new entry will not be added to the history stack
-- 添加css预处理器,stylus或者postcss,模块化加载css(II) - ok
-- react-hot-loader 在css改变时不生效问题 - ok
-- px to rem 问题 - ok
-- TabBar 组件默认状态未添加 - ok
-- TabBar 组件将接收到props转变为可变的state - ok
-- react-hot-loader 参考官方更改细致 - ok
+3. index.html相关插件的变量注入
+  参考地址[https://sourcegraph.com/github.com/facebook/create-react-app/-/blob/packages/react-dev-utils/InterpolateHtmlPlugin.js]
+
+# TODO
+
+- 线上打包的autoprefixer补全配置
+- 开发环境进程的logger需要动态化增加体验
+- scss配置还没加，考虑增加postcss兼容scss和less
+- file配置没加上，需要老版本迁移
+- 线上打包部分的代码拆分（webpack4废除了CommonsChunkPlugin改用splitChunks）
 
 
-## 问题
-- redux-devtools-log-monitor -- redux log工具
-- react-css-modules 不支持css嵌套？
-- extract-text-webpack-plugin 应用于生产环境 开发环境 react-hot-loader不会刷新css
-- 1rem = 15px
-- TabBar组件中在路由模块根路径重定向到homePage解决默认状态问题
-- TabBar组件中每次接收到的props是每个不同组件页面默认的props, 无需在componentWillReceiveProps中转变为当前组件的可变state。
-- 代理middleware部分
+## webpack优化参考
 
-## TODO
-> 后期需要增加webpack-hot-middleware监听模版页index.html变化的刷新问题
-> 设置项目接口代理、编写mock数据、线上json管理
-
-## github
-> https://github.com/webpack/webpack-dev-middleware
-> https://github.com/geowarin/friendly-errors-webpack-plugin
-> https://github.com/ampedandwired/html-webpack-plugin
-
+- [https://jeffjade.com/2017/08/12/125-webpack-package-optimization-for-speed](https://jeffjade.com/2017/08/12/125-webpack-package-optimization-for-speed)

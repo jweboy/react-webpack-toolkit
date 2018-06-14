@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
-  <title>
-    <%= htmlWebpackPlugin.options.title %>
-  </title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= htmlWebpackPlugin.options.title %></title>
   <style>
-    #root {
-      height: 100vh;
-      background: #f4f4f4;
+    body{
+      margin: 0;
     }
   </style>
-  <!--<script type="text/javascript" src="https://dn-bughd-web.qbox.me/bughd.min.js" crossOrigin="anonymous"></script>-->
-  <!--<script type="text/javascript">
-    window.bughd = window.bughd || function () {};
-    bughd("create", {
-      key: "2f634aca97d6d23eb5d254679262de60"
-    })
-
-  </script>-->
 </head>
-
 <body>
   <div id="root"></div>
+  <script>
+    window.onload = function() {
+      console.log('ok');
+    }
+  </script>
 </body>
-
 </html>

@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import CSSModules from 'react-css-modules'
+// import PropTypes from 'prop-types'
+// import CSSModules from 'react-css-modules'
 import { Query, graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import TabBar from 'components/TabBar'
-import ScrollList from 'components/ScrollList'
-import NoEditableSearch from 'widgets/NoEditableSearch'
-import Loading from 'widgets/LoadingStretch'
-import fetchRequest from 'util/fetch'
-import Swipe from 'widgets/Swipe'
+// import TabBar from 'components/TabBar'
+// import ScrollList from 'components/ScrollList'
+// import NoEditableSearch from 'widgets/NoEditableSearch'
+// import Loading from 'widgets/LoadingStretch'
+// import fetchRequest from 'util/fetch'
+// import Swipe from 'widgets/Swipe'
 // import transition from 'util/transition'
 
-import styles from './index.scss'
+// import styles from './index.scss'
 
 const RATEDATA = gql`
   {
@@ -23,7 +23,7 @@ const RATEDATA = gql`
   }
 `
 @graphql(RATEDATA)  
-@CSSModules(styles)
+// @CSSModules(styles)
 class HomePage extends Component {
   constructor() {
     super()
@@ -34,13 +34,9 @@ class HomePage extends Component {
       loading: true,
     }
   }
-  // componentDidMount() {
-  //   fetch('mock/api')
-  //     .then(res => res.json())
-  //     .then(res => { 
-  //       console.log(res);
-  //     })
-  // }
+  componentDidMount() {
+    console.log('full render....');
+  }
   render() {
     // const {
     //   currTab,

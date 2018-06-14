@@ -1,1 +1,5 @@
-node_modules/*
+# In the project root are ignored by default
+# node_modules/*
+
+# Ignore build files
+build/*

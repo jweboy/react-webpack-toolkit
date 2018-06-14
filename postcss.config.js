@@ -1,13 +1,7 @@
-const autoprefixer = require('autoprefixer');
-// const postcssReporter = require('postcss-reporter')
-
-module.exports = {
-  parser: 'postcss-scss',
-  sourceMap: true,
-  plugins: [
-    autoprefixer(), // 迁移配置 -> .browserslistrc
-    // postcssReporter({
-    //   clearMessages: true,
-    // })
-  ],
+module.exports = ({ file, options, env }) => {
+	return {
+		plugins: {
+			'autoprefixer':  env === 'production' ? false : {browsers: 'last 3 version'}
+		}
+	};
 };

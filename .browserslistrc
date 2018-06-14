@@ -1,5 +1,7 @@
 [production]
-last 2 version
+> 1%
 
 [development]
-last 1 version
+last 1 chrome version
+last 1 Firefox version
+last 1 safari version
