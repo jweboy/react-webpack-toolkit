@@ -2,6 +2,15 @@
 
 快速开发react技术栈的脚手架工具
 
+## 快速开发
+
+此脚手架可以通过[jweboy-cli](https://www.npmjs.com/package/jweboy-cli)工具快速创建开发。
+
+``` js
+npm install -g jweboy-cli
+jweboy-cli init <project-name>
+```
+
 ## 可考虑功能
 
 1. 无需重启webpack即可实现模块的自动安装[参考地址](https://sourcegraph.com/github.com/facebook/create-react-app/-/blob/packages/react-scripts/config/webpack.config.dev.js#L363)
