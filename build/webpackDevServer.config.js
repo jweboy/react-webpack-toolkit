@@ -1,7 +1,9 @@
 const ora = require('ora')
+const fsExtra = require('fs-extra')
 
 const paths = require('./paths')
 const config = require('./webpack.base.config')
+const { copyFile } = require('./tools')
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http'
 const host = process.env.HOST || '127.0.0.1'
@@ -17,7 +19,7 @@ module.exports = ({
     // 提供给 WebpackDevServer 的来源目录
     contentBase: paths.appDist,
     // 去除没用的 WebpackDevServer logs
-    clientLogLevel: 'none',
+    // clientLogLevel: 'none',
     // 隐藏bundle相关信息,只接收错误和警告
     noInfo: true, 
     // 启用gzip压缩
@@ -37,9 +39,11 @@ module.exports = ({
     port,
     // 404响应代替为 index.html
     historyApiFallback: true,
-		// before () {
-		// },
+    before() {
+      // 拷贝图片资源目录
+      copyFile(paths.assetsPath, paths.appDistAssets)
+		},
 		after () {
-			spinner.succeed(`Server is listening on ${protocol}://${host}:${port}\n`);
+			spinner.succeed(`Server is listening on ${protocol}://${host}:${port}.`);
 		}
 })
