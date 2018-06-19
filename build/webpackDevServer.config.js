@@ -41,7 +41,7 @@ module.exports = ({
     historyApiFallback: true,
     before() {
       // 拷贝图片资源目录
-      copyFile(paths.assetsPath, paths.appDistAssets)
+      // copyFile(paths.assetsPath, paths.appDistAssets)
 		},
 		after () {
 			spinner.succeed(`Server is listening on ${protocol}://${host}:${port}.`);

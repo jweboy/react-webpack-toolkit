@@ -7,9 +7,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const baseWebpackConfig = require('./webpack.base.config');
 const DynamicScript = require('./plugins/dynamic-script')
+const OpenBrowser = require('./plugins/open-browser')
 const webpackDevServer = require('./webpackDevServer.config')
 const manifest = require('../dist/dll/vendor-manifest.json')
-const { dynamicScripts } = require('../config')
+const { dynamicScripts  } = require('../config')
 const paths = require('./paths')
 
 // const dashboard = new Dashboard()
@@ -90,6 +91,7 @@ module.exports = merge(baseWebpackConfig, {
 		new DynamicScript({
 			assets: dynamicScripts
 		}),
+		// new OpenBrowser({})
 		// webpack运行详细记录面板
 		// new DashboardPlugin(dashboard.setData)
 	],

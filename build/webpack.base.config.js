@@ -9,6 +9,7 @@ const happyThreadPool = HappyPack.ThreadPool({
 	size: 4
 })
 const happyThreads = 4
+const imagePath = 'static/imgs/'
 
 /**
  * 2.html-webpack-plugin-before-html-processing => 在生成index.html之前是否需要做动态插入操作，需要的话再加这个自定义插件
@@ -58,16 +59,20 @@ module.exports = {
 				include: paths.appSrc
 			},
 			{
-				test: /\.(jpe?g|png|gif|svg)$/,
-				include: paths.assetsPath,
+				test: /\.(png|jp(e)?g|svg|gif)$/,
 				exclude: /node_modules/,
 				use: [{
 						loader: 'file-loader',
 						options: {
-							limit: 10240,
-							name: '[name].[ext]',
-							// emitFile: false, // 不将图片打包
-							// outputPath: '../dist/assets/'
+							name(file) {
+								if (process.env.NODE_ENV === 'development') { 
+									return '[name].[ext]'
+								}
+								return '[name]__[hash:6].[ext]'
+							},
+							limit: 10240, // 限制图片大小为10M以内
+							// emitFile: false, // 不打包输出图片目录,一般用于图片全部托管于图床
+							outputPath: imagePath // 图片输出路径,开发环境保存在虚拟内存中,即对应 dist/statis/imgs/目录
 						}
 				}]
 			}
