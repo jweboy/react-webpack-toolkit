@@ -1,10 +1,8 @@
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'development'
 
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const Dashboard = require('webpack-dashboard');
-const DashboardPlugin = require('webpack-dashboard/plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const baseWebpackConfig = require('./webpack.base.config');
@@ -16,7 +14,7 @@ const paths = require('./paths')
 
 // const dashboard = new Dashboard()
 const publicPath = '/'
-const pathsToClean = ['dist', 'swaggerGen']
+const pathsToClean = ['dist']
 
 module.exports = merge(baseWebpackConfig, {
 	// 开发环境这个模式更快
@@ -80,7 +78,7 @@ module.exports = merge(baseWebpackConfig, {
 		new CleanWebpackPlugin(pathsToClean),
 		// index.html插件
 		new HtmlWebpackPlugin({
-			title: 'creams',
+			title: 'react-webpack-toolkit',
 			template: paths.appIndexHtml,
 		}),
 		// 打包时在动态链接库查找导入的模块
