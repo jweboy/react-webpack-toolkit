@@ -1,6 +1,5 @@
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const webpack = require('webpack')
-const path = require('path')
 const HappyPack = require('happypack')
 
 const paths = require('./paths')
@@ -12,11 +11,6 @@ const happyThreadPool = HappyPack.ThreadPool({
 const happyThreads = 4
 
 /**
- * @description 几个要点描述
- * 1. file-loader => 加载图片以及字体图标等静态资源,项目全部托管线上处理,因此暂时不加这个配置
- *  参考地址 https://github.com/webpack-contrib/file-loader
- *         https://github.com/jweboy/react-webpack-biolerplate/blob/feature/build/webpack.base.config.js
- * 
  * 2.html-webpack-plugin-before-html-processing => 在生成index.html之前是否需要做动态插入操作，需要的话再加这个自定义插件
  *  参考地址 https://sourcegraph.com/github.com/facebook/create-react-app/-/blob/packages/react-dev-utils/InterpolateHtmlPlugin.js#L27
  * 
@@ -62,6 +56,20 @@ module.exports = {
 				use: 'ts-loader',
 				exclude: /node_modules/,
 				include: paths.appSrc
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/,
+				include: paths.assetsPath,
+				exclude: /node_modules/,
+				use: [{
+						loader: 'file-loader',
+						options: {
+							limit: 10240,
+							name: '[name].[ext]',
+							// emitFile: false, // 不将图片打包
+							// outputPath: '../dist/assets/'
+						}
+				}]
 			}
 		]
 	},
@@ -87,6 +95,6 @@ module.exports = {
 					cacheDirectory: true,
 				}
 			}],
-		})
+		}),
 	]
 };

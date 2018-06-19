@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
-// import banner from './assets/logo.jpg'
-
-// console.log(banner)
 
 class App extends Component {
 	componentDidMount() {
