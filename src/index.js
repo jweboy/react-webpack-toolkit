@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { hot, AppContainer, setConfig } from 'react-hot-loader';
+import { hot, AppContainer, 
+// setConfig
+ } from 'react-hot-loader';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
@@ -8,7 +10,7 @@ import { ApolloProvider } from 'react-apollo';
 
 import App from './App';
 
-setConfig({ logLevel: 'debug' });
+// setConfig({ logLevel: 'debug' });
 
 // 获取装载组件的根节点
 const mountNode = document.getElementById('root');

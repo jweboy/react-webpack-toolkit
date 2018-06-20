@@ -5,6 +5,7 @@ import nodejs from './assets/nodejs.png';
 // import jsLogo from './assets/js-logo.svg';
 import jsGif from './assets/js.gif';
 import nodejsDay from './assets/nodejsDay.jpg';
+import './App.less';
 
 /* eslint-disable */
 class App extends Component {
@@ -28,6 +29,18 @@ class App extends Component {
 				local-picture-gif: <img src={jsGif} width="20%" alt="jsGif" />
 				local-picture-jpg: <img src={nodejsDay} width="20%" alt="nodejsDay" />
 				web-picture: <img src="https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/nodejs-frameworks.png" width="30%" alt="nodejs" />
+				<hr />
+				<div>
+					<h3>测试icon</h3>
+					<i className="iconfont icon-lianjie" style={{ fontSize: 24 }}></i>
+					<i className="iconfont icon-iconfont5" style={{ fontSize: 24 }}></i>
+					<i className="iconfont icon-gouwuche" style={{ fontSize: 24 }}></i>
+					<i className="iconfont icon-gouwuchetianjia" style={{ fontSize: 24 }}></i>
+					<i className="iconfont icon-cuowu" style={{ fontSize: 24 }}></i>
+					<i className="iconfont icon-erweima" style={{ fontSize: 24 }}></i>
+					<i className="iconfont icon-jushoucang" style={{ fontSize: 24 }}></i>
+					<i className="iconfont icon-lajixiang" style={{ fontSize: 24 }}></i>
+				</div>
 			</div>
 		);
 	}

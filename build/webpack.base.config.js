@@ -59,7 +59,7 @@ module.exports = {
 				include: paths.appSrc
 			},
 			{
-				test: /\.(png|jp(e)?g|svg|gif)$/,
+				test: /\.(png|jp(e)?g|gif)$/,
 				exclude: /node_modules/,
 				use: [{
 						loader: 'file-loader',
@@ -75,6 +75,10 @@ module.exports = {
 							outputPath: imagePath // 图片输出路径,开发环境保存在虚拟内存中,即对应 dist/statis/imgs/目录
 						}
 				}]
+			},
+			{
+				test: /\.(eot|svg|ttf|woff|woff2)$/,
+				use: 'url-loader'
 			}
 		]
 	},
