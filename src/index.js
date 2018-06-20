@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { hot, AppContainer, 
 // setConfig
- } from 'react-hot-loader';
+} from 'react-hot-loader';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
