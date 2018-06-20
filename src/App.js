@@ -7,18 +7,21 @@ import jsGif from './assets/js.gif'
 import nodejsDay from './assets/nodejsDay.jpg'
 
 class App extends Component {
+	componentWillMount() {
+		console.warn('will mount');
+	}
 	componentDidMount() {
-		console.log('ok---~~~~', API_URL);
+		console.log('ok---~~~~', API_URL)
 	}
 	render() {
-		// console.log('render ~~');
+		console.log('render ~~~~~。！！！')
 		return (
 			<div className="app">
 				<h2>react webpack boilerplate test</h2>	
 				<span>test classname</span>
 				<Button type="primary">test antd</Button>
 				<hr />
-				<h3>测试file-loader</h3>
+				<h3>测试 file-loader</h3>
 				local-picture-png: <img src={nodejs} width="20%" alt="nodejs" />
 				{/* local-picture-svg: <img src={jsLogo} width="20%" alt="jsLogo" /> */}
 				local-picture-gif: <img src={jsGif} width="20%" alt="jsGif" />
