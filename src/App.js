@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import { Button } from 'antd'
+import { Button } from 'antd';
 // import nodejs from './assets/nodejs.png'
-import nodejs from './assets/nodejs.png'
-import jsLogo from './assets/js-logo.svg'
-import jsGif from './assets/js.gif'
-import nodejsDay from './assets/nodejsDay.jpg'
+import nodejs from './assets/nodejs.png';
+// import jsLogo from './assets/js-logo.svg';
+import jsGif from './assets/js.gif';
+import nodejsDay from './assets/nodejsDay.jpg';
 
+/* eslint-disable */
 class App extends Component {
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		console.warn('will mount');
 	}
 	componentDidMount() {
-		console.log('ok---~~~~', API_URL)
+		console.log('ok---~~~~', API_URL);
 	}
 	render() {
-		console.log('render ~~~~~。！！！')
+		console.log('render ~~~~~。！！！');
 		return (
 			<div className="app">
 				<h2>react webpack boilerplate test</h2>	

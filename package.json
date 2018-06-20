@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "description": "react16 webpack4 toolkit",
   "repository": {
-    "url": "https://github.com/jweboy/react-webpack-biolerplate"
+    "url": "https://github.com/jweboy/react-webpack-toolkit"
   },
   "author": "jweboy",
   "license": "MIT",
@@ -86,5 +86,6 @@
     "preview": "npm run build && cd dist && http-server",
     "build:dll": "webpack --config ./build/webpack.dll.config.js --progress --colors",
     "lint": "eslint --ext .js --ext .jsx src --fix"
-  }
+  },
+  "pre-commit":["lint"]
 }

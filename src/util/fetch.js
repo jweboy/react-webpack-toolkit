@@ -1,5 +1,6 @@
 // const env = require('./env')
 
+/* eslint-disable */
 const fetchTimeOut = (fetchPromise, timeout = 10000) => {
 	let timeoutFunc = null;
 

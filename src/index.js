@@ -29,6 +29,7 @@ const rootRender = (Component) => {
 	);
 };
 
+/* eslint-disable */
 hot(module)(rootRender(App));
 
 // FIXME: react-hot-loader@latest不需要这个判断了
