@@ -1,5 +1,3 @@
-process.env.NODE_ENV = 'development'
-
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -11,6 +9,7 @@ const OpenBrowser = require('./plugins/open-browser')
 const webpackDevServer = require('./webpackDevServer.config')
 const manifest = require('../dist/dll/vendor-manifest.json')
 const { dynamicScripts  } = require('../config')
+const env = require('../config/dev.env')
 const paths = require('./paths')
 
 // const dashboard = new Dashboard()
@@ -18,6 +17,8 @@ const publicPath = '/'
 const pathsToClean = ['dist']
 
 module.exports = merge(baseWebpackConfig, {
+	// 编译模式
+	mode: env.NODE_ENV,
 	// 开发环境这个模式更快
 	devtool: 'cheap-module-source-map',
 	// 输出目录

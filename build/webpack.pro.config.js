@@ -1,5 +1,3 @@
-process.env.NODE_ENV = 'production'
-
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -10,10 +8,13 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
+const env = require('../config/pro.env')
 const paths = require('./paths')
 const baseWebpackConfig = require('./webpack.base.config')
 
 module.exports = merge(baseWebpackConfig, {
+  // 编译模式
+	mode: env.NODE_ENV,
   // 出现错误强制中断打包
   bail: true,
   // 不生成source-map,适合线上环境

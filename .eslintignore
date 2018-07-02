@@ -3,3 +3,6 @@
 
 # Ignore build files
 build/*
+config/*
+config.js
+postcss.config.js

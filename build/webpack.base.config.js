@@ -11,17 +11,9 @@ const happyThreadPool = HappyPack.ThreadPool({
 const happyThreads = 4
 const imagePath = 'static/imgs/'
 
-/**
- * 2.html-webpack-plugin-before-html-processing => 在生成index.html之前是否需要做动态插入操作，需要的话再加这个自定义插件
- *  参考地址 https://sourcegraph.com/github.com/facebook/create-react-app/-/blob/packages/react-dev-utils/InterpolateHtmlPlugin.js#L27
- * 
- */
-
 module.exports = {
 	target: 'web',
 	context: paths.appPath,
-	// 编译模式
-	mode: process.env.NODE_ENV,
 	entry: [
 		// Promise、Fetch polyfill
 		require.resolve('./polyfills'),
