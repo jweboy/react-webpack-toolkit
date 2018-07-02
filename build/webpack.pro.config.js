@@ -67,6 +67,20 @@ module.exports = merge(baseWebpackConfig, {
 			},
     ]
   },
+  optimization: {
+    splitChunks: {
+      // webpack4默认只对按需加载的代码做分割,设置为all可以将配置代码进行代码分割
+      chunks: 'all',
+      cacheGroups: {
+        // 抽离node_modules模块加载的所有依赖
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    },
+  },
   plugins: [
     // 打包css
     new MiniCssExtractPlugin({
@@ -137,6 +151,8 @@ module.exports = merge(baseWebpackConfig, {
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
     }),
+    // 根据模块的相对路径生成一个四位数的hash作为模块id
+    new webpack.HashedModuleIdsPlugin(),
     // gzip压缩
     // new CompressionPlugin({
     //   test: /\.js$|\.css$|\.html$/,
