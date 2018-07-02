@@ -5,6 +5,7 @@ import nodejs from './assets/nodejs.png';
 // import jsLogo from './assets/js-logo.svg';
 import jsGif from './assets/js.gif';
 import nodejsDay from './assets/nodejsDay.jpg';
+import { Test, TestDir } from './components';
 import './App.less';
 
 /* eslint-disable */
@@ -41,6 +42,8 @@ class App extends Component {
 					<i className="iconfont icon-jushoucang" style={{ fontSize: 24 }}></i>
 					<i className="iconfont icon-lajixiang" style={{ fontSize: 24 }}></i>
 				</div>
+				<Test />
+				<TestDir />
 			</div>
 		);
 	}
