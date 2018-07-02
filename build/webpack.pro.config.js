@@ -41,33 +41,29 @@ module.exports = merge(baseWebpackConfig, {
           'css-loader'
         ],
       },
-      // 解析src项目里的less文件
-      {
-        test: /\.less$/,
-        exclude: paths.apppNodeModules,
-        include: paths.appSrc,
-        use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true, // 开启 CSS Modules
-                sourceMap: true, // 开启 sourceMap
-                camelCase: true, // 支持驼峰 .active-btn => activeBtn
-                localIdentName: '[local]-[hash:base64:5]'
-              }
-            },
-            {
-              loader: 'less-loader'
-            },
-            {
-              // autoprefixer等css新属性的支持
-              loader: 'postcss-loader'
-            }
-          ]
-      }
+      // 解析src项目里的less、scss文件
+			{
+				test: /\.(less|scss)$/,
+				exclude: paths.apppNodeModules,
+				include: paths.appSrc,
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true, // 开启 CSS Modules
+							sourceMap: true, // 开启 sourceMap
+							camelCase: true, // 支持驼峰 .active-btn => activeBtn
+							localIdentName: '[local]-[hash:base64:5]'
+						}
+					},
+					{
+						loader: 'postcss-loader',
+					}
+				]
+			},
     ]
   },
   plugins: [

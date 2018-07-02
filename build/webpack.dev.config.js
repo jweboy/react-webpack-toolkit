@@ -41,9 +41,9 @@ module.exports = merge(baseWebpackConfig, {
 				exclude: paths.appSrc,
 				use: ['style-loader', 'css-loader']
 			},
-			// 解析src项目里的less文件
+			// 解析src项目里的less、scss文件
 			{
-				test: /\.less$/,
+				test: /\.(less|scss)$/,
 				exclude: paths.apppNodeModules,
 				include: paths.appSrc,
 				use: [
@@ -60,14 +60,10 @@ module.exports = merge(baseWebpackConfig, {
 						}
 					},
 					{
-						loader: 'less-loader'
-					},
-					{
-						// autoprefixer等css新属性的支持
-						loader: 'postcss-loader'
+						loader: 'postcss-loader',
 					}
 				]
-			}
+			},
 		]
 	},
 	plugins: [
