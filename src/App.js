@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
 import { Button } from 'antd';
 // import nodejs from './assets/nodejs.png'
 import nodejs from './assets/nodejs.png';
@@ -10,14 +11,15 @@ import './App.less';
 
 /* eslint-disable */
 class App extends Component {
+	displayName = App
 	UNSAFE_componentWillMount() {
-		console.warn('will mount');
+		console.warn('will mount!!~~');
 	}
 	componentDidMount() {
-		console.log('ok---~~~~', API_URL);
+		console.log('ok', API_URL);
 	}
 	render() {
-		console.log('render ~~~~~。！！！');
+		console.log('render！~~');
 		return (
 			<div className="app">
 				<h2>react webpack boilerplate test</h2>	
@@ -50,4 +52,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default hot(module)(App);
