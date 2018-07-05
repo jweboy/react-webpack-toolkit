@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
+import { TestType } from '../components';
 
 class Home extends Component {
 	componentDidMount() {
@@ -8,7 +9,10 @@ class Home extends Component {
 	}
 	render() {
 		return (
-			<div>Home..p;;;.</div>
+			<div>
+				<span>Home..p;;;.</span>
+				<TestType compiler="TypeScript" framework="React" />
+			</div>
 		);
 	}
 }

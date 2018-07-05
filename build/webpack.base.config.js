@@ -22,7 +22,7 @@ module.exports = {
 	],
 	resolve: {
 		// 自动解析文件后缀扩展名
-		extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.mjs'],
+		extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.mjs'],
 		// 全局声明目录,绝对路径引用
 		alias: {
 			components: paths.appSrcComponents,
@@ -43,7 +43,6 @@ module.exports = {
 				include: paths.appSrc,
 				loader: 'happypack/loader?id=happyBabel',
 			},
-			// TODO: 增加react结合跟普通函数的验证
 			{
 				test: /\.ts(x)?$/,
 				use: 'ts-loader',

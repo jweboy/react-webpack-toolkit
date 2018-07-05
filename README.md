@@ -11,19 +11,30 @@ npm install -g jweboy-cli
 jweboy-cli init <project-name>
 ```
 
-## 可考虑功能
-
-1. 无需重启webpack即可实现模块的自动安装[参考地址](https://sourcegraph.com/github.com/facebook/create-react-app/-/blob/packages/react-scripts/config/webpack.config.dev.js#L363)
-2. 自动打开浏览器改用插件方式,如果已经打开则只刷新不打开新的[参考地址](https://sourcegraph.com/github.com/facebook/create-react-app/-/blob/packages/react-dev-utils/openBrowser.js#L43:10)
-3. index.html相关插件的变量注入[参考地址](https://sourcegraph.com/github.com/facebook/create-react-app/-/blob/packages/react-dev-utils/InterpolateHtmlPlugin.js)
-
 ## todo事项
 
+## 完成了
 - 线上打包的autoprefixer补全配置
 - 开发环境进程的logger需要动态化增加体验
 - scss配置还没加，考虑增加postcss兼容scss和less
 - file配置没加上，需要老版本迁移
 - 线上打包部分的代码拆分（webpack4废除了CommonsChunkPlugin改用splitChunks）
+
+## 杂项
+
+[typescript config参数](https://www.tslang.cn/docs/handbook/compiler-options.html)
+- moduleResolution 决定如何处理模块
+- lib 编译过程中需要引入的库文件的列表
+- forceConsistentCasingInFileNames 禁止对同一个文件的不一致的引用
+- noImplicitReturns 不是函数的所有返回路径都有返回值时报错
+- noImplicitThis 当 this表达式的值为 any类型的时候，生成一个错误
+- noImplicitAny 在表达式和声明上有隐含的 any类型时报错
+- strictNullChecks 在严格的 null检查模式下， null和 undefined值不包含在任何类型里，只允许用它们自己和 any来赋值（有个例外， undefined可以赋值到 void)
+- suppressImplicitAnyIndexErrors 阻止 --noImplicitAny对缺少索引签名的索引对象报错。查看 issue #1232了解详情。
+- noUnusedLocals 若有未使用的局部变量则抛错
+
+## 计划
+- 使用eslint还是tslint再决定
 
 ## 参考链接
 
