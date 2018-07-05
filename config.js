@@ -7,7 +7,6 @@ module.exports = {
 		'react-router-dom',
 		'redux-saga',
 		'antd',
-		'echarts',
 	],
 	dynamicScripts: [
 		'/dll/dll_vendor.js'
