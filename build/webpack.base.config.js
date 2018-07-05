@@ -1,6 +1,8 @@
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const webpack = require('webpack')
 const HappyPack = require('happypack')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const os = require('os')
 
 const paths = require('./paths')
 const { apiUrl, experienceUrl } = require('../config')
@@ -10,6 +12,9 @@ const happyThreadPool = HappyPack.ThreadPool({
 })
 const happyThreads = 4
 const imagePath = 'static/imgs/'
+
+// FIXME: ts-loader优化方案,参考文章 https://medium.com/webpack/typescript-webpack-super-pursuit-mode-83cc568dea79
+// FIXME: 1.采用缓存和线程加载器 2.happyPack
 
 module.exports = {
 	target: 'web',
@@ -45,9 +50,26 @@ module.exports = {
 			},
 			{
 				test: /\.ts(x)?$/,
-				use: 'ts-loader',
 				exclude: /node_modules/,
-				include: paths.appSrc
+				include: paths.appSrc,
+				use: [{
+					// 缓存加载器
+					loader: 'cache-loader'
+				}, {
+					// 线程加载器
+					loader: 'thread-loader',
+					options: {
+						// 分配一个cpu给ForkTsCheckerWebpackPlugin插件
+						workers: os.cpus().length - 1
+					}
+				}, {
+					loader: 'ts-loader',
+					options: {
+						// 使用happyPackMode模式加速编译并减少报告给webpack的错误
+						happyPackMode: true
+					} 
+				}]
+				// loader: 'happypack/loader?id=happyTypeScript'
 			},
 			{
 				test: /\.(png|jp(e)?g|gif)$/,
@@ -96,5 +118,22 @@ module.exports = {
 				}
 			}],
 		}),
+		// happyPack会隐式设置属性transpileOnly为true,并关闭所有错误和警告信息
+		// 可以使用fork-ts-checker-webpack-plugin进行类型检查
+		// new HappyPack({
+		// 	id: 'happyTypeScript',
+		// 	threads: 2,
+		// 	loaders: [{
+		// 		loader: 'ts-loader',
+		// 		options: {
+		// 			happyPackMode: true
+		// 		}
+		// 	}]
+		// }),
+		// 单独进程运行类型检查器（增量检查类型、AST缓存）
+		new ForkTsCheckerWebpackPlugin({ 
+			// 确保插件检查语法、语义错误
+			checkSyntacticErrors: true
+		})
 	]
 };

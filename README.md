@@ -1,4 +1,4 @@
-# react-webpack-toolkit
+# react-webpack-toolkit [![Build Status](https://travis-ci.org/jweboy/react-webpack-toolkit.svg?branch=version-upgrade)](https://travis-ci.org/jweboy/react-webpack-toolkit)
 
 快速开发react技术栈的脚手架工具
 
