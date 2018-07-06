@@ -1,2 +1,8 @@
-#node_modules/*
-release/**
+# In the project root are ignored by default
+# node_modules/*
+
+# Ignore build files
+build/*
+config/*
+config.js
+postcss.config.js

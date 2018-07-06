@@ -1,68 +1,99 @@
-// const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-// const px2rem = require('postcss-pxtorem');
-// const autoprefixer = require('autoprefixer');
-// const config = require('../config');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+
 const baseWebpackConfig = require('./webpack.base.config');
+const DynamicScript = require('./plugins/dynamic-script')
+const OpenBrowser = require('./plugins/open-browser')
+const webpackDevServer = require('./webpackDevServer.config')
+const manifest = require('../dist/dll/vendor-manifest.json')
+const { dynamicScripts  } = require('../config')
+const env = require('../config/dev.env')
+const paths = require('./paths')
 
-const babelPolyfill = 'babel-polyfill';
-const reactHotClient = 'react-hot-loader/patch';
-const webpackHotMiddlewareClient = 'webpack-hot-middleware/client?reload=true';
-
-baseWebpackConfig.entry.unshift(
-  babelPolyfill,
-  reactHotClient, // 开启模块热替换(HMR)
-  webpackHotMiddlewareClient
-);
-
-// const resolve = dir => (path.join(__dirname, '..', dir));
-
-// const srcPath = resolve('src');
-// const nodeModulesPath = resolve('node_modules');
-
-baseWebpackConfig.module.rules.unshift(
-  // {
-  // test: /\.js[x]$/,
-  // enforce: 'pre',
-  // use: [
-  //   {
-  //     loader: 'eslint-loader',
-  //     options: {
-  //       fix: true,
-  //     },
-  //   },
-  // ],
-  // exclude: nodeModulesPath,
-  // include: srcPath,
-  // }
-);
-console.log(baseWebpackConfig.module.rules);
+// const dashboard = new Dashboard()
+const publicPath = '/'
+const pathsToClean = ['dist']
 
 module.exports = merge(baseWebpackConfig, {
-  devtool: 'cheap-eval-source-map',
-  // devtool: 'eval',
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development'),
-      },
-    }),
-    new webpack.HotModuleReplacementPlugin(), // 开启全局的模块热替换(HMR)
-    new webpack.NamedModulesPlugin(), // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
-    new webpack.NoEmitOnErrorsPlugin(),
-    // https://github.com/geowarin/friendly-errors-webpack-plugin
-    new FriendlyErrorsPlugin(),
-    // https://github.com/ampedandwired/html-webpack-plugin
-    new HTMLWebpackPlugin({
-      template: 'index.html',
-      title: '开发模式',
-      favicon: './favicon.ico',
-      filename: 'index.html',
-      hash: true,
-      inject: 'body', // 脚本注入位置 设置true 或者 body 将打包的脚本放在页面底部
-    }),
-  ],
+	// 编译模式
+	mode: env.NODE_ENV,
+	// 开发环境这个模式更快
+	devtool: 'cheap-module-source-map',
+	// 输出目录
+	output: {
+		// 在bundle中引入所包含模块信息的相关注释
+		pathinfo: true,
+		// 文件保存在 WebpackDevServer 的虚拟内存中
+		filename: 'static/js/bundle.js',
+		// 文件代码拆分
+		chunkFilename: 'static/js/[name].chunk.js',
+		// 静态资源目录,一般指向 '/'
+		publicPath,
+	},
+	devServer: webpackDevServer({ publicPath }),
+	module: {
+		rules: [
+			// 解析node_modules里的css文件
+			{
+				test: /\.css$/,
+				include: paths.apppNodeModules,
+				exclude: paths.appSrc,
+				use: ['style-loader', 'css-loader']
+			},
+			// 解析src项目里的less、scss文件
+			{
+				test: /\.(less|scss)$/,
+				exclude: paths.apppNodeModules,
+				include: paths.appSrc,
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true, // 开启 CSS Modules
+							sourceMap: true, // 开启 sourceMap
+							camelCase: true, // 支持驼峰 .active-btn => activeBtn
+							localIdentName: '[local]-[hash:base64:5]'
+						}
+					},
+					{
+						loader: 'postcss-loader',
+					}
+				]
+			},
+		]
+	},
+	plugins: [
+		// 热加载模块
+		new webpack.HotModuleReplacementPlugin(),
+		// 热加载显示模块的相对路径
+		new webpack.NamedModulesPlugin(),
+		// 自动删除dist等目录
+		new CleanWebpackPlugin(pathsToClean),
+		// index.html插件
+		new HtmlWebpackPlugin({
+			title: 'react-webpack-toolkit',
+			template: paths.appIndexHtml,
+		}),
+		// 打包时在动态链接库查找导入的模块
+		// 如果存在直接从动态库中获取，无需重复打包
+		new webpack.DllReferencePlugin({
+			manifest
+		}),
+		// 动态写入脚本集合
+		new DynamicScript({
+			assets: dynamicScripts
+		}),
+		// new OpenBrowser({})
+		// webpack运行详细记录面板
+		// new DashboardPlugin(dashboard.setData)
+	],
+	// 开发环境关闭性能提示
+	performance: {
+		hints: false
+	}
 });

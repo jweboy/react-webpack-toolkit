@@ -1,6 +1,13 @@
- dist/
-
+.history/
+.vscode/
+.idea/
+.cache-loader/
 node_modules/
 
-yarn-error.log
-yarn.lock
+dist/
+src/.DS_Store
+
+*.log
+*.lock
+
+npm-debug.*
