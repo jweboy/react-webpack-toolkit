@@ -24,6 +24,7 @@
         "node_modules",
         "dist",
         "build",
-        "config"
+        "config",
+        "babel.config.js"
     ]
 }
