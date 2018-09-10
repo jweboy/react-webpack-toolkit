@@ -1,6 +1,6 @@
 {
   "name": "react-webpack-toolkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "src/index.js",
   "description": "react和webpack的脚手架工具",
   "repository": {
@@ -39,7 +39,6 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.44",
     "@babel/preset-env": "^7.0.0-beta.44",
     "@babel/preset-react": "^7.0.0-beta.44",
-    "@babel/preset-stage-0": "^7.0.0-beta.51",
     "babel-eslint": "8",
     "babel-loader": "^8.0.0-beta",
     "babel-plugin-import": "^1.7.0",
