@@ -1,6 +1,6 @@
 {
   "name": "react-webpack-toolkit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "src/index.js",
   "description": "react和webpack的脚手架工具",
   "repository": {
